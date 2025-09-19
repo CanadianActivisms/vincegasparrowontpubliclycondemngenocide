@@ -27,21 +27,13 @@
       background:radial-gradient(1200px 420px at 20% -10%, #fff 0, #eef3ff 60%, #f7f9ff 100%);
       border-bottom:1px solid var(--line);
     }
-    .hero{max-width:1120px;margin:0 auto;padding:48px 20px 24px}
-    .hero-grid{display:grid;gap:18px;grid-template-columns:1fr}
-    @media(min-width:960px){ .hero-grid{grid-template-columns:minmax(0,.95fr) minmax(0,.55fr);align-items:end} }
+    .hero{max-width:1120px;margin:0 auto;padding:56px 20px 28px}
     .domainCaps{font-family:Newsreader,serif;font-size:clamp(34px,5vw,56px);letter-spacing:.06em;text-transform:uppercase;line-height:1.02;margin:0 0 10px}
     .kicker{color:var(--accent-ink);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px;margin-bottom:6px}
-    .accent-bar{height:4px;width:84px;border-radius:3px;background:linear-gradient(90deg,#2f66ff,#9ab3ff);margin:8px 0 12px}
-    .lede{color:#2f3542;max-width:70ch;font-size:15px}
+    .accent-bar{height:4px;width:84px;border-radius:3px;background:linear-gradient(90deg,#2f66ff,#9ab3ff);margin:8px 0 14px}
+    .lede{color:#2f3542;max-width:80ch;font-size:15px}
     .badges{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
     .badge{font-size:12px;background:var(--chip);border:1px solid var(--chipb);border-radius:999px;padding:4px 10px;color:#19356b}
-
-    /* Quick links card in hero */
-    .quick{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
-    .quick h3{margin:0 0 8px;font-size:13px;color:var(--sub);font-weight:700}
-    .quick .qwrap{display:flex;flex-wrap:wrap;gap:8px}
-    .quick a{display:inline-block;text-decoration:none} .quick a .badge{background:#f1f4ff}
 
     /* ===== Layout / cards ===== */
     .wrap{max-width:1120px;margin:18px auto 28px;padding:0 20px;display:grid;grid-template-columns:1fr;gap:20px}
@@ -108,31 +100,17 @@
     </div>
   </div>
 
-  <!-- Hero (gradient field + quick links) -->
+  <!-- Hero (single-column, full-width text) -->
   <div class="heroField">
     <section class="hero">
-      <div class="hero-grid">
-        <div>
-          <div class="kicker">Public record of statements since Apr 28, 2025</div>
-          <h1 class="domainCaps">Vince Gasparro won’t publicly condemn genocide</h1>
-          <div class="accent-bar"></div>
-          <p class="lede">
-            Each entry links to the original post and, when available, an independent archive capture. Screenshots are included for verifiability.
-            <b>Analysis highlights patterns of conflating anti-Zionism with antisemitism and the selective treatment of Palestinian speech and lives.</b>
-          </p>
-          <div class="badges"><span id="lastUpdated" class="badge">Last updated: —</span></div>
-        </div>
-        <aside class="quick">
-          <h3>Quick links</h3>
-          <div class="qwrap">
-            <a href="#timeline" class="badge">Timeline</a>
-            <a href="#un-context" class="badge">UN Context</a>
-            <a href="#methodology" class="badge">Methodology</a>
-            <a href="#search" class="badge">Search</a>
-            <a href="#contact" class="badge">Contact</a>
-          </div>
-        </aside>
-      </div>
+      <div class="kicker">Public record of statements since Apr 28, 2025</div>
+      <h1 class="domainCaps">Vince Gasparro won’t publicly condemn genocide</h1>
+      <div class="accent-bar"></div>
+      <p class="lede">
+        Each entry links to the original post and, when available, an independent archive capture. Screenshots are included for verifiability.
+        <b>Analysis highlights patterns of conflating anti-Zionism with antisemitism and the selective treatment of Palestinian speech and lives.</b>
+      </p>
+      <div class="badges"><span id="lastUpdated" class="badge">Last updated: —</span></div>
     </section>
   </div>
 
