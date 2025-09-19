@@ -2,49 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Public record of statements — vincegasparrowontpubliclycondemndenocide.com</title>
+  <title>vincegasparrowontpubliclycondemndenocide.com — Public record of statements</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Type -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:wght@700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --ink:#0e1116; --sub:#5e6470; --line:#e6e8ee; --bg:#f6f7fb;
-      --card:#ffffff; --accent:#3a73ff; --accent-ink:#0c2e99;
+      --ink:#0e1116; --sub:#5e6470; --line:#e6e8ee; --bg:#f5f6fb;
+      --card:#ffffff; --accent:#2f66ff; --accent-ink:#0c2e99;
       --chip:#eef3ff; --chipb:#d7e3ff; --soft:#fbfcff;
     }
     *{box-sizing:border-box} html,body{height:100%}
     body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
 
     /* Top brand/nav */
-    .brandbar{position:sticky; top:0; z-index:20; background:linear-gradient(180deg,#ffffffcc,#ffffffa0 70%,#ffffff00); backdrop-filter:saturate(140%) blur(8px); border-bottom:1px solid var(--line)}
-    .brandwrap{max-width:1120px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between}
-    .wordmark{font-family:Newsreader,serif;font-size:22px;font-weight:600;letter-spacing:.2px}
+    .brandbar{position:sticky; top:0; z-index:20; background:#fff; border-bottom:1px solid var(--line)}
+    .brandwrap{max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+    .wordmark{font-family:Newsreader,serif;font-size:26px;font-weight:700;letter-spacing:.2px}
     .nav a{color:var(--ink);text-decoration:none;margin-left:18px;font-size:14px}
     .nav a:hover{text-decoration:underline}
 
     /* Hero */
-    .hero{max-width:1120px;margin:0 auto;padding:28px 20px 16px}
+    .hero{max-width:1120px;margin:0 auto;padding:34px 20px 16px}
+    .domain{font-family:Newsreader,serif;font-size:40px;line-height:1; margin:0 0 8px}
     .kicker{color:var(--accent-ink);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
-    h1{margin:6px 0 8px;font-size:34px;line-height:1.12}
-    .lede{color:var(--sub);max-width:78ch}
-    .badges{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+    .lede{color:var(--sub);max-width:80ch}
+    .badges{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
     .badge{font-size:12px;background:var(--chip);border:1px solid var(--chipb);border-radius:999px;padding:4px 10px;color:#19356b}
 
-    /* Page grid */
+    /* Layout */
     .wrap{max-width:1120px;margin:8px auto 28px;padding:0 20px;display:grid;grid-template-columns:1fr;gap:20px}
-
-    /* Cards */
     .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+    .section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
     .h2{font-weight:700;margin:0 0 10px;font-size:18px}
     .muted{color:var(--sub);font-size:13px}
-
-    /* Controls */
-    .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
-    .search{flex:1;min-width:240px;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
-    .search input{border:0;outline:0;flex:1;font-size:14px}
-    .chipbar{display:flex;gap:8px;flex-wrap:wrap}
-    .chip{font-size:12px;background:#f3f5f9;border:1px solid var(--line);border-radius:999px;padding:6px 10px;cursor:pointer;user-select:none}
-    .chip.active{background:#e7efff;border-color:#cfe0ff;color:#0a2d8f}
 
     /* Timeline items */
     .item{border:1px solid var(--line);border-radius:16px;padding:14px}
@@ -60,10 +50,17 @@
     .links a:hover{text-decoration:underline}
 
     /* Reference sections */
-    .section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
     .pilllist{display:grid;grid-template-columns:1fr;gap:10px}
     .pill{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}
     .pill .b{font-weight:600}
+
+    /* Search block (bottom) */
+    .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .search{flex:1;min-width:260px;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+    .search input{border:0;outline:0;flex:1;font-size:14px}
+    .chipbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .chip{font-size:12px;background:#f3f5f9;border:1px solid var(--line);border-radius:999px;padding:6px 10px;cursor:pointer;user-select:none}
+    .chip.active{background:#e7efff;border-color:#cfe0ff;color:#0a2d8f}
 
     /* Lightbox */
     .lb{position:fixed;inset:0;background:rgba(10,14,22,.92);display:none;align-items:center;justify-content:center;z-index:1000}
@@ -73,10 +70,6 @@
     /* Footer */
     footer{border-top:1px solid var(--line);padding:18px 20px;color:var(--sub);font-size:12px}
     .footwrap{max-width:1120px;margin:0 auto}
-    .platform{display:inline-flex;align-items:center;gap:6px}
-    .platform svg{width:14px;height:14px}
-    .btn{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:white;border-radius:999px;padding:8px 12px;font-size:13px;text-decoration:none}
-    .btn:hover{opacity:.95}
   </style>
 </head>
 <body>
@@ -88,6 +81,7 @@
         <a href="#timeline">Timeline</a>
         <a href="#un-context">UN Context</a>
         <a href="#methodology">Methodology</a>
+        <a href="#search">Search</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -95,43 +89,34 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="kicker">Accountability file</div>
-    <h1>Public record of statements since Apr 28, 2025</h1>
+    <h1 class="domain">vincegasparrowontpubliclycondemndenocide.com</h1>
+    <div class="kicker">Public record of statements since Apr 28, 2025</div>
     <p class="lede">Each entry links to the original post and, when available, an independent archive capture. Screenshots are included for verifiability. <b>Analysis highlights patterns of conflating anti-Zionism with antisemitism and the selective treatment of Palestinian speech and lives.</b></p>
     <div class="badges">
       <span id="lastUpdated" class="badge">Last updated: —</span>
-      <span class="badge">New items first</span>
-      <a class="btn" href="./evidence.json" target="_blank" rel="noreferrer">Download data JSON</a>
     </div>
   </section>
 
-  <!-- Main wrapper -->
+  <!-- Main -->
   <div class="wrap">
-    <!-- Timeline -->
+    <!-- Timeline (no controls up top) -->
     <section class="card" id="timeline">
       <div class="h2">Evidence timeline</div>
-      <div class="controls">
-        <div class="search">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="#7a7f89" d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16a6.47 6.47 0 0 0 4.23-1.57l.27.28v.79L20 21.5 21.5 20l-6-6zM4 9.5C4 6.46 6.46 4 9.5 4S15 6.46 15 9.5 12.54 15 9.5 15 4 12.54 4 9.5z"/></svg>
-          <input id="q" type="search" placeholder="Search headline, quote, summary, tags…" />
-        </div>
-        <div id="chipbar" class="chipbar"></div>
-      </div>
       <div id="list"></div>
       <div id="empty" class="muted" style="display:none;margin-top:8px">No results. Clear filters or change your search.</div>
     </section>
 
-    <!-- UN Context (expanded) -->
+    <!-- UN Context -->
     <section class="section" id="un-context">
       <div class="h2">UN context (what the official record says)</div>
       <div class="pilllist">
         <div class="pill">
           <span class="b">June 2024 findings.</span>
-          <span>The UN Human Rights Council’s Commission of Inquiry reported <b>reasonable grounds</b> to believe both Hamas and Israeli authorities committed <b>war crimes</b>. It further found that Israeli authorities committed <b>crimes against humanity</b> (including persecution and other inhumane acts) in the occupied Palestinian territory. These are not political talking points; they are formal UN findings.</span>
+          <span>The UN Human Rights Council’s Commission of Inquiry reported <b>reasonable grounds</b> to believe both Hamas and Israeli authorities committed <b>war crimes</b>. It further found Israeli authorities committed <b>crimes against humanity</b> (including persecution and other inhumane acts) in the occupied Palestinian territory.</span>
         </div>
         <div class="pill">
           <span class="b">2025 genocide analysis.</span>
-          <span>The Commission later assessed that multiple <b>genocidal acts</b> were being committed in Gaza (e.g., killing, causing serious harm, and deliberately inflicting conditions of life calculated to destroy a population), and documented rhetoric by senior officials evidencing <b>genocidal intent</b>.</span>
+          <span>The Commission later assessed that multiple <b>genocidal acts</b> were being committed in Gaza—killing, causing serious harm, and deliberately inflicting conditions of life calculated to destroy a population—and documented rhetoric by senior officials evidencing <b>genocidal intent</b>.</span>
         </div>
         <div class="pill">
           <span class="b">Obligations.</span>
@@ -139,10 +124,10 @@
         </div>
         <div class="pill">
           <span class="b">Why this matters here.</span>
-          <span>When an MP repeatedly labels anti-Zionist advocacy as “antisemitic” while omitting Palestinian civilian harm and UN findings, it narrows the Overton window: <b>criticism of a state</b> or political ideology is chilled as “hate”, while the <b>documented killing of civilians</b> goes unaddressed.</span>
+          <span>When an MP repeatedly labels anti-Zionist advocacy as “antisemitic” while omitting Palestinian civilian harm and UN findings, it narrows the Overton window: <b>criticism of a state</b> or ideology is chilled as “hate,” while the <b>documented killing of civilians</b> goes unaddressed.</span>
         </div>
       </div>
-      <p class="muted" style="margin-top:10px">Primary documents cited in the site footer.</p>
+      <p class="muted" style="margin-top:10px">Primary documents are cited in the site footer.</p>
     </section>
 
     <!-- Methodology -->
@@ -151,16 +136,30 @@
       <div class="pilllist">
         <div class="pill"><span class="b">Scope.</span><span>Only <b>public posts</b> by the MP or reputable media coverage. Quotes are verbatim; links and screenshots provided.</span></div>
         <div class="pill"><span class="b">Sourcing.</span><span>Original URL + independent archive (when available). Screenshots include handle + timestamp where possible.</span></div>
-        <div class="pill"><span class="b">Search.</span><span>Terms included: “Israel”, “Gaza”, “Palestinian(s)”, “genocide”, “antisemitism/anti-Semitism”, “anti-Zionism”, “ceasefire”, “Nova Exhibit”, “UJA”.</span></div>
+        <div class="pill"><span class="b">Search terms.</span><span>“Israel”, “Gaza”, “Palestinian(s)”, “genocide”, “antisemitism/anti-Semitism”, “anti-Zionism”, “ceasefire”, “Nova Exhibit”, “UJA”.</span></div>
         <div class="pill"><span class="b">Corrections.</span><span>Corrections welcome: send a URL + date. <b>Factual errors</b> are corrected transparently in a public changelog.</span></div>
       </div>
+    </section>
+
+    <!-- Search & Filters (BOTTOM) -->
+    <section class="section" id="search">
+      <div class="h2">Search & filters</div>
+      <p class="muted" style="margin-top:-4px;margin-bottom:10px">Use the controls below to filter the timeline above. Your filters apply instantly.</p>
+      <div class="controls" style="margin-bottom:8px">
+        <div class="search">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="#7a7f89" d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16a6.47 6.47 0 0 0 4.23-1.57l.27.28v.79L20 21.5 21.5 20l-6-6zM4 9.5C4 6.46 6.46 4 9.5 4S15 6.46 15 9.5 12.54 15 9.5 15 4 12.54 4 9.5z"/></svg>
+          <input id="q" type="search" placeholder="Search headline, quote, summary, tags…" />
+        </div>
+        <button id="clear" style="border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;cursor:pointer">Clear filters</button>
+      </div>
+      <div id="chipbar" class="chipbar"></div>
     </section>
 
     <!-- Contact -->
     <section class="section" id="contact">
       <div class="h2">Contact</div>
       <p class="muted">Corrections or additions:</p>
-      <p><a class="btn" href="mailto:corrections@vincegasparrowontpubliclycondemndenocide.com">Email the editor</a></p>
+      <p><a href="mailto:corrections@vincegasparrowontpubliclycondemndenocide.com" style="display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:8px 12px;text-decoration:none">Email the editor</a></p>
     </section>
   </div>
 
@@ -176,7 +175,7 @@
 
   <script>
     const $ = s => document.querySelector(s);
-    const listEl = $('#list'), chipbar = $('#chipbar'), qEl = $('#q');
+    const listEl = $('#list'), chipbar = $('#chipbar'), qEl = $('#q'), clearBtn = $('#clear');
     const lb = $('#lb'), lbimg = $('#lbimg');
 
     const icon = (name) => {
@@ -269,18 +268,28 @@
         const res = await fetch('./evidence.json', { cache:'no-store' });
         if(!res.ok) throw new Error('Could not load evidence.json');
         let items = await res.json();
+        // newest first
         items = dedupeByUrl(items).sort((a,b)=> new Date(b.date) - new Date(a.date));
         items.forEach(it => (it.tags||[]).forEach(t => state.tags.add(t)));
         state.items = items; setLastUpdated(items); buildChips(); render();
 
+        // search handlers (bottom block)
         let t; qEl.addEventListener('input', e=>{
           clearTimeout(t); t=setTimeout(()=>{ state.query = e.target.value; render(); }, 140);
+        });
+        clearBtn.addEventListener('click', ()=>{
+          state.query=''; state.activeTags.clear(); qEl.value='';
+          buildChips(); render();
+          window.scrollTo({top:0,behavior:'smooth'});
         });
       }catch(e){
         listEl.innerHTML = `<div class="muted">Failed to load evidence. ${e.message}</div>`;
       }
     }
     main();
+
+    // Lightbox
+    const lb = document.getElementById('lb'); const lbimg = document.getElementById('lbimg');
   </script>
 </body>
 </html>
