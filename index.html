@@ -4,141 +4,265 @@
   <meta charset="utf-8" />
   <title>vincegasparrowontpubliclycondemndenocide.com</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#fafafa;color:#111;margin:0}
-    .wrap{max-width:900px;margin:40px auto;padding:0 16px}
-    h1{font-size:28px;margin:0 0 6px}
-    .sub{color:#555;font-size:14px;margin-bottom:16px}
-    .card{background:#fff;border:1px solid #e5e5e5;border-radius:14px;padding:16px;margin-bottom:14px}
-    .meta{color:#666;font-size:12px}
-    .headline{font-weight:600;margin:6px 0}
-    .quote{font-style:italic;color:#333;font-size:14px;margin:4px 0}
-    .label{font-weight:600}
-    .tags{margin-top:8px}
-    .tag{display:inline-block;font-size:11px;background:#f3f3f3;border:1px solid #e5e5e5;border-radius:999px;padding:2px 8px;margin-right:6px;margin-bottom:4px}
-    .links a{font-size:12px;text-decoration:underline;margin-right:12px}
-    .error{background:#fee;border:1px solid #f99;color:#900;border-radius:10px;padding:10px;margin:12px 0}
-    .shot{width:100%;height:auto;border-radius:12px;border:1px solid #eee;margin-top:10px;display:block;cursor:zoom-in}
+    :root{
+      --bg:#f7f7f8; --card:#ffffff; --ink:#101114; --sub:#5b606a;
+      --line:#e8e9ec; --accent:#0d6efd; --chip:#f1f2f5; --chipb:#e3e5ea;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0}
+    a{color:var(--accent)}
+    .container{max-width:1000px;margin:0 auto;padding:20px}
+    header{position:sticky;top:0;background:rgba(247,247,248,.9);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--line);z-index:10}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 20px}
+    .brand{font-family:Merriweather,serif;font-weight:700;font-size:18px}
+    nav a{margin-left:14px;text-decoration:none;color:var(--ink);font-size:14px}
+    nav a:hover{text-decoration:underline}
+    .pagehead{padding:22px 20px 12px;border-bottom:1px solid var(--line)}
+    .tagline{color:var(--sub);font-size:14px}
+    .badges{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
+    .badge{font-size:12px;background:var(--chip);border:1px solid var(--chipb);border-radius:999px;padding:4px 10px;color:#2b2f38}
+
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:900px){ .grid{grid-template-columns:1fr 320px;gap:22px}}
+
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+    .muted{color:var(--sub);font-size:13px}
+    .h1{font-size:28px;font-weight:700;margin:0 0 6px}
+    .h2{font-size:18px;font-weight:700;margin:0 0 8px}
+    .lead{font-size:14px;color:var(--sub)}
+
+    /* Controls */
+    .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .search{flex:1;min-width:220px;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+    .search input{border:0;outline:0;flex:1;font-size:14px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{font-size:12px;background:var(--chip);border:1px solid var(--chipb);border-radius:999px;padding:6px 10px;cursor:pointer;user-select:none}
+    .chip.active{background:#e7f0ff;border-color:#cfe2ff;color:#084298}
+
+    /* Timeline item */
+    .item{border:1px solid var(--line);border-radius:14px;padding:14px}
+    .meta{display:flex;gap:10px;align-items:center;color:var(--sub);font-size:12px}
+    .title{font-weight:700;margin-top:6px}
+    .quote{font-style:italic;color:#333;font-size:14px;margin:6px 0}
+    .shot{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);margin-top:10px;display:block;cursor:zoom-in}
+    .tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+    .tag{display:inline-block;font-size:11px;background:var(--chip);border:1px solid var(--chipb);border-radius:999px;padding:2px 8px}
+    .links{margin-top:8px;display:flex;gap:12px;font-size:12px}
+
+    /* Sidebar */
+    .side .card + .card{margin-top:12px}
+
     /* Lightbox */
-    .lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9999}
+    .lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:1000}
     .lb img{max-width:92vw;max-height:92vh;border-radius:12px}
     .lb.close{cursor:zoom-out}
+
+    footer{border-top:1px solid var(--line);padding:16px 20px;color:var(--sub);font-size:12px}
+    .platform{display:inline-flex;align-items:center;gap:6px}
+    .platform svg{width:14px;height:14px}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>vincegasparrowontpubliclycondemndenocide.com</h1>
-    <div class="sub">
-      A fact-checked catalogue of public posts and statements by MP Vince Gasparro since Apr 28, 2025.
-      Every entry links to a public source and, when available, an archived copy. Summaries are neutral;
-      commentary is clearly marked as opinion/fair comment.
+  <header>
+    <div class="topbar">
+      <div class="brand">vincegasparrowontpubliclycondemndenocide.com</div>
+      <nav>
+        <a href="#timeline">Timeline</a>
+        <a href="#methodology">Methodology</a>
+        <a href="#un">UN Context</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-
-    <div class="card">
-      <div class="headline">Methodology & Legal Notes (short)</div>
-      <ul style="margin:8px 0 0 18px;font-size:14px;line-height:1.35">
-        <li>Only <b>public</b> posts or reputable media. Quotes are verbatim with links; screenshots + archive links provided where available.</li>
-        <li>Search terms: “Israel”, “Gaza”, “Palestinian(s)”, “genocide”, “antisemitism/anti-Semitism”, “anti-Zionism”, “ceasefire”, “Nova Exhibit”, “UJA”.</li>
-        <li>Corrections welcome: send a URL + date. Verified changes logged in our changelog.</li>
-      </ul>
-    </div>
-
-    <div id="error" class="error" style="display:none"></div>
-
-    <div class="card">
-      <div class="headline">Evidence Timeline</div>
-      <div id="list"></div>
-    </div>
-
-    <div class="card">
-      <div class="headline">Context: UN findings</div>
-      <div style="font-size:14px">
-        In June 2024, the UN Human Rights Council’s Commission of Inquiry concluded both Hamas and Israeli authorities committed
-        <b>war crimes</b>, and that Israeli authorities also committed <b>crimes against humanity</b>. In 2025, the Commission reported that multiple
-        <b>genocidal acts</b> are being committed in Gaza. Official documents are listed in the site footer.
+    <div class="pagehead container">
+      <div class="h1">Public record of statements since Apr 28, 2025</div>
+      <div class="tagline">Sourcing each entry to the public post and (when available) an independent archive capture. Screenshots are provided to ensure verifiability.</div>
+      <div class="badges">
+        <span id="lastUpdated" class="badge">Last updated: —</span>
+        <span class="badge">New items first</span>
       </div>
     </div>
+  </header>
 
-    <div class="card">
-      <div class="headline">Submit a Correction</div>
-      <div style="font-size:14px">
-        Email <code>corrections@vincegasparrowontpubliclycondemndenocide.com</code> with a URL, date, and a short note.
-        We update after verification and mark changes transparently.
-      </div>
-    </div>
+  <main class="container" style="margin-top:16px">
+    <div class="grid">
+      <section class="main">
+        <div class="card" id="timeline">
+          <div class="h2" style="margin-bottom:10px">Evidence timeline</div>
 
-    <div style="font-size:12px;color:#666;margin-top:14px;padding-top:12px;border-top:1px solid #e5e5e5">
-      Key sources: UN HRC COI press release (12 Jun 2024) and report A/HRC/56/26; UN HRC report A/HRC/60/CRP/3 (advance version).
-      This site presents <i>verifiable facts</i> and <i>fair comment</i> on matters of public interest.
+          <!-- Controls -->
+          <div class="controls" style="margin-bottom:12px">
+            <div class="search">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="#7a7f89" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16a6.471 6.471 0 004.23-1.57l.27.28v.79L20 21.5 21.5 20l-6-6zM4 9.5C4 6.46 6.46 4 9.5 4S15 6.46 15 9.5 12.54 15 9.5 15 4 12.54 4 9.5z"/></svg>
+              <input id="q" type="search" placeholder="Search headline, quote, summary, tags…" />
+            </div>
+            <div class="chips" id="chipbar"></div>
+          </div>
+
+          <div id="list"></div>
+          <div id="empty" class="muted" style="display:none;margin-top:8px">No results. Try clearing filters.</div>
+        </div>
+      </section>
+
+      <aside class="side">
+        <div class="card" id="methodology">
+          <div class="h2">Methodology & legal notes</div>
+          <ul class="lead" style="margin:8px 0 0 18px; line-height:1.45">
+            <li>Only <b>public</b> posts or reputable media are indexed. Quotes are verbatim; each entry links the source and, when available, an archive capture.</li>
+            <li>Search terms used include: “Israel”, “Gaza”, “Palestinian(s)”, “genocide”, “antisemitism/anti-Semitism”, “anti-Zionism”, “ceasefire”, “Nova Exhibit”, “UJA”.</li>
+            <li>Corrections welcome: send the URL + date. Verified changes are logged in our public changelog.</li>
+          </ul>
+        </div>
+
+        <div class="card" id="un">
+          <div class="h2">UN findings</div>
+          <p class="lead">In June 2024, the UN Human Rights Council’s Commission of Inquiry concluded both Hamas and Israeli authorities committed <b>war crimes</b>, and that Israeli authorities also committed <b>crimes against humanity</b>. In 2025, the Commission reported that multiple <b>genocidal acts</b> are being committed in Gaza. Official documents are cited in the footer.</p>
+        </div>
+
+        <div class="card" id="contact">
+          <div class="h2">Contact</div>
+          <p class="lead">Corrections: <code>corrections@vincegasparrowontpubliclycondemndenocide.com</code></p>
+        </div>
+      </aside>
     </div>
-  </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      Key sources: UN HRC COI press release (12 Jun 2024) and report A/HRC/56/26; UN HRC report A/HRC/60/CRP/3 (advance version). This site presents <i>verifiable facts</i> and <i>fair comment</i> on matters of public interest.
+    </div>
+  </footer>
 
   <!-- Lightbox -->
-  <div id="lb" class="lb close" onclick="this.style.display='none'">
-    <img id="lbimg" src="" alt="preview">
-  </div>
+  <div id="lb" class="lb close" onclick="this.style.display='none'"><img id="lbimg" src="" alt="preview"></div>
 
   <script>
+    const $ = sel => document.querySelector(sel);
+    const listEl = $('#list');
+    const chipbar = $('#chipbar');
+    const qEl = $('#q');
+    const lb = $('#lb'), lbimg = $('#lbimg');
+
+    const platformIcon = (name) => {
+      const n = (name||'').toLowerCase();
+      if(n.includes('instagram')) return `<svg viewBox="0 0 24 24"><path fill="#e1306c" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5m0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3z"/><circle cx="12" cy="12" r="3.5" fill="#e1306c"/><circle cx="17.5" cy="6.5" r="1.2" fill="#e1306c"/></svg>`;
+      if(n === 'x') return `<svg viewBox="0 0 24 24"><path fill="#111" d="M14.7 3H18l-6.9 8.1L19 21h-6.3l-5-5.9L2.8 21H0l7.6-8.9L0 3h6.4l4.6 5.4L14.7 3z"/></svg>`;
+      if(n.includes('facebook')) return `<svg viewBox="0 0 24 24"><path fill="#1877f2" d="M22 12.06C22 6.48 17.52 2 12 2S2 6.48 2 12.06C2 17.1 5.66 21.22 10.44 22v-7.04H7.9v-2.9h2.54v-2.2c0-2.5 1.5-3.88 3.78-3.88 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.86h2.78l-.44 2.9h-2.34V22C18.34 21.22 22 17.1 22 12.06z"/></svg>`;
+      return '';
+    };
+
+    const state = { items: [], tags: new Set(), activeTags: new Set(), query: '' };
+
+    const render = () => {
+      const q = state.query.trim().toLowerCase();
+      const active = state.activeTags;
+      const filtered = state.items.filter(it => {
+        const hay = [it.headline,it.quote,it.summary,(it.tags||[]).join(' ')]
+          .join(' ').toLowerCase();
+        const matchesQ = q ? hay.includes(q) : true;
+        const matchesTags = active.size ? (it.tags||[]).some(t => active.has(t)) : true;
+        return matchesQ && matchesTags;
+      });
+
+      listEl.innerHTML = '';
+      if(!filtered.length){ $('#empty').style.display='block'; return; }
+      $('#empty').style.display='none';
+
+      filtered.forEach(it => {
+        const card = document.createElement('div');
+        card.className = 'item';
+        const imgHTML = it.screenshot_file
+          ? `<img class="shot" loading="lazy" alt="Screenshot: ${it.headline||''}" src="./screenshots/${it.screenshot_file}" onerror="this.style.display='none'">`
+          : '';
+        card.innerHTML = `
+          <div class="meta">
+            <span>${new Date(it.date).toLocaleDateString()}</span>
+            <span>·</span>
+            <span class="platform">${platformIcon(it.platform)} <span>${it.platform||''}</span></span>
+          </div>
+          <div class="title">${it.headline||''}</div>
+          ${it.quote ? `<div class="quote">“${it.quote}”</div>` : ``}
+          ${imgHTML}
+          ${it.summary ? `<div class="lead" style="margin-top:8px"><b>Summary:</b> ${it.summary}</div>` : ``}
+          ${it.commentary ? `<div class="lead" style="margin-top:6px"><b>Commentary (fair comment):</b> ${it.commentary}</div>` : ``}
+          <div class="tags">${(it.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+          <div class="links">
+            ${it.url ? `<a href="${it.url}" target="_blank" rel="noreferrer">Source ↗</a>` : ``}
+            ${it.archived_url ? `<a href="${it.archived_url}" target="_blank" rel="noreferrer">Archive ↗</a>` : ``}
+            ${(!it.url && !it.archived_url) ? `<span class="muted">Links pending</span>` : ``}
+          </div>
+        `;
+        // click-to-zoom
+        card.addEventListener('click', (e)=>{
+          const t = e.target;
+          if(t && t.classList.contains('shot')){
+            lbimg.src = t.src;
+            lb.style.display = 'flex';
+          }
+        });
+        listEl.appendChild(card);
+      });
+    };
+
+    const buildChips = () => {
+      chipbar.innerHTML = '';
+      [...state.tags].sort().forEach(tag => {
+        const el = document.createElement('span');
+        el.className = 'chip' + (state.activeTags.has(tag) ? ' active':'');
+        el.textContent = tag;
+        el.onclick = () => {
+          if(state.activeTags.has(tag)) state.activeTags.delete(tag);
+          else state.activeTags.add(tag);
+          buildChips(); render();
+        };
+        chipbar.appendChild(el);
+      });
+    };
+
+    const dedupeByUrl = (items) => {
+      const seen = new Set();
+      return items.filter(it => {
+        const u = (it.url||'').trim();
+        if(!u) return true;
+        if(seen.has(u)) return false;
+        seen.add(u);
+        return true;
+      });
+    };
+
+    const setLastUpdated = (items) => {
+      if(!items.length) return;
+      const dates = items.map(x => new Date(x.date)).filter(d => !isNaN(d));
+      const max = new Date(Math.max.apply(null, dates));
+      $('#lastUpdated').textContent = 'Last updated: ' + max.toLocaleDateString();
+    };
+
     async function main(){
-      const err = document.getElementById('error');
-      const list = document.getElementById('list');
-      const lb = document.getElementById('lb');
-      const lbimg = document.getElementById('lbimg');
-
       try{
-        const res = await fetch('./evidence.json', { cache: 'no-store' });
+        const res = await fetch('./evidence.json', { cache:'no-store' });
         if(!res.ok) throw new Error('Could not load evidence.json');
-        const items = await res.json();
+        let items = await res.json();
 
-        // Deduplicate by exact URL only (so IG + X can both appear)
-        const seenUrls = new Set();
-        let cleaned = items.filter(it => {
-          const u = (it.url||'').trim();
-          if(u && seenUrls.has(u)) return false;
-          if(u) seenUrls.add(u);
-          return true;
+        // newest first + keep both IG and X if different URLs
+        items = dedupeByUrl(items).sort((a,b)=> new Date(b.date) - new Date(a.date));
+
+        // collect tags for chip bar
+        items.forEach(it => (it.tags||[]).forEach(t => state.tags.add(t)));
+        state.items = items;
+        setLastUpdated(items);
+        buildChips();
+        render();
+
+        // search handler (light debounce)
+        let t; qEl.addEventListener('input', e=>{
+          clearTimeout(t);
+          t=setTimeout(()=>{ state.query = e.target.value; render(); }, 150);
         });
 
-        // Newest first (by date)
-        cleaned = cleaned.sort((a,b) => new Date(b.date) - new Date(a.date));
-
-        cleaned.forEach(it=>{
-          const card = document.createElement('div');
-          card.className = 'card';
-
-          const imgHTML = it.screenshot_file
-            ? `<img class="shot" loading="lazy" alt="Screenshot: ${it.headline||''}" src="./screenshots/${it.screenshot_file}" onerror="this.style.display='none'">`
-            : '';
-
-          card.innerHTML = `
-            <div class="meta">${it.date || ''} · ${it.platform || ''}</div>
-            <div class="headline">${it.headline || ''}</div>
-            ${it.quote ? `<div class="quote">“${it.quote}”</div>` : ``}
-            ${imgHTML}
-            ${it.summary ? `<div style="font-size:14px;margin-top:6px"><span class="label">Summary:</span> ${it.summary}</div>` : ``}
-            ${it.commentary ? `<div style="font-size:14px;margin-top:6px"><span class="label">Commentary (fair comment):</span> ${it.commentary}</div>` : ``}
-            <div class="tags">${(it.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-            <div class="links" style="margin-top:6px">
-              ${it.url ? `<a href="${it.url}" target="_blank" rel="noreferrer">Source ↗</a>` : ``}
-              ${it.archived_url ? `<a href="${it.archived_url}" target="_blank" rel="noreferrer">Archive ↗</a>` : ``}
-              ${(!it.url && !it.archived_url) ? `<span style="font-size:12px;color:#666">Link pending</span>` : ``}
-            </div>
-          `;
-
-          // Wire up click-to-zoom if an image exists
-          card.addEventListener('click', (e) => {
-            const target = e.target;
-            if(target && target.classList.contains('shot')){
-              lbimg.src = target.src;
-              lb.style.display = 'flex';
-            }
-          });
-
-          list.appendChild(card);
-        });
       }catch(e){
-        err.style.display='block';
-        err.textContent = e.message;
+        listEl.innerHTML = `<div class="muted">Failed to load evidence. ${e.message}</div>`;
       }
     }
     main();
