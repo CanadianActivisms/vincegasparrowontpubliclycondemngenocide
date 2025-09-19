@@ -8,20 +8,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:wght@600&display=swap" rel="stylesheet">
   <style>
     :root{
-      /* brand */
       --ink:#0e1116; --sub:#5e6470; --line:#e6e8ee; --bg:#f6f7fb;
-      --card:#ffffff; --accent:#3a73ff; --accent-ink:#0c2e99; --chip:#eef3ff; --chipb:#d7e3ff;
+      --card:#ffffff; --accent:#3a73ff; --accent-ink:#0c2e99;
+      --chip:#eef3ff; --chipb:#d7e3ff; --soft:#fbfcff;
     }
     *{box-sizing:border-box} html,body{height:100%}
     body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
 
-    /* Top brand bar */
-    .brandbar{
-      position:sticky; top:0; z-index:20;
-      background:linear-gradient(180deg,#ffffffcc,#ffffffa0 70%,#ffffff00);
-      backdrop-filter:saturate(140%) blur(8px);
-      border-bottom:1px solid var(--line);
-    }
+    /* Top brand/nav */
+    .brandbar{position:sticky; top:0; z-index:20; background:linear-gradient(180deg,#ffffffcc,#ffffffa0 70%,#ffffff00); backdrop-filter:saturate(140%) blur(8px); border-bottom:1px solid var(--line)}
     .brandwrap{max-width:1120px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between}
     .wordmark{font-family:Newsreader,serif;font-size:22px;font-weight:600;letter-spacing:.2px}
     .nav a{color:var(--ink);text-decoration:none;margin-left:18px;font-size:14px}
@@ -37,7 +32,6 @@
 
     /* Page grid */
     .wrap{max-width:1120px;margin:8px auto 28px;padding:0 20px;display:grid;grid-template-columns:1fr;gap:20px}
-    @media(min-width:1024px){ .wrap{grid-template-columns:minmax(0,1fr) 340px;gap:24px} }
 
     /* Cards */
     .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
@@ -58,17 +52,17 @@
     .meta .dot{width:5px;height:5px;background:#c8ccd6;border-radius:50%}
     .title{font-weight:700;margin-top:6px;font-size:16px}
     .quote{font-style:italic;color:#2e3137;font-size:14px;margin:6px 0}
-    .shot{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);margin-top:10px;display:block;cursor:zoom-in}
+    .shot{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);margin-top:10px;display:block;cursor:zoom-in;background:#fff}
     .tags{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
     .tag{display:inline-block;font-size:11px;background:#f6f7fb;border:1px solid var(--line);border-radius:999px;padding:2px 8px}
     .links{margin-top:10px;display:flex;gap:14px;font-size:12px}
     .links a{color:var(--accent);text-decoration:none}
     .links a:hover{text-decoration:underline}
 
-    /* Sidebar cards */
-    .side .card + .card{margin-top:14px}
-    .pilllist{display:grid;grid-template-columns:1fr;gap:8px}
-    .pill{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid var(--line);border-radius:12px;background:#fbfcff}
+    /* Reference sections */
+    .section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+    .pilllist{display:grid;grid-template-columns:1fr;gap:10px}
+    .pill{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}
     .pill .b{font-weight:600}
 
     /* Lightbox */
@@ -92,8 +86,8 @@
       <div class="wordmark">vincegasparrowontpubliclycondemndenocide.com</div>
       <nav class="nav">
         <a href="#timeline">Timeline</a>
+        <a href="#un-context">UN Context</a>
         <a href="#methodology">Methodology</a>
-        <a href="#un">UN Context</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -103,64 +97,77 @@
   <section class="hero">
     <div class="kicker">Accountability file</div>
     <h1>Public record of statements since Apr 28, 2025</h1>
-    <p class="lede">Each entry links to the original post and, when available, an independent archive capture. Screenshots are included for verifiability. Commentary is marked as fair comment on matters of public interest.</p>
+    <p class="lede">Each entry links to the original post and, when available, an independent archive capture. Screenshots are included for verifiability. <b>Analysis highlights patterns of conflating anti-Zionism with antisemitism and the selective treatment of Palestinian speech and lives.</b></p>
     <div class="badges">
       <span id="lastUpdated" class="badge">Last updated: —</span>
       <span class="badge">New items first</span>
+      <a class="btn" href="./evidence.json" target="_blank" rel="noreferrer">Download data JSON</a>
     </div>
   </section>
 
-  <!-- Main -->
+  <!-- Main wrapper -->
   <div class="wrap">
     <!-- Timeline -->
     <section class="card" id="timeline">
-      <div class="h2" style="display:flex;align-items:center;justify-content:space-between">
-        <span>Evidence timeline</span>
-        <a class="btn" href="./evidence.json" target="_blank" rel="noreferrer">View data JSON</a>
-      </div>
-
+      <div class="h2">Evidence timeline</div>
       <div class="controls">
         <div class="search">
-          <!-- magnifier -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="#7a7f89" d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16a6.47 6.47 0 0 0 4.23-1.57l.27.28v.79L20 21.5 21.5 20l-6-6zM4 9.5C4 6.46 6.46 4 9.5 4S15 6.46 15 9.5 12.54 15 9.5 15 4 12.54 4 9.5z"/></svg>
           <input id="q" type="search" placeholder="Search headline, quote, summary, tags…" />
         </div>
         <div id="chipbar" class="chipbar"></div>
       </div>
-
       <div id="list"></div>
       <div id="empty" class="muted" style="display:none;margin-top:8px">No results. Clear filters or change your search.</div>
     </section>
 
-    <!-- Sidebar -->
-    <aside class="side">
-      <section class="card" id="methodology">
-        <div class="h2">Methodology</div>
-        <div class="pilllist">
-          <div class="pill"><span class="b">Scope.</span><span>Only <b>public posts</b> by the MP or reputable media coverage. Quotes are verbatim; links and screenshots provided.</span></div>
-          <div class="pill"><span class="b">Sourcing.</span><span>Original URL + independent archive (when available). Screenshots include handle + timestamp metadata where possible.</span></div>
-          <div class="pill"><span class="b">Search.</span><span>Terms included: “Israel”, “Gaza”, “Palestinian(s)”, “genocide”, “antisemitism/anti-Semitism”, “anti-Zionism”, “ceasefire”, “Nova Exhibit”, “UJA”.</span></div>
-          <div class="pill"><span class="b">Corrections.</span><span>Send a URL + date. Verified changes are logged in a public changelog.</span></div>
+    <!-- UN Context (expanded) -->
+    <section class="section" id="un-context">
+      <div class="h2">UN context (what the official record says)</div>
+      <div class="pilllist">
+        <div class="pill">
+          <span class="b">June 2024 findings.</span>
+          <span>The UN Human Rights Council’s Commission of Inquiry reported <b>reasonable grounds</b> to believe both Hamas and Israeli authorities committed <b>war crimes</b>. It further found that Israeli authorities committed <b>crimes against humanity</b> (including persecution and other inhumane acts) in the occupied Palestinian territory. These are not political talking points; they are formal UN findings.</span>
         </div>
-      </section>
+        <div class="pill">
+          <span class="b">2025 genocide analysis.</span>
+          <span>The Commission later assessed that multiple <b>genocidal acts</b> were being committed in Gaza (e.g., killing, causing serious harm, and deliberately inflicting conditions of life calculated to destroy a population), and documented rhetoric by senior officials evidencing <b>genocidal intent</b>.</span>
+        </div>
+        <div class="pill">
+          <span class="b">Obligations.</span>
+          <span>Under the Genocide Convention, states have a <b>duty to prevent and punish</b> genocide and to avoid complicity—political or material. That duty applies irrespective of any other party’s violations.</span>
+        </div>
+        <div class="pill">
+          <span class="b">Why this matters here.</span>
+          <span>When an MP repeatedly labels anti-Zionist advocacy as “antisemitic” while omitting Palestinian civilian harm and UN findings, it narrows the Overton window: <b>criticism of a state</b> or political ideology is chilled as “hate”, while the <b>documented killing of civilians</b> goes unaddressed.</span>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:10px">Primary documents cited in the site footer.</p>
+    </section>
 
-      <section class="card" id="un">
-        <div class="h2">UN context (brief)</div>
-        <p class="muted" style="line-height:1.5">In June 2024, the UN Human Rights Council’s Commission of Inquiry concluded both Hamas and Israeli authorities committed <b>war crimes</b>, and that Israeli authorities also committed <b>crimes against humanity</b>. In 2025, the Commission reported that multiple <b>genocidal acts</b> are being committed in Gaza. Official documents are cited in the footer.</p>
-      </section>
+    <!-- Methodology -->
+    <section class="section" id="methodology">
+      <div class="h2">Methodology</div>
+      <div class="pilllist">
+        <div class="pill"><span class="b">Scope.</span><span>Only <b>public posts</b> by the MP or reputable media coverage. Quotes are verbatim; links and screenshots provided.</span></div>
+        <div class="pill"><span class="b">Sourcing.</span><span>Original URL + independent archive (when available). Screenshots include handle + timestamp where possible.</span></div>
+        <div class="pill"><span class="b">Search.</span><span>Terms included: “Israel”, “Gaza”, “Palestinian(s)”, “genocide”, “antisemitism/anti-Semitism”, “anti-Zionism”, “ceasefire”, “Nova Exhibit”, “UJA”.</span></div>
+        <div class="pill"><span class="b">Corrections.</span><span>Corrections welcome: send a URL + date. <b>Factual errors</b> are corrected transparently in a public changelog.</span></div>
+      </div>
+    </section>
 
-      <section class="card" id="contact">
-        <div class="h2">Contact</div>
-        <p class="muted">Corrections or additions:</p>
-        <p><a class="btn" href="mailto:corrections@vincegasparrowontpubliclycondemndenocide.com">Email the editor</a></p>
-      </section>
-    </aside>
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="h2">Contact</div>
+      <p class="muted">Corrections or additions:</p>
+      <p><a class="btn" href="mailto:corrections@vincegasparrowontpubliclycondemndenocide.com">Email the editor</a></p>
+    </section>
   </div>
 
   <!-- Footer -->
   <footer>
     <div class="footwrap">
-      Key sources: UN HRC COI press release (12 Jun 2024) and report A/HRC/56/26; UN HRC report A/HRC/60/CRP/3 (advance version). This site presents <i>verifiable facts</i> and <i>fair comment</i> on matters of public interest.
+      Key sources: UN HRC COI press release (12 Jun 2024) and report A/HRC/56/26; UN HRC report A/HRC/60/CRP/3 (advance version). This site presents <i>verifiable facts</i> and <i>analysis</i> on matters of public interest.
     </div>
   </footer>
 
@@ -212,7 +219,7 @@
           ${it.quote ? `<div class="quote">“${it.quote}”</div>` : ``}
           ${imgHTML}
           ${it.summary ? `<div class="muted" style="margin-top:10px"><b>Summary:</b> ${it.summary}</div>` : ``}
-          ${it.commentary ? `<div class="muted" style="margin-top:6px"><b>Commentary (fair comment):</b> ${it.commentary}</div>` : ``}
+          ${it.commentary ? `<div class="muted" style="margin-top:6px"><b>Analysis:</b> ${it.commentary}</div>` : ``}
           <div class="tags">${(it.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
           <div class="links">
             ${it.url ? `<a href="${it.url}" target="_blank" rel="noreferrer">Source ↗</a>` : ``}
