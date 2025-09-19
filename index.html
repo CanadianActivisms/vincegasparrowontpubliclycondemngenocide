@@ -2,135 +2,164 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>vincegasparrowontpubliclycondemndenocide.com</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <title>Public record of statements — vincegasparrowontpubliclycondemndenocide.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Type -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:wght@600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#f7f7f8; --card:#ffffff; --ink:#101114; --sub:#5b606a;
-      --line:#e8e9ec; --accent:#0d6efd; --chip:#f1f2f5; --chipb:#e3e5ea;
+      /* brand */
+      --ink:#0e1116; --sub:#5e6470; --line:#e6e8ee; --bg:#f6f7fb;
+      --card:#ffffff; --accent:#3a73ff; --accent-ink:#0c2e99; --chip:#eef3ff; --chipb:#d7e3ff;
     }
-    *{box-sizing:border-box}
-    body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0}
-    a{color:var(--accent)}
-    .container{max-width:1000px;margin:0 auto;padding:20px}
-    header{position:sticky;top:0;background:rgba(247,247,248,.9);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--line);z-index:10}
-    .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 20px}
-    .brand{font-family:Merriweather,serif;font-weight:700;font-size:18px}
-    nav a{margin-left:14px;text-decoration:none;color:var(--ink);font-size:14px}
-    nav a:hover{text-decoration:underline}
-    .pagehead{padding:22px 20px 12px;border-bottom:1px solid var(--line)}
-    .tagline{color:var(--sub);font-size:14px}
-    .badges{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
-    .badge{font-size:12px;background:var(--chip);border:1px solid var(--chipb);border-radius:999px;padding:4px 10px;color:#2b2f38}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
 
-    .grid{display:grid;grid-template-columns:1fr;gap:16px}
-    @media(min-width:900px){ .grid{grid-template-columns:1fr 320px;gap:22px}}
+    /* Top brand bar */
+    .brandbar{
+      position:sticky; top:0; z-index:20;
+      background:linear-gradient(180deg,#ffffffcc,#ffffffa0 70%,#ffffff00);
+      backdrop-filter:saturate(140%) blur(8px);
+      border-bottom:1px solid var(--line);
+    }
+    .brandwrap{max-width:1120px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between}
+    .wordmark{font-family:Newsreader,serif;font-size:22px;font-weight:600;letter-spacing:.2px}
+    .nav a{color:var(--ink);text-decoration:none;margin-left:18px;font-size:14px}
+    .nav a:hover{text-decoration:underline}
 
-    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+    /* Hero */
+    .hero{max-width:1120px;margin:0 auto;padding:28px 20px 16px}
+    .kicker{color:var(--accent-ink);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+    h1{margin:6px 0 8px;font-size:34px;line-height:1.12}
+    .lede{color:var(--sub);max-width:78ch}
+    .badges{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+    .badge{font-size:12px;background:var(--chip);border:1px solid var(--chipb);border-radius:999px;padding:4px 10px;color:#19356b}
+
+    /* Page grid */
+    .wrap{max-width:1120px;margin:8px auto 28px;padding:0 20px;display:grid;grid-template-columns:1fr;gap:20px}
+    @media(min-width:1024px){ .wrap{grid-template-columns:minmax(0,1fr) 340px;gap:24px} }
+
+    /* Cards */
+    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+    .h2{font-weight:700;margin:0 0 10px;font-size:18px}
     .muted{color:var(--sub);font-size:13px}
-    .h1{font-size:28px;font-weight:700;margin:0 0 6px}
-    .h2{font-size:18px;font-weight:700;margin:0 0 8px}
-    .lead{font-size:14px;color:var(--sub)}
 
     /* Controls */
-    .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-    .search{flex:1;min-width:220px;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+    .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+    .search{flex:1;min-width:240px;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
     .search input{border:0;outline:0;flex:1;font-size:14px}
-    .chips{display:flex;gap:8px;flex-wrap:wrap}
-    .chip{font-size:12px;background:var(--chip);border:1px solid var(--chipb);border-radius:999px;padding:6px 10px;cursor:pointer;user-select:none}
-    .chip.active{background:#e7f0ff;border-color:#cfe2ff;color:#084298}
+    .chipbar{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{font-size:12px;background:#f3f5f9;border:1px solid var(--line);border-radius:999px;padding:6px 10px;cursor:pointer;user-select:none}
+    .chip.active{background:#e7efff;border-color:#cfe0ff;color:#0a2d8f}
 
-    /* Timeline item */
-    .item{border:1px solid var(--line);border-radius:14px;padding:14px}
+    /* Timeline items */
+    .item{border:1px solid var(--line);border-radius:16px;padding:14px}
     .meta{display:flex;gap:10px;align-items:center;color:var(--sub);font-size:12px}
-    .title{font-weight:700;margin-top:6px}
-    .quote{font-style:italic;color:#333;font-size:14px;margin:6px 0}
+    .meta .dot{width:5px;height:5px;background:#c8ccd6;border-radius:50%}
+    .title{font-weight:700;margin-top:6px;font-size:16px}
+    .quote{font-style:italic;color:#2e3137;font-size:14px;margin:6px 0}
     .shot{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);margin-top:10px;display:block;cursor:zoom-in}
-    .tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
-    .tag{display:inline-block;font-size:11px;background:var(--chip);border:1px solid var(--chipb);border-radius:999px;padding:2px 8px}
-    .links{margin-top:8px;display:flex;gap:12px;font-size:12px}
+    .tags{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+    .tag{display:inline-block;font-size:11px;background:#f6f7fb;border:1px solid var(--line);border-radius:999px;padding:2px 8px}
+    .links{margin-top:10px;display:flex;gap:14px;font-size:12px}
+    .links a{color:var(--accent);text-decoration:none}
+    .links a:hover{text-decoration:underline}
 
-    /* Sidebar */
-    .side .card + .card{margin-top:12px}
+    /* Sidebar cards */
+    .side .card + .card{margin-top:14px}
+    .pilllist{display:grid;grid-template-columns:1fr;gap:8px}
+    .pill{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid var(--line);border-radius:12px;background:#fbfcff}
+    .pill .b{font-weight:600}
 
     /* Lightbox */
-    .lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:1000}
+    .lb{position:fixed;inset:0;background:rgba(10,14,22,.92);display:none;align-items:center;justify-content:center;z-index:1000}
     .lb img{max-width:92vw;max-height:92vh;border-radius:12px}
     .lb.close{cursor:zoom-out}
 
-    footer{border-top:1px solid var(--line);padding:16px 20px;color:var(--sub);font-size:12px}
+    /* Footer */
+    footer{border-top:1px solid var(--line);padding:18px 20px;color:var(--sub);font-size:12px}
+    .footwrap{max-width:1120px;margin:0 auto}
     .platform{display:inline-flex;align-items:center;gap:6px}
     .platform svg{width:14px;height:14px}
+    .btn{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:white;border-radius:999px;padding:8px 12px;font-size:13px;text-decoration:none}
+    .btn:hover{opacity:.95}
   </style>
 </head>
 <body>
-  <header>
-    <div class="topbar">
-      <div class="brand">vincegasparrowontpubliclycondemndenocide.com</div>
-      <nav>
+  <!-- Brand -->
+  <div class="brandbar">
+    <div class="brandwrap">
+      <div class="wordmark">vincegasparrowontpubliclycondemndenocide.com</div>
+      <nav class="nav">
         <a href="#timeline">Timeline</a>
         <a href="#methodology">Methodology</a>
         <a href="#un">UN Context</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
-    <div class="pagehead container">
-      <div class="h1">Public record of statements since Apr 28, 2025</div>
-      <div class="tagline">Sourcing each entry to the public post and (when available) an independent archive capture. Screenshots are provided to ensure verifiability.</div>
-      <div class="badges">
-        <span id="lastUpdated" class="badge">Last updated: —</span>
-        <span class="badge">New items first</span>
-      </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="kicker">Accountability file</div>
+    <h1>Public record of statements since Apr 28, 2025</h1>
+    <p class="lede">Each entry links to the original post and, when available, an independent archive capture. Screenshots are included for verifiability. Commentary is marked as fair comment on matters of public interest.</p>
+    <div class="badges">
+      <span id="lastUpdated" class="badge">Last updated: —</span>
+      <span class="badge">New items first</span>
     </div>
-  </header>
+  </section>
 
-  <main class="container" style="margin-top:16px">
-    <div class="grid">
-      <section class="main">
-        <div class="card" id="timeline">
-          <div class="h2" style="margin-bottom:10px">Evidence timeline</div>
+  <!-- Main -->
+  <div class="wrap">
+    <!-- Timeline -->
+    <section class="card" id="timeline">
+      <div class="h2" style="display:flex;align-items:center;justify-content:space-between">
+        <span>Evidence timeline</span>
+        <a class="btn" href="./evidence.json" target="_blank" rel="noreferrer">View data JSON</a>
+      </div>
 
-          <!-- Controls -->
-          <div class="controls" style="margin-bottom:12px">
-            <div class="search">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="#7a7f89" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16a6.471 6.471 0 004.23-1.57l.27.28v.79L20 21.5 21.5 20l-6-6zM4 9.5C4 6.46 6.46 4 9.5 4S15 6.46 15 9.5 12.54 15 9.5 15 4 12.54 4 9.5z"/></svg>
-              <input id="q" type="search" placeholder="Search headline, quote, summary, tags…" />
-            </div>
-            <div class="chips" id="chipbar"></div>
-          </div>
+      <div class="controls">
+        <div class="search">
+          <!-- magnifier -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="#7a7f89" d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16a6.47 6.47 0 0 0 4.23-1.57l.27.28v.79L20 21.5 21.5 20l-6-6zM4 9.5C4 6.46 6.46 4 9.5 4S15 6.46 15 9.5 12.54 15 9.5 15 4 12.54 4 9.5z"/></svg>
+          <input id="q" type="search" placeholder="Search headline, quote, summary, tags…" />
+        </div>
+        <div id="chipbar" class="chipbar"></div>
+      </div>
 
-          <div id="list"></div>
-          <div id="empty" class="muted" style="display:none;margin-top:8px">No results. Try clearing filters.</div>
+      <div id="list"></div>
+      <div id="empty" class="muted" style="display:none;margin-top:8px">No results. Clear filters or change your search.</div>
+    </section>
+
+    <!-- Sidebar -->
+    <aside class="side">
+      <section class="card" id="methodology">
+        <div class="h2">Methodology</div>
+        <div class="pilllist">
+          <div class="pill"><span class="b">Scope.</span><span>Only <b>public posts</b> by the MP or reputable media coverage. Quotes are verbatim; links and screenshots provided.</span></div>
+          <div class="pill"><span class="b">Sourcing.</span><span>Original URL + independent archive (when available). Screenshots include handle + timestamp metadata where possible.</span></div>
+          <div class="pill"><span class="b">Search.</span><span>Terms included: “Israel”, “Gaza”, “Palestinian(s)”, “genocide”, “antisemitism/anti-Semitism”, “anti-Zionism”, “ceasefire”, “Nova Exhibit”, “UJA”.</span></div>
+          <div class="pill"><span class="b">Corrections.</span><span>Send a URL + date. Verified changes are logged in a public changelog.</span></div>
         </div>
       </section>
 
-      <aside class="side">
-        <div class="card" id="methodology">
-          <div class="h2">Methodology & legal notes</div>
-          <ul class="lead" style="margin:8px 0 0 18px; line-height:1.45">
-            <li>Only <b>public</b> posts or reputable media are indexed. Quotes are verbatim; each entry links the source and, when available, an archive capture.</li>
-            <li>Search terms used include: “Israel”, “Gaza”, “Palestinian(s)”, “genocide”, “antisemitism/anti-Semitism”, “anti-Zionism”, “ceasefire”, “Nova Exhibit”, “UJA”.</li>
-            <li>Corrections welcome: send the URL + date. Verified changes are logged in our public changelog.</li>
-          </ul>
-        </div>
+      <section class="card" id="un">
+        <div class="h2">UN context (brief)</div>
+        <p class="muted" style="line-height:1.5">In June 2024, the UN Human Rights Council’s Commission of Inquiry concluded both Hamas and Israeli authorities committed <b>war crimes</b>, and that Israeli authorities also committed <b>crimes against humanity</b>. In 2025, the Commission reported that multiple <b>genocidal acts</b> are being committed in Gaza. Official documents are cited in the footer.</p>
+      </section>
 
-        <div class="card" id="un">
-          <div class="h2">UN findings</div>
-          <p class="lead">In June 2024, the UN Human Rights Council’s Commission of Inquiry concluded both Hamas and Israeli authorities committed <b>war crimes</b>, and that Israeli authorities also committed <b>crimes against humanity</b>. In 2025, the Commission reported that multiple <b>genocidal acts</b> are being committed in Gaza. Official documents are cited in the footer.</p>
-        </div>
+      <section class="card" id="contact">
+        <div class="h2">Contact</div>
+        <p class="muted">Corrections or additions:</p>
+        <p><a class="btn" href="mailto:corrections@vincegasparrowontpubliclycondemndenocide.com">Email the editor</a></p>
+      </section>
+    </aside>
+  </div>
 
-        <div class="card" id="contact">
-          <div class="h2">Contact</div>
-          <p class="lead">Corrections: <code>corrections@vincegasparrowontpubliclycondemndenocide.com</code></p>
-        </div>
-      </aside>
-    </div>
-  </main>
-
+  <!-- Footer -->
   <footer>
-    <div class="container">
+    <div class="footwrap">
       Key sources: UN HRC COI press release (12 Jun 2024) and report A/HRC/56/26; UN HRC report A/HRC/60/CRP/3 (advance version). This site presents <i>verifiable facts</i> and <i>fair comment</i> on matters of public interest.
     </div>
   </footer>
@@ -139,16 +168,14 @@
   <div id="lb" class="lb close" onclick="this.style.display='none'"><img id="lbimg" src="" alt="preview"></div>
 
   <script>
-    const $ = sel => document.querySelector(sel);
-    const listEl = $('#list');
-    const chipbar = $('#chipbar');
-    const qEl = $('#q');
+    const $ = s => document.querySelector(s);
+    const listEl = $('#list'), chipbar = $('#chipbar'), qEl = $('#q');
     const lb = $('#lb'), lbimg = $('#lbimg');
 
-    const platformIcon = (name) => {
+    const icon = (name) => {
       const n = (name||'').toLowerCase();
       if(n.includes('instagram')) return `<svg viewBox="0 0 24 24"><path fill="#e1306c" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5m0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3z"/><circle cx="12" cy="12" r="3.5" fill="#e1306c"/><circle cx="17.5" cy="6.5" r="1.2" fill="#e1306c"/></svg>`;
-      if(n === 'x') return `<svg viewBox="0 0 24 24"><path fill="#111" d="M14.7 3H18l-6.9 8.1L19 21h-6.3l-5-5.9L2.8 21H0l7.6-8.9L0 3h6.4l4.6 5.4L14.7 3z"/></svg>`;
+      if(n==='x') return `<svg viewBox="0 0 24 24"><path fill="#111" d="M14.7 3H18l-6.9 8.1L19 21h-6.3l-5-5.9L2.8 21H0l7.6-8.9L0 3h6.4l4.6 5.4L14.7 3z"/></svg>`;
       if(n.includes('facebook')) return `<svg viewBox="0 0 24 24"><path fill="#1877f2" d="M22 12.06C22 6.48 17.52 2 12 2S2 6.48 2 12.06C2 17.1 5.66 21.22 10.44 22v-7.04H7.9v-2.9h2.54v-2.2c0-2.5 1.5-3.88 3.78-3.88 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.86h2.78l-.44 2.9h-2.34V22C18.34 21.22 22 17.1 22 12.06z"/></svg>`;
       return '';
     };
@@ -159,8 +186,7 @@
       const q = state.query.trim().toLowerCase();
       const active = state.activeTags;
       const filtered = state.items.filter(it => {
-        const hay = [it.headline,it.quote,it.summary,(it.tags||[]).join(' ')]
-          .join(' ').toLowerCase();
+        const hay = [it.headline,it.quote,it.summary,(it.tags||[]).join(' ')].join(' ').toLowerCase();
         const matchesQ = q ? hay.includes(q) : true;
         const matchesTags = active.size ? (it.tags||[]).some(t => active.has(t)) : true;
         return matchesQ && matchesTags;
@@ -179,14 +205,14 @@
         card.innerHTML = `
           <div class="meta">
             <span>${new Date(it.date).toLocaleDateString()}</span>
-            <span>·</span>
-            <span class="platform">${platformIcon(it.platform)} <span>${it.platform||''}</span></span>
+            <span class="dot"></span>
+            <span class="platform">${icon(it.platform)} <span>${it.platform||''}</span></span>
           </div>
           <div class="title">${it.headline||''}</div>
           ${it.quote ? `<div class="quote">“${it.quote}”</div>` : ``}
           ${imgHTML}
-          ${it.summary ? `<div class="lead" style="margin-top:8px"><b>Summary:</b> ${it.summary}</div>` : ``}
-          ${it.commentary ? `<div class="lead" style="margin-top:6px"><b>Commentary (fair comment):</b> ${it.commentary}</div>` : ``}
+          ${it.summary ? `<div class="muted" style="margin-top:10px"><b>Summary:</b> ${it.summary}</div>` : ``}
+          ${it.commentary ? `<div class="muted" style="margin-top:6px"><b>Commentary (fair comment):</b> ${it.commentary}</div>` : ``}
           <div class="tags">${(it.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
           <div class="links">
             ${it.url ? `<a href="${it.url}" target="_blank" rel="noreferrer">Source ↗</a>` : ``}
@@ -194,13 +220,9 @@
             ${(!it.url && !it.archived_url) ? `<span class="muted">Links pending</span>` : ``}
           </div>
         `;
-        // click-to-zoom
         card.addEventListener('click', (e)=>{
           const t = e.target;
-          if(t && t.classList.contains('shot')){
-            lbimg.src = t.src;
-            lb.style.display = 'flex';
-          }
+          if(t && t.classList.contains('shot')){ lbimg.src = t.src; lb.style.display='flex'; }
         });
         listEl.appendChild(card);
       });
@@ -213,8 +235,7 @@
         el.className = 'chip' + (state.activeTags.has(tag) ? ' active':'');
         el.textContent = tag;
         el.onclick = () => {
-          if(state.activeTags.has(tag)) state.activeTags.delete(tag);
-          else state.activeTags.add(tag);
+          if(state.activeTags.has(tag)) state.activeTags.delete(tag); else state.activeTags.add(tag);
           buildChips(); render();
         };
         chipbar.appendChild(el);
@@ -224,17 +245,14 @@
     const dedupeByUrl = (items) => {
       const seen = new Set();
       return items.filter(it => {
-        const u = (it.url||'').trim();
-        if(!u) return true;
-        if(seen.has(u)) return false;
-        seen.add(u);
-        return true;
+        const u = (it.url||'').trim(); if(!u) return true;
+        if(seen.has(u)) return false; seen.add(u); return true;
       });
     };
 
     const setLastUpdated = (items) => {
-      if(!items.length) return;
       const dates = items.map(x => new Date(x.date)).filter(d => !isNaN(d));
+      if(!dates.length) return;
       const max = new Date(Math.max.apply(null, dates));
       $('#lastUpdated').textContent = 'Last updated: ' + max.toLocaleDateString();
     };
@@ -244,23 +262,13 @@
         const res = await fetch('./evidence.json', { cache:'no-store' });
         if(!res.ok) throw new Error('Could not load evidence.json');
         let items = await res.json();
-
-        // newest first + keep both IG and X if different URLs
         items = dedupeByUrl(items).sort((a,b)=> new Date(b.date) - new Date(a.date));
-
-        // collect tags for chip bar
         items.forEach(it => (it.tags||[]).forEach(t => state.tags.add(t)));
-        state.items = items;
-        setLastUpdated(items);
-        buildChips();
-        render();
+        state.items = items; setLastUpdated(items); buildChips(); render();
 
-        // search handler (light debounce)
         let t; qEl.addEventListener('input', e=>{
-          clearTimeout(t);
-          t=setTimeout(()=>{ state.query = e.target.value; render(); }, 150);
+          clearTimeout(t); t=setTimeout(()=>{ state.query = e.target.value; render(); }, 140);
         });
-
       }catch(e){
         listEl.innerHTML = `<div class="muted">Failed to load evidence. ${e.message}</div>`;
       }
