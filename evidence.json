@@ -65,18 +65,22 @@
     "media_type": "post"
   },
   {
-    "date": "2025-07-31",
-    "platform": "Instagram",
-    "headline": "Please see my full statement…",
-    "quote": "Please see my full statement on Prime Minister Mark Carney’s intention to recognize a Palestinian state above.",
-    "summary": "Posts a 'full statement' setting conditions around recognizing a Palestinian state.",
-    "commentary": "Treats Palestinian rights as conditional while leaving Israeli state accountability unaddressed. Normalizes unequal standards.",
-    "tags": ["Policy framing"],
-    "url": "https://www.instagram.com/p/DMyYh_oyBeU/?img_index=1",
-    "archived_url": "",
-    "screenshot_file": "2025-07-31_palestine-recognition_ig.png",
-    "media_type": "post"
-  },
+  "date": "2025-07-31",
+  "platform": "Instagram",
+  "headline": "Please see my full statement…",
+  "quote": "Please see my full statement on Prime Minister Mark Carney’s intention to recognize a Palestinian state above.",
+  "summary": "Posts a 'full statement' setting conditions around recognizing a Palestinian state.",
+  "commentary": "Treats Palestinian rights as conditional while leaving Israeli state accountability unaddressed. Normalizes unequal standards.",
+  "tags": ["Policy framing"],
+  "url": "https://www.instagram.com/p/DMyYh_oyBeU/?img_index=1",
+  "archived_url": "",
+  "screenshot_files": [
+    "2025-07-31_palestine-recognition_ig.png",
+    "2025-07-31_palestine-recognition_ig_2.png",
+    "2025-07-31_palestine-recognition_ig_3.png"
+  ],
+  "media_type": "post"
+},
   {
     "date": "2025-06-09",
     "platform": "Instagram",
