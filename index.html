@@ -18,7 +18,11 @@
     .tag{display:inline-block;font-size:11px;background:#f3f3f3;border:1px solid #e5e5e5;border-radius:999px;padding:2px 8px;margin-right:6px;margin-bottom:4px}
     .links a{font-size:12px;text-decoration:underline;margin-right:12px}
     .error{background:#fee;border:1px solid #f99;color:#900;border-radius:10px;padding:10px;margin:12px 0}
-    .shot{width:100%;height:auto;border-radius:12px;border:1px solid #eee;margin-top:10px;display:block}
+    .shot{width:100%;height:auto;border-radius:12px;border:1px solid #eee;margin-top:10px;display:block;cursor:zoom-in}
+    /* Lightbox */
+    .lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9999}
+    .lb img{max-width:92vw;max-height:92vh;border-radius:12px}
+    .lb.close{cursor:zoom-out}
   </style>
 </head>
 <body>
@@ -69,27 +73,33 @@
     </div>
   </div>
 
+  <!-- Lightbox -->
+  <div id="lb" class="lb close" onclick="this.style.display='none'">
+    <img id="lbimg" src="" alt="preview">
+  </div>
+
   <script>
     async function main(){
       const err = document.getElementById('error');
       const list = document.getElementById('list');
+      const lb = document.getElementById('lb');
+      const lbimg = document.getElementById('lbimg');
+
       try{
         const res = await fetch('./evidence.json', { cache: 'no-store' });
         if(!res.ok) throw new Error('Could not load evidence.json');
         const items = await res.json();
 
-        // Deduplicate (Instagram preferred)
-        const seen = new Set();
+        // Deduplicate by exact URL only (so IG + X can both appear)
+        const seenUrls = new Set();
         let cleaned = items.filter(it => {
-          const key = (it.date||'') + '|' + (it.headline||'');
-          const hasIG = items.find(x => x.date===it.date && x.headline===it.headline && (x.platform||'').toLowerCase()==='instagram');
-          if(seen.has(key)) return false;
-          if(hasIG && (it.platform||'').toLowerCase()!=='instagram') return false;
-          seen.add(key);
+          const u = (it.url||'').trim();
+          if(u && seenUrls.has(u)) return false;
+          if(u) seenUrls.add(u);
           return true;
         });
 
-        // Reverse order: newest first
+        // Newest first (by date)
         cleaned = cleaned.sort((a,b) => new Date(b.date) - new Date(a.date));
 
         cleaned.forEach(it=>{
@@ -114,6 +124,16 @@
               ${(!it.url && !it.archived_url) ? `<span style="font-size:12px;color:#666">Link pending</span>` : ``}
             </div>
           `;
+
+          // Wire up click-to-zoom if an image exists
+          card.addEventListener('click', (e) => {
+            const target = e.target;
+            if(target && target.classList.contains('shot')){
+              lbimg.src = target.src;
+              lb.style.display = 'flex';
+            }
+          });
+
           list.appendChild(card);
         });
       }catch(e){
