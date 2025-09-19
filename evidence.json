@@ -1,82 +1,28 @@
 [
   {
-    "date": "2025-05-25",
+    "date": "2025-09-19",
     "platform": "Instagram",
-    "headline": "Walk with Israel post (photo/reel)",
-    "quote": "Once again I joined the @ujafederation Walk with Israel, the largest annual gathering of the Jewish community in Canada.",
-    "summary": "Participates in UJA Walk with Israel event.",
-    "commentary": "Public solidarity with pro\u2011Israel event; no parallel acknowledgement of Palestinian civilian deaths in same period.",
-    "tags": [
-      "Support for Israel",
-      "Community"
-    ],
-    "url": "https://www.instagram.com/p/DKFcXj5RyTD/",
+    "headline": "Explainer on barring Kneecap",
+    "quote": "[Video caption/onscreen summary — fill exact caption after capture]",
+    "summary": "Says Irish group Kneecap won’t be allowed in over ‘antisemitic’ statements presented as anti-Israel criticism.",
+    "commentary": "Conflates anti-Zionism/anti-Israel speech with antisemitism; raises free-expression concerns and chill on criticism of state policy.",
+    "tags": ["Antisemitism","Speech"],
+    "url": "https://www.instagram.com/reel/DOyI_VrEeL2/",
     "archived_url": "",
-    "screenshot_file": "2025-05-25_walk-with-israel_ig.png",
-    "media_type": "post"
+    "screenshot_file": "2025-09-19_kneecap-video_ig.png",
+    "media_type": "video"
   },
   {
-    "date": "2025-06-09",
-    "platform": "Instagram",
-    "headline": "Visited the Nova Exhibit (Instagram)",
-    "quote": "Alongside Prime Minister @markjcarney and my colleague @leslie.church, I visited the Nova Exhibit again today... I encourage as many people as possible to attend the @novaexhibition...",
-    "summary": "Encourages attendance at Nova Exhibit memorializing Oct 7.",
-    "commentary": "Frames Hamas\u2019s Oct 7 crimes; again no parallel post acknowledging Palestinian civilians or UN findings in the same timeframe.",
-    "tags": [
-      "October 7",
-      "Community"
-    ],
-    "url": "https://www.instagram.com/p/DKr1ScDRe_g/",
+    "date": "2025-09-08",
+    "platform": "X",
+    "headline": "Reposted PM statement on East Jerusalem attack",
+    "quote": "Canada condemns the terrorist attack in East Jerusalem today that has taken civilian lives and injured so many...",
+    "summary": "Gasparro amplifies the Prime Minister’s statement on an attack in East Jerusalem.",
+    "commentary": "Continues pattern of highlighting attacks on Israelis without parallel posts acknowledging Palestinian civilian deaths or UN findings.",
+    "tags": ["Antisemitism","Security","Israel"],
+    "url": "https://x.com/MarkJCarney/status/1832776085984635381",
     "archived_url": "",
-    "screenshot_file": "2025-06-09_nova-exhibit_ig.png",
-    "media_type": "post"
-  },
-  {
-    "date": "2025-07-31",
-    "platform": "Instagram",
-    "headline": "Please see my full statement\u2026 (Instagram)",
-    "quote": "Please see my full statement on Prime Minister Mark Carney\u2019s intention to recognize a Palestinian state above.",
-    "summary": "Cross\u2011post of \u2018full statement\u2019.",
-    "commentary": "Same framing; no balancing humanitarian law context in the post itself.",
-    "tags": [
-      "Policy",
-      "Palestine"
-    ],
-    "url": "https://www.instagram.com/p/DMyYh_oyBeU/?img_index=1",
-    "archived_url": "",
-    "screenshot_file": "2025-07-31_palestine-recognition_ig.png",
-    "media_type": "post"
-  },
-  {
-    "date": "2025-08-20",
-    "platform": "Instagram",
-    "headline": "Letter to Mayor Val\u00e9rie Plante",
-    "quote": "Please find my letter to Mayor @val_plante regarding the rise of Antisemitism in Montreal.",
-    "summary": "Posts letter to Montr\u00e9al\u2019s mayor on antisemitism.",
-    "commentary": "Legitimate concern, but no parallel concern for Palestinian Canadians facing discrimination or grief.",
-    "tags": [
-      "Antisemitism",
-      "Domestic"
-    ],
-    "url": "https://www.instagram.com/p/DNOyX2QyyOv/",
-    "archived_url": "",
-    "screenshot_file": "2025-08-20_letter-plante_ig.png",
-    "media_type": "post"
-  },
-  {
-    "date": "2025-08-29",
-    "platform": "Instagram",
-    "headline": "Reaction to assault of Jewish woman (Instagram)",
-    "quote": "We stand with you against hate and threats to your safety, and we will act to confront antisemitism wherever it appears.",
-    "summary": "Condemns assault; pledges action against antisemitism.",
-    "commentary": "No comparable posts condemning hate/violence against Palestinians in Canada during same period.",
-    "tags": [
-      "Antisemitism",
-      "Domestic"
-    ],
-    "url": "https://www.instagram.com/p/DN8nCgDkSIv/",
-    "archived_url": "",
-    "screenshot_file": "2025-08-29_assault-jerusalem_ig.png",
+    "screenshot_file": "2025-09-08_east-jerusalem-repost_x.png",
     "media_type": "post"
   },
   {
@@ -84,31 +30,77 @@
     "platform": "Facebook",
     "headline": "Two-state solution video",
     "quote": "Two-state solution is only possible when Israel can have peace and security beside a viable Palestinian state.",
-    "summary": "Says two\u2011state is possible only with Israeli security beside a viable Palestinian state.",
-    "commentary": "Security\u2011first framing; no mention of proportionality or UN findings in the video post.",
-    "tags": [
-      "Two-state",
-      "Security"
-    ],
+    "summary": "Says two-state is possible only with Israeli security beside a viable Palestinian state.",
+    "commentary": "Security-first framing; no mention of proportionality or UN findings in the video post.",
+    "tags": ["Two-state","Security"],
     "url": "https://www.facebook.com/gasparrovince/videos/1216948729987360/",
     "archived_url": "",
     "screenshot_file": "2025-09-05_two-state_fb.png",
     "media_type": "video"
   },
   {
-    "date": "2025-09-19",
+    "date": "2025-08-29",
     "platform": "Instagram",
-    "headline": "Explainer on barring Kneecap (Instagram video)",
-    "quote": "[Video caption/onscreen summary \u2014 fill exact caption after capture]",
-    "summary": "Says Irish group Kneecap won\u2019t be allowed in over \u2018antisemitic\u2019 statements presented as anti\u2011Israel criticism.",
-    "commentary": "Conflates anti\u2011Zionism/anti\u2011Israel speech with antisemitism; raises free\u2011expression concerns and chill on criticism of state policy.",
-    "tags": [
-      "Antisemitism",
-      "Speech"
-    ],
-    "url": "https://www.instagram.com/reel/DOyI_VrEeL2/",
+    "headline": "Shares PM statement on antisemitic assault in Ottawa",
+    "quote": "We stand with you against hate and threats to your safety, and we will act to confront antisemitism wherever it appears.",
+    "summary": "Posts Prime Minister’s statement about the assault of a Jewish woman at an Ottawa grocery store; expresses support for the Jewish community and law enforcement.",
+    "commentary": "Highlights antisemitic violence in Canada; no comparable posts in the same period acknowledging Palestinian Canadians’ experiences or UN-documented civilian deaths.",
+    "tags": ["Antisemitism","Domestic","Ottawa"],
+    "url": "https://www.instagram.com/p/DN8nCgDkSIv/",
     "archived_url": "",
-    "screenshot_file": "2025-09-19_kneecap-video_ig.png",
-    "media_type": "video"
+    "screenshot_file": "2025-08-29_assault-ottawa_ig.png",
+    "media_type": "post"
+  },
+  {
+    "date": "2025-08-20",
+    "platform": "Instagram",
+    "headline": "Letter to Mayor Valérie Plante",
+    "quote": "Please find my letter to Mayor @val_plante regarding the rise of Antisemitism in Montreal.",
+    "summary": "Posts letter to Montréal’s mayor on antisemitism.",
+    "commentary": "Legitimate concern, but no parallel concern for Palestinian Canadians facing discrimination or grief.",
+    "tags": ["Antisemitism","Domestic"],
+    "url": "https://www.instagram.com/p/DNOyX2QyyOv/",
+    "archived_url": "",
+    "screenshot_file": "2025-08-20_letter-plante_ig.png",
+    "media_type": "post"
+  },
+  {
+    "date": "2025-07-31",
+    "platform": "Instagram",
+    "headline": "Please see my full statement…",
+    "quote": "Please see my full statement on Prime Minister Mark Carney’s intention to recognize a Palestinian state above.",
+    "summary": "Cross-post of ‘full statement’.",
+    "commentary": "Same framing; no balancing humanitarian law context in the post itself.",
+    "tags": ["Policy","Palestine"],
+    "url": "https://www.instagram.com/p/DMyYh_oyBeU/?img_index=1",
+    "archived_url": "",
+    "screenshot_file": "2025-07-31_palestine-recognition_ig.png",
+    "media_type": "post"
+  },
+  {
+    "date": "2025-06-09",
+    "platform": "Instagram",
+    "headline": "Visited the Nova Exhibit",
+    "quote": "Alongside Prime Minister @markjcarney and my colleague @leslie.church, I visited the Nova Exhibit again today... I encourage as many people as possible to attend the @novaexhibition...",
+    "summary": "Encourages attendance at Nova Exhibit memorializing Oct 7.",
+    "commentary": "Frames Hamas’s Oct 7 crimes; again no parallel post acknowledging Palestinian civilians or UN findings in the same timeframe.",
+    "tags": ["October 7","Community"],
+    "url": "https://www.instagram.com/p/DKr1ScDRe_g/",
+    "archived_url": "",
+    "screenshot_file": "2025-06-09_nova-exhibit_ig.png",
+    "media_type": "post"
+  },
+  {
+    "date": "2025-05-25",
+    "platform": "Instagram",
+    "headline": "Walk with Israel post",
+    "quote": "Once again I joined the @ujafederation Walk with Israel, the largest annual gathering of the Jewish community in Canada.",
+    "summary": "Participates in UJA Walk with Israel event.",
+    "commentary": "Public solidarity with pro-Israel event; no parallel acknowledgement of Palestinian civilian deaths in same period.",
+    "tags": ["Support for Israel","Community"],
+    "url": "https://www.instagram.com/p/DKFcXj5RyTD/",
+    "archived_url": "",
+    "screenshot_file": "2025-05-25_walk-with-israel_ig.png",
+    "media_type": "post"
   }
 ]
