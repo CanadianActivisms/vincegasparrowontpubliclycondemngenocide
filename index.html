@@ -14,32 +14,43 @@
     *{box-sizing:border-box} html,body{height:100%}
     body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
 
-    /* Top brand/nav */
-    .brandbar{position:sticky; top:0; z-index:20; background:#fff; border-bottom:1px solid var(--line)}
+    /* ===== Brand / nav ===== */
+    .brandbar{position:sticky; top:0; z-index:20; background:#fff; border-bottom:1px solid var(--line); transition:box-shadow .18s ease}
+    .brandbar.is-stuck{ box-shadow:0 8px 24px rgba(16,24,40,.07) }
     .brandwrap{max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
-    .wordmark{font-family:Newsreader,serif;font-size:26px;font-weight:700;letter-spacing:.2px}
-    .nav a{color:var(--ink);text-decoration:none;margin-left:18px;font-size:14px}
+    .wordmark{font-family:Newsreader,serif;font-size:22px;font-weight:700;letter-spacing:.06em}
+    .nav a{color:var(--ink);text-decoration:none;margin-left:18px;font-size:14px;font-weight:500}
     .nav a:hover{text-decoration:underline}
 
-    /* Hero */
-    .hero{max-width:1120px;margin:0 auto;padding:34px 20px 16px}
-    .domainCaps{
-      font-family:Newsreader,serif;font-size:40px;letter-spacing:.08em;
-      text-transform:uppercase; line-height:1.05; margin:0 0 10px;
+    /* ===== Hero ===== */
+    .heroField{
+      background:radial-gradient(1200px 420px at 20% -10%, #fff 0, #eef3ff 60%, #f7f9ff 100%);
+      border-bottom:1px solid var(--line);
     }
-    .kicker{color:var(--accent-ink);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
-    .lede{color:var(--sub);max-width:80ch}
-    .badges{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+    .hero{max-width:1120px;margin:0 auto;padding:48px 20px 24px}
+    .hero-grid{display:grid;gap:18px;grid-template-columns:1fr}
+    @media(min-width:960px){ .hero-grid{grid-template-columns:minmax(0,.95fr) minmax(0,.55fr);align-items:end} }
+    .domainCaps{font-family:Newsreader,serif;font-size:clamp(34px,5vw,56px);letter-spacing:.06em;text-transform:uppercase;line-height:1.02;margin:0 0 10px}
+    .kicker{color:var(--accent-ink);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px;margin-bottom:6px}
+    .accent-bar{height:4px;width:84px;border-radius:3px;background:linear-gradient(90deg,#2f66ff,#9ab3ff);margin:8px 0 12px}
+    .lede{color:#2f3542;max-width:70ch;font-size:15px}
+    .badges{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
     .badge{font-size:12px;background:var(--chip);border:1px solid var(--chipb);border-radius:999px;padding:4px 10px;color:#19356b}
 
-    /* Layout */
-    .wrap{max-width:1120px;margin:8px auto 28px;padding:0 20px;display:grid;grid-template-columns:1fr;gap:20px}
+    /* Quick links card in hero */
+    .quick{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+    .quick h3{margin:0 0 8px;font-size:13px;color:var(--sub);font-weight:700}
+    .quick .qwrap{display:flex;flex-wrap:wrap;gap:8px}
+    .quick a{display:inline-block;text-decoration:none} .quick a .badge{background:#f1f4ff}
+
+    /* ===== Layout / cards ===== */
+    .wrap{max-width:1120px;margin:18px auto 28px;padding:0 20px;display:grid;grid-template-columns:1fr;gap:20px}
     .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
     .section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
     .h2{font-weight:700;margin:0 0 10px;font-size:18px}
     .muted{color:var(--sub);font-size:13px}
 
-    /* Timeline items */
+    /* ===== Timeline items ===== */
     .item{border:1px solid var(--line);border-radius:16px;padding:14px}
     .meta{display:flex;gap:10px;align-items:center;color:var(--sub);font-size:12px}
     .meta .dot{width:5px;height:5px;background:#c8ccd6;border-radius:50%}
@@ -51,11 +62,11 @@
     .links a{color:var(--accent);text-decoration:none}
     .links a:hover{text-decoration:underline}
 
-    /* Platform icon sizing */
+    /* Platform icons (compact) */
     .meta .platform{display:inline-flex;align-items:center;gap:6px}
     .meta .platform svg{width:16px;height:16px;display:inline-block;vertical-align:-2px}
 
-    /* Carousel */
+    /* Carousel + dots + lightbox trigger */
     .carousel{position:relative;margin-top:10px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
     .carousel img{width:100%;height:auto;display:block;cursor:zoom-in}
     .cnav{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
@@ -64,12 +75,7 @@
     .cdot{width:7px;height:7px;border-radius:50%;background:#cfd6e5}
     .cdot.active{background:#2f66ff}
 
-    /* Reference sections */
-    .pilllist{display:grid;grid-template-columns:1fr;gap:10px}
-    .pill{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}
-    .pill .b{font-weight:600}
-
-    /* Search block (bottom) */
+    /* Search (bottom) */
     .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
     .search{flex:1;min-width:260px;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
     .search input{border:0;outline:0;flex:1;font-size:14px}
@@ -89,7 +95,7 @@
 </head>
 <body>
   <!-- Brand -->
-  <div class="brandbar">
+  <div class="brandbar" id="brandbar">
     <div class="brandwrap">
       <div class="wordmark">vincegasparrowontpubliclycondemndenocide.com</div>
       <nav class="nav">
@@ -102,13 +108,33 @@
     </div>
   </div>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1 class="domainCaps">VINCE GASPARRO WON’T PUBLICLY CONDEMN GENOCIDE</h1>
-    <div class="kicker">Public record of statements since Apr 28, 2025</div>
-    <p class="lede">Each entry links to the original post and, when available, an independent archive capture. Screenshots are included for verifiability. <b>Analysis highlights patterns of conflating anti-Zionism with antisemitism and the selective treatment of Palestinian speech and lives.</b></p>
-    <div class="badges"><span id="lastUpdated" class="badge">Last updated: —</span></div>
-  </section>
+  <!-- Hero (gradient field + quick links) -->
+  <div class="heroField">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker">Public record of statements since Apr 28, 2025</div>
+          <h1 class="domainCaps">Vince Gasparro won’t publicly condemn genocide</h1>
+          <div class="accent-bar"></div>
+          <p class="lede">
+            Each entry links to the original post and, when available, an independent archive capture. Screenshots are included for verifiability.
+            <b>Analysis highlights patterns of conflating anti-Zionism with antisemitism and the selective treatment of Palestinian speech and lives.</b>
+          </p>
+          <div class="badges"><span id="lastUpdated" class="badge">Last updated: —</span></div>
+        </div>
+        <aside class="quick">
+          <h3>Quick links</h3>
+          <div class="qwrap">
+            <a href="#timeline" class="badge">Timeline</a>
+            <a href="#un-context" class="badge">UN Context</a>
+            <a href="#methodology" class="badge">Methodology</a>
+            <a href="#search" class="badge">Search</a>
+            <a href="#contact" class="badge">Contact</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
 
   <!-- Main -->
   <div class="wrap">
@@ -125,7 +151,7 @@
       <div class="pilllist">
         <div class="pill"><span class="b">June 2024 findings.</span><span>The UN Human Rights Council’s Commission of Inquiry reported <b>reasonable grounds</b> to believe both Hamas and Israeli authorities committed <b>war crimes</b>. It further found Israeli authorities committed <b>crimes against humanity</b> (including persecution and other inhumane acts) in the occupied Palestinian territory.</span></div>
         <div class="pill"><span class="b">2025 genocide analysis.</span><span>The Commission later assessed that multiple <b>genocidal acts</b> were being committed in Gaza—killing, causing serious harm, and deliberately inflicting conditions of life calculated to destroy a population—and documented rhetoric by senior officials evidencing <b>genocidal intent</b>.</span></div>
-        <div class="pill"><span class="b">Obligations.</span><span>Under the Genocide Convention, states have a <b>duty to prevent and punish</b> genocide and to avoid complicity—political or material. That duty applies irrespective of any other party’s violations.</span></div>
+        <div class="pill"><span class="b">Obligations.</span><span>Under the Genocide Convention, states have a <b>duty to prevent and punish</b> genocide and to avoid complicit support—political or material—regardless of any other party’s violations.</span></div>
         <div class="pill"><span class="b">Why this matters here.</span><span>When an MP repeatedly labels anti-Zionist advocacy as “antisemitic” while omitting Palestinian civilian harm and UN findings, it narrows the Overton window: <b>criticism of a state</b> or ideology is chilled as “hate,” while the <b>documented killing of civilians</b> goes unaddressed.</span></div>
       </div>
       <p class="muted" style="margin-top:10px">Primary documents are cited in the site footer.</p>
@@ -175,6 +201,10 @@
   <div id="lb" class="lb close" onclick="this.style.display='none'"><img id="lbimg" src="" alt="preview"></div>
 
   <script>
+    /* sticky shadow on brand bar */
+    const bb=document.getElementById('brandbar');
+    addEventListener('scroll',()=>bb.classList.toggle('is-stuck', scrollY>6),{passive:true});
+
     const $ = s => document.querySelector(s);
     const listEl = $('#list'), chipbar = $('#chipbar'), qEl = $('#q'), clearBtn = $('#clear');
     const lb = $('#lb'), lbimg = $('#lbimg');
@@ -219,7 +249,6 @@
         };
         car.querySelector('.prev').onclick = (e)=>{ e.stopPropagation(); const i=(+car.dataset.idx+imgs.length-1)%imgs.length; setIdx(i); };
         car.querySelector('.next').onclick = (e)=>{ e.stopPropagation(); const i=(+car.dataset.idx+1)%imgs.length; setIdx(i); };
-        // open lightbox on click
         imgEl.addEventListener('click', ()=>{ lbimg.src = imgEl.src; lb.style.display='flex'; });
       });
     }
@@ -264,10 +293,8 @@
         listEl.appendChild(card);
       });
 
-      // bind carousels
       bindCarousel(listEl);
 
-      // single-image lightbox binding
       listEl.querySelectorAll('.carousel:not([data-imgs]) img.shot').forEach(img=>{
         img.addEventListener('click', ()=>{ lbimg.src = img.src; lb.style.display='flex'; });
       });
@@ -311,7 +338,6 @@
         items.forEach(it => (it.tags||[]).forEach(t => state.tags.add(t)));
         state.items = items; setLastUpdated(items); buildChips(); render();
 
-        // search handlers (bottom block)
         let t; qEl.addEventListener('input', e=>{
           clearTimeout(t); t=setTimeout(()=>{ state.query = e.target.value; render(); }, 140);
         });
