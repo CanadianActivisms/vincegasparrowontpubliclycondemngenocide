@@ -42,6 +42,12 @@
     .h2{font-weight:700;margin:0 0 10px;font-size:18px}
     .muted{color:var(--sub);font-size:13px}
 
+    /* ===== “Findings” extras ===== */
+    .quoteBox{border-left:4px solid var(--accent); padding:10px 14px; background:var(--soft); border-radius:10px; margin:12px 0; color:#1f2630}
+    .statgrid{display:grid;grid-template-columns:repeat(2,minmax(220px,1fr));gap:12px}
+    .stat{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:12px}
+    .stat b{font-size:18px;display:block;margin-bottom:4px}
+
     /* ===== Timeline items ===== */
     .item{border:1px solid var(--line);border-radius:16px;padding:14px}
     .meta{display:flex;gap:10px;align-items:center;color:var(--sub);font-size:12px}
@@ -89,18 +95,19 @@
   <!-- Brand -->
   <div class="brandbar" id="brandbar">
     <div class="brandwrap">
-      <div class="wordmark">vincegasparrowontpubliclycondemndenocide.com</div>
+      <div class="wordmark">vincegasparrowontpubliclycondemngenocide.com</div>
       <nav class="nav">
-        <a href="#timeline">Timeline</a>
+        <a href="#findings">Findings</a>
         <a href="#un-context">UN Context</a>
         <a href="#methodology">Methodology</a>
+        <a href="#timeline">Timeline</a>
         <a href="#search">Search</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </div>
 
-  <!-- Hero (single-column, full-width text) -->
+  <!-- Hero -->
   <div class="heroField">
     <section class="hero">
       <div class="kicker">Public record of statements since Apr 28, 2025</div>
@@ -116,11 +123,36 @@
 
   <!-- Main -->
   <div class="wrap">
-    <!-- Timeline -->
-    <section class="card" id="timeline">
-      <div class="h2">Evidence timeline</div>
-      <div id="list"></div>
-      <div id="empty" class="muted" style="display:none;margin-top:8px">No results. Clear filters or change your search.</div>
+
+    <!-- Findings (new, before timeline) -->
+    <section class="section" id="findings">
+      <div class="h2">UN Findings on Gaza</div>
+
+      <div class="quoteBox">
+        It’s been nearly two years of Israel <b>killing and seriously harming unprecedented numbers of Palestinians; imposing a total siege leading to starvation; destroying health and education systems; committing sexual and gender-based violence; directly targeting children; systematically attacking religious and cultural sites</b>; and disregarding the orders of the International Court of Justice.
+      </div>
+
+      <div class="quoteBox">
+        “The Commission finds that the Israeli authorities had no intention to change their course of actions… Israel must immediately end the genocide in Gaza and comply fully with the orders for provisional measures of the International Court of Justice.”
+      </div>
+
+      <p class="muted" style="margin-top:8px">
+        The Commission urges Israel to comply with international law; lift the siege; enable unimpeded humanitarian access (including for UNRWA and OHCHR staff); and end the activities of the Gaza Humanitarian Foundation. It recommends that Member States halt arms transfers that may be used for genocidal acts and ensure corporations are not aiding or abetting genocide.
+      </p>
+
+      <h3 style="margin-top:16px;font-size:16px;font-weight:700">Casualties & impact</h3>
+      <div class="statgrid" style="margin-top:8px">
+        <div class="stat"><b>60,199 killed</b><span class="muted">Oct 2023–Jul 2025, including <b>18,430 children</b> and <b>9,735 women</b>. UN OHCHR verified that at least 46% were women and children by mid-July 2025.</span></div>
+        <div class="stat"><b>Life expectancy ↓ 34.9 years</b><span class="muted">Collapsed from 75.5 to 40.5 within one year of war due to direct and indirect mortality.</span></div>
+        <div class="stat"><b>498 attacks on healthcare</b><span class="muted">WHO recorded direct strikes on hospitals, killing patients including children and pregnant women.</span></div>
+        <div class="stat"><b>1,373 killed seeking food</b><span class="muted">Including at GHF distribution sites and along convoy routes; many victims were children.</span></div>
+        <div class="stat"><b>Humanitarian losses</b><span class="muted"><b>1,400</b> healthcare workers, <b>408</b> aid workers, and at least <b>170</b> journalists killed during operations.</span></div>
+        <div class="stat"><b>83% civilians</b><span class="muted">Israeli intelligence assessments indicate the overwhelming majority of those killed were civilians.</span></div>
+      </div>
+
+      <p class="muted" style="margin-top:12px">
+        Bombardment levels have been extraordinary even by global standards, often leveling apartment blocks and killing entire families. Civilians were shot during evacuations and inside “safe areas”, including children carrying white flags. The Commission concludes Israeli authorities have <b>intentionally distorted jus in bello</b> to legitimize genocidal violence. <b>Inaction by states amounts to complicity.</b>
+      </p>
     </section>
 
     <!-- UN Context -->
@@ -146,6 +178,13 @@
       </div>
     </section>
 
+    <!-- Timeline (now lower on the page) -->
+    <section class="card" id="timeline">
+      <div class="h2">Evidence timeline</div>
+      <div id="list"></div>
+      <div id="empty" class="muted" style="display:none;margin-top:8px">No results. Clear filters or change your search.</div>
+    </section>
+
     <!-- Search & Filters (BOTTOM) -->
     <section class="section" id="search">
       <div class="h2">Search & filters</div>
@@ -164,7 +203,7 @@
     <section class="section" id="contact">
       <div class="h2">Contact</div>
       <p class="muted">Corrections or additions:</p>
-      <p><a href="mailto:corrections@vincegasparrowontpubliclycondemndenocide.com" style="display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:8px 12px;text-decoration:none">Email the editor</a></p>
+      <p><a href="mailto:corrections@vincegasparrowontpubliclycondemngenocide.com" style="display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:8px 12px;text-decoration:none">Email the editor</a></p>
     </section>
   </div>
 
