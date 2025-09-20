@@ -10,6 +10,7 @@
       --ink:#0e1116; --sub:#5e6470; --line:#e6e8ee; --bg:#f5f6fb;
       --card:#ffffff; --accent:#2f66ff; --accent-ink:#0c2e99;
       --chip:#eef3ff; --chipb:#d7e3ff; --soft:#fbfcff;
+      --snark:#ff3b81;
     }
     *{box-sizing:border-box} html,body{height:100%}
     body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
@@ -22,18 +23,44 @@
     .nav a{color:var(--ink);text-decoration:none;margin-left:18px;font-size:14px;font-weight:500}
     .nav a:hover{text-decoration:underline}
 
-    /* ===== Hero ===== */
+    /* ===== Parody hero / counters ===== */
     .heroField{
-      background:radial-gradient(1200px 420px at 20% -10%, #fff 0, #eef3ff 60%, #f7f9ff 100%);
+      background:radial-gradient(1200px 420px at 15% -10%, #fff 0, #ffeaf3 55%, #fdf7ff 100%);
       border-bottom:1px solid var(--line);
     }
-    .hero{max-width:1120px;margin:0 auto;padding:56px 20px 28px}
-    .domainCaps{font-family:Newsreader,serif;font-size:clamp(34px,5vw,56px);letter-spacing:.06em;text-transform:uppercase;line-height:1.02;margin:0 0 10px}
-    .kicker{color:var(--accent-ink);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px;margin-bottom:6px}
-    .accent-bar{height:4px;width:84px;border-radius:3px;background:linear-gradient(90deg,#2f66ff,#9ab3ff);margin:8px 0 14px}
-    .lede{color:#2f3542;max-width:80ch;font-size:15px}
-    .badges{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
-    .badge{font-size:12px;background:var(--chip);border:1px solid var(--chipb);border-radius:999px;padding:4px 10px;color:#19356b}
+    .hero{max-width:1120px;margin:0 auto;padding:48px 20px 28px}
+    .snark{
+      font-family:Newsreader,serif;
+      text-transform:uppercase; letter-spacing:.08em;
+      font-size:clamp(22px,3.8vw,34px); line-height:1.05;
+      margin:0 0 12px; color:#1a1d24;
+    }
+    .snark em{color:var(--snark); font-style:normal}
+    .clockwrap{
+      display:grid; grid-template-columns:1fr; gap:14px; margin:12px 0 8px;
+    }
+    .clock{
+      background:#fff; border:1px solid var(--line); border-radius:16px;
+      padding:14px; box-shadow:0 1px 2px rgba(16,24,40,.04);
+      display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center;
+    }
+    .clock h2{margin:0; font-size:16px}
+    .bigtime{
+      font-variant-numeric:tabular-nums; font-weight:800;
+      font-size:clamp(22px,4.5vw,40px); letter-spacing:.02em;
+      color:#111;
+    }
+    .subtime{font-size:12px;color:var(--sub)}
+    .quoteBox{border-left:4px solid var(--accent); padding:10px 14px; background:var(--soft); border-radius:10px; margin:10px 0; color:#1f2630}
+
+    .ctaRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .btn{
+      display:inline-block; text-decoration:none; cursor:pointer;
+      padding:10px 14px; border-radius:999px; font-weight:700; font-size:14px;
+      border:1px solid transparent;
+    }
+    .btn.primary{background:var(--snark); color:#fff}
+    .btn.ghost{background:#fff; border-color:var(--line); color:#111}
 
     /* ===== Layout / cards ===== */
     .wrap{max-width:1120px;margin:18px auto 28px;padding:0 20px;display:grid;grid-template-columns:1fr;gap:20px}
@@ -42,11 +69,10 @@
     .h2{font-weight:700;margin:0 0 10px;font-size:18px}
     .muted{color:var(--sub);font-size:13px}
 
-    /* ===== “Findings” extras ===== */
-    .quoteBox{border-left:4px solid var(--accent); padding:10px 14px; background:var(--soft); border-radius:10px; margin:12px 0; color:#1f2630}
-    .statgrid{display:grid;grid-template-columns:repeat(2,minmax(220px,1fr));gap:12px}
-    .stat{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:12px}
-    .stat b{font-size:18px;display:block;margin-bottom:4px}
+    /* ===== “Not-so-fun facts” ===== */
+    .facts{display:grid; grid-template-columns:1fr; gap:10px}
+    .fact{background:var(--soft); border:1px solid var(--line); border-radius:12px; padding:12px}
+    .fact b{display:block; margin-bottom:4px}
 
     /* ===== Timeline items ===== */
     .item{border:1px solid var(--line);border-radius:16px;padding:14px}
@@ -89,6 +115,12 @@
     /* Footer */
     footer{border-top:1px solid var(--line);padding:18px 20px;color:var(--sub);font-size:12px}
     .footwrap{max-width:1120px;margin:0 auto}
+
+    /* Responsive tweaks */
+    @media (min-width:820px){
+      .clockwrap{grid-template-columns:1fr 1fr}
+      .facts{grid-template-columns:1fr 1fr}
+    }
   </style>
 </head>
 <body>
@@ -97,7 +129,8 @@
     <div class="brandwrap">
       <div class="wordmark">vincegasparrowontpubliclycondemngenocide.com</div>
       <nav class="nav">
-        <a href="#findings">Findings</a>
+        <a href="#clocks">Clocks</a>
+        <a href="#facts">Not-so-fun facts</a>
         <a href="#un-context">UN Context</a>
         <a href="#methodology">Methodology</a>
         <a href="#timeline">Timeline</a>
@@ -107,55 +140,77 @@
     </div>
   </div>
 
-  <!-- Hero -->
-  <div class="heroField">
+  <!-- Parody hero with live counters -->
+  <div class="heroField" id="clocks">
     <section class="hero">
-      <div class="kicker">Public record of statements since Apr 28, 2025</div>
-      <h1 class="domainCaps">Vince Gasparro won’t publicly condemn genocide</h1>
-      <div class="accent-bar"></div>
-      <p class="lede">
-        Each entry links to the original post and, when available, an independent archive capture. Screenshots are included for verifiability.
-        <b>Analysis highlights patterns of conflating anti-Zionism with antisemitism and the selective treatment of Palestinian speech and lives.</b>
+      <p class="snark">How many more days of <em>genocide</em> will it take, Vince?</p>
+
+      <div class="clockwrap">
+        <!-- Main genocide-declared counter -->
+        <div class="clock" aria-live="polite">
+          <h2>Days since the UN declared Israel’s actions a genocide</h2>
+          <div>
+            <div id="t1" class="bigtime">— : — : — : —</div>
+            <div class="subtime">Days : Hours : Minutes : Seconds (counting since <b>Sept 16, 2025</b>)</div>
+          </div>
+        </div>
+
+        <!-- Albanese report counter -->
+        <div class="clock" aria-live="polite">
+          <h2>Days since the Albanese report</h2>
+          <div>
+            <div id="t2" class="bigtime">— : — : — : —</div>
+            <div class="subtime">Days : Hours : Minutes : Seconds (counting since <b>Mar 25, 2024</b>)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quoteBox">
+        “…reasonable grounds to believe that the threshold indicating that Israel has committed genocide has been met.”
+      </div>
+
+      <p class="muted" style="margin-top:10px">
+        MP Vince Gasparro refuses to publicly acknowledge or condemn the genocide being committed by Israel against Palestinians in Gaza. How many more dead families, children shot in the head, bombed hospitals and dead journalists will it take for him to publicly mention the word — and how many more to condemn it? <b>Only TIME will tell.</b>
       </p>
-      <div class="badges"><span id="lastUpdated" class="badge">Last updated: —</span></div>
+      <p class="muted">
+        We’re told he’s “just a humble domestic MP,” which apparently excludes genocide — even while Canada exports arms. Oddly, “domestic” seems to include regular posts about October 7th (remind us where in Canada that was again?). And while the Irish musicians are clearly Public Enemy #1, there’s no time to post about Gaza. Don’t worry: returning IDF soldiers with recent “work experience” are surely zero risk… right?
+      </p>
+      <p class="muted">
+        Want to hear from the man himself when he plans to acknowledge and condemn the genocide Canada is complicit in? Send him a note — and mention MP Jenny Kwan’s <i>No More Loopholes Act</i>, to stop arms transfers routed through the U.S.
+      </p>
+
+      <div class="ctaRow">
+        <!-- Update the TO address if needed -->
+        <a class="btn primary"
+           href="mailto:vince.gasparro@parl.gc.ca?subject=Please%20acknowledge%20and%20condemn%20the%20genocide%20in%20Gaza&body=Dear%20Mr.%20Gasparro%2C%0D%0A%0D%0AThe%20UN%20has%20found%20genocidal%20acts%20in%20Gaza.%20Please%20publicly%20acknowledge%20and%20condemn%20this%20genocide%2C%20and%20support%20MP%20Jenny%20Kwan%E2%80%99s%20No%20More%20Loopholes%20Act%20to%20stop%20arms%20flows.%0D%0A%0D%0AThank%20you.">Email Vince Gasparro</a>
+
+        <!-- This opens a compose window you can address to your own MP -->
+        <a class="btn ghost"
+           href="mailto:?subject=Please%20acknowledge%20and%20condemn%20the%20genocide%20in%20Gaza&body=Dear%20MP%2C%0D%0A%0D%0AThe%20UN%20has%20found%20genocidal%20acts%20in%20Gaza.%20Please%20publicly%20acknowledge%20and%20condemn%20this%20genocide%2C%20and%20support%20measures%20to%20halt%20arms%20transfers.%0D%0A%0D%0AThank%20you.">Email your MP</a>
+      </div>
     </section>
   </div>
 
-  <!-- Main -->
-  <div class="wrap">
-
-    <!-- Findings (new, before timeline) -->
-    <section class="section" id="findings">
-      <div class="h2">UN Findings on Gaza</div>
-
-      <div class="quoteBox">
-        It’s been nearly two years of Israel <b>killing and seriously harming unprecedented numbers of Palestinians; imposing a total siege leading to starvation; destroying health and education systems; committing sexual and gender-based violence; directly targeting children; systematically attacking religious and cultural sites</b>; and disregarding the orders of the International Court of Justice.
+  <!-- Not-so-fun facts -->
+  <div class="wrap" id="facts">
+    <section class="section">
+      <div class="h2">Not-so-fun facts about the genocide in Gaza</div>
+      <p class="muted">Feel free to forward any of these to Vince in case he’s been busy protecting Canada from Irish musicians.</p>
+      <div class="facts" style="margin-top:10px">
+        <div class="fact"><b>Crimes against humanity & war crimes.</b> The UN Commission of Inquiry found extermination, torture, rape, persecution, starvation as a method of warfare, and other inhumane acts.</div>
+        <div class="fact"><b>Genocidal acts identified.</b> Destruction of reproductive capacity and deliberately inflicting conditions of life to destroy the group meet underlying acts in the Genocide Convention.</div>
+        <div class="fact"><b>60,199 Palestinians killed</b> (Oct 2023–Jul 2025), including <b>18,430 children</b> and <b>9,735 women</b>. Life expectancy plunged by <b>34.9 years</b> in the first year.</div>
+        <div class="fact"><b>Women & children.</b> By mid-July 2025, at least <b>46%</b> of the verified dead were women and children; in some strikes, fatalities were <i>only</i> women and children.</div>
+        <div class="fact"><b>Hospitals attacked.</b> WHO logged <b>498 strikes</b> on healthcare (to 30 Jul 2024), directly killing patients — including children and pregnant women.</div>
+        <div class="fact"><b>Shot while seeking food.</b> At least <b>1,373</b> Palestinians were killed while trying to get aid, including at GHF distribution points and along convoys.</div>
+        <div class="fact"><b>Civilian majority.</b> Israeli intelligence assessments indicate roughly <b>83%</b> of those killed were civilians.</div>
+        <div class="fact"><b>Humanitarian & press casualties.</b> Killed: ~<b>1,400</b> healthcare workers, <b>408</b> aid workers, and at least <b>170</b> journalists.</div>
       </div>
-
-      <div class="quoteBox">
-        “The Commission finds that the Israeli authorities had no intention to change their course of actions… Israel must immediately end the genocide in Gaza and comply fully with the orders for provisional measures of the International Court of Justice.”
-      </div>
-
-      <p class="muted" style="margin-top:8px">
-        The Commission urges Israel to comply with international law; lift the siege; enable unimpeded humanitarian access (including for UNRWA and OHCHR staff); and end the activities of the Gaza Humanitarian Foundation. It recommends that Member States halt arms transfers that may be used for genocidal acts and ensure corporations are not aiding or abetting genocide.
-      </p>
-
-      <h3 style="margin-top:16px;font-size:16px;font-weight:700">Casualties & impact</h3>
-      <div class="statgrid" style="margin-top:8px">
-        <div class="stat"><b>60,199 killed</b><span class="muted">Oct 2023–Jul 2025, including <b>18,430 children</b> and <b>9,735 women</b>. UN OHCHR verified that at least 46% were women and children by mid-July 2025.</span></div>
-        <div class="stat"><b>Life expectancy ↓ 34.9 years</b><span class="muted">Collapsed from 75.5 to 40.5 within one year of war due to direct and indirect mortality.</span></div>
-        <div class="stat"><b>498 attacks on healthcare</b><span class="muted">WHO recorded direct strikes on hospitals, killing patients including children and pregnant women.</span></div>
-        <div class="stat"><b>1,373 killed seeking food</b><span class="muted">Including at GHF distribution sites and along convoy routes; many victims were children.</span></div>
-        <div class="stat"><b>Humanitarian losses</b><span class="muted"><b>1,400</b> healthcare workers, <b>408</b> aid workers, and at least <b>170</b> journalists killed during operations.</span></div>
-        <div class="stat"><b>83% civilians</b><span class="muted">Israeli intelligence assessments indicate the overwhelming majority of those killed were civilians.</span></div>
-      </div>
-
-      <p class="muted" style="margin-top:12px">
-        Bombardment levels have been extraordinary even by global standards, often leveling apartment blocks and killing entire families. Civilians were shot during evacuations and inside “safe areas”, including children carrying white flags. The Commission concludes Israeli authorities have <b>intentionally distorted jus in bello</b> to legitimize genocidal violence. <b>Inaction by states amounts to complicity.</b>
-      </p>
     </section>
+  </div>
 
-    <!-- UN Context -->
+  <!-- ===== Everything you already had (context, methodology, timeline, search, contact) ===== -->
+  <div class="wrap">
     <section class="section" id="un-context">
       <div class="h2">UN context (what the official record says)</div>
       <div class="pilllist">
@@ -167,7 +222,6 @@
       <p class="muted" style="margin-top:10px">Primary documents are cited in the site footer.</p>
     </section>
 
-    <!-- Methodology -->
     <section class="section" id="methodology">
       <div class="h2">Methodology</div>
       <div class="pilllist">
@@ -178,14 +232,12 @@
       </div>
     </section>
 
-    <!-- Timeline (now lower on the page) -->
     <section class="card" id="timeline">
       <div class="h2">Evidence timeline</div>
       <div id="list"></div>
       <div id="empty" class="muted" style="display:none;margin-top:8px">No results. Clear filters or change your search.</div>
     </section>
 
-    <!-- Search & Filters (BOTTOM) -->
     <section class="section" id="search">
       <div class="h2">Search & filters</div>
       <p class="muted" style="margin-top:-4px;margin-bottom:10px">Use the controls below to filter the timeline above. Your filters apply instantly.</p>
@@ -199,7 +251,6 @@
       <div id="chipbar" class="chipbar"></div>
     </section>
 
-    <!-- Contact -->
     <section class="section" id="contact">
       <div class="h2">Contact</div>
       <p class="muted">Corrections or additions:</p>
@@ -207,7 +258,6 @@
     </section>
   </div>
 
-  <!-- Footer -->
   <footer>
     <div class="footwrap">
       Key sources: UN HRC COI press release (12 Jun 2024) and report A/HRC/56/26; UN HRC report A/HRC/60/CRP/3 (advance version). This site presents <i>verifiable facts</i> and <i>analysis</i> on matters of public interest.
@@ -222,6 +272,33 @@
     const bb=document.getElementById('brandbar');
     addEventListener('scroll',()=>bb.classList.toggle('is-stuck', scrollY>6),{passive:true});
 
+    /* ===== live clocks =====
+       We treat the reference moments as UTC midnight to avoid TZ drift.
+       Change the ISO strings below if you want specific times. */
+    const REF_GENOCIDE = new Date('2025-09-16T00:00:00Z').getTime();
+    const REF_ALBANESE = new Date('2024-03-25T00:00:00Z').getTime();
+
+    function fmt(ms){
+      const s = Math.floor(ms/1000);
+      const d = Math.floor(s/86400);
+      const h = Math.floor((s%86400)/3600);
+      const m = Math.floor((s%3600)/60);
+      const ss= s%60;
+      const pad = n => String(n).padStart(2,'0');
+      return `${d} : ${pad(h)} : ${pad(m)} : ${pad(ss)}`;
+    }
+    function tick(){
+      const now = Date.now();
+      const t1 = Math.max(0, now - REF_GENOCIDE);
+      const t2 = Math.max(0, now - REF_ALBANESE);
+      const el1 = document.getElementById('t1');
+      const el2 = document.getElementById('t2');
+      if(el1) el1.textContent = fmt(t1);
+      if(el2) el2.textContent = fmt(t2);
+    }
+    tick(); setInterval(tick, 1000);
+
+    /* ===== timeline/search you already had ===== */
     const $ = s => document.querySelector(s);
     const listEl = $('#list'), chipbar = $('#chipbar'), qEl = $('#q'), clearBtn = $('#clear');
     const lb = $('#lb'), lbimg = $('#lbimg');
@@ -343,7 +420,9 @@
       const dates = items.map(x => new Date(x.date)).filter(d => !isNaN(d));
       if(!dates.length) return;
       const max = new Date(Math.max.apply(null, dates));
-      document.getElementById('lastUpdated').textContent = 'Last updated: ' + max.toLocaleDateString();
+      const $badge = document.querySelector('#clocks .muted ~ .ctaRow') ? document.getElementById('lastUpdated') : null;
+      const b = document.getElementById('lastUpdated');
+      if(b) b.textContent = 'Last updated: ' + max.toLocaleDateString();
     };
 
     async function main(){
