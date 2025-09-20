@@ -28,12 +28,25 @@
     }
 
     /* ===== Brand / nav ===== */
-    .brandbar{position:sticky; top:0; z-index:20; background:#fff; border-bottom:1px solid var(--line); transition:box-shadow .18s ease}
+    .brandbar{
+      position:sticky; top:0; z-index:20; background:#fff;
+      border-bottom:3px solid var(--lib-red);               /* RED STRIP */
+      transition:box-shadow .18s ease
+    }
     .brandbar.is-stuck{ box-shadow:0 8px 24px rgba(16,24,40,.07) }
     .brandwrap{max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
     .wordmark{font-family:Newsreader,serif;font-size:22px;font-weight:700;letter-spacing:.06em}
-    .nav a{color:var(--ink);text-decoration:none;margin-left:18px;font-size:14px;font-weight:500}
-    .nav a:hover{color:var(--accent);text-decoration:underline}
+    .nav a{
+      position:relative;
+      color:var(--ink);text-decoration:none;margin-left:18px;font-size:14px;font-weight:500;
+      padding-bottom:4px;
+    }
+    .nav a:hover{color:var(--accent);text-decoration:none}
+    .nav a.active{color:var(--accent)}
+    .nav a.active::after{                                  /* ACTIVE UNDERLINE */
+      content:""; position:absolute; left:0; right:0; bottom:0;
+      height:2px; background:var(--accent); border-radius:2px;
+    }
 
     /* ===== Hero / counters ===== */
     .heroField{
@@ -292,6 +305,22 @@
     /* Sticky header shadow */
     const bb=document.getElementById('brandbar');
     addEventListener('scroll',()=>bb.classList.toggle('is-stuck', scrollY>6),{passive:true});
+
+    /* Active nav underline based on scroll */
+    const sections=['facts','un-context','timeline','contact'];
+    const links=[...document.querySelectorAll('.nav a')];
+    function setActive(){
+      let activeIndex=0;
+      sections.forEach((id,i)=>{
+        const el=document.getElementById(id);
+        if(!el) return;
+        const top=el.getBoundingClientRect().top;
+        if(top<=160) activeIndex=i;   // header + breathing room
+      });
+      links.forEach((a,i)=>a.classList.toggle('active',i===activeIndex));
+    }
+    window.addEventListener('scroll',setActive,{passive:true});
+    window.addEventListener('load',setActive);
 
     /* Live clocks */
     const REF_GENOCIDE = new Date('2025-09-16T00:00:00Z').getTime();
