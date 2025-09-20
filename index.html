@@ -7,12 +7,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:wght@700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --ink:#0e1116; --sub:#5e6470; --line:#e6e8ee; --bg:#f5f6fb;
-      --card:#ffffff; --accent:#2f66ff; --snark:#ff3b81; --soft:#fbfcff;
+      /* Core palette — Liberal red */
+      --lib-red:#D71920;         /* Primary red */
+      --lib-red-dark:#B51218;    /* Hover/press */
+      --ink:#0e1116; 
+      --sub:#5e6470; 
+      --line:#e6e8ee; 
+      --bg:#FFF7F7;             /* New page background (warm, airy) */
+      --card:#ffffff; 
+      --accent:var(--lib-red);  /* Links & accents now red */
+      --snark:var(--lib-red);   /* Emphasis color now red */
+      --soft:#FFFDFD;           /* Soft card fill */
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    body{
+      margin:0;background:var(--bg);color:var(--ink);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif
+    }
 
     /* ===== Brand / nav ===== */
     .brandbar{position:sticky; top:0; z-index:20; background:#fff; border-bottom:1px solid var(--line); transition:box-shadow .18s ease}
@@ -20,11 +33,12 @@
     .brandwrap{max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
     .wordmark{font-family:Newsreader,serif;font-size:22px;font-weight:700;letter-spacing:.06em}
     .nav a{color:var(--ink);text-decoration:none;margin-left:18px;font-size:14px;font-weight:500}
-    .nav a:hover{text-decoration:underline}
+    .nav a:hover{color:var(--accent);text-decoration:underline}
 
     /* ===== Hero / counters ===== */
     .heroField{
-      background:radial-gradient(1200px 420px at 15% -10%, #fff 0, #ffeaf3 55%, #fdf7ff 100%);
+      /* Soften gradient, bias toward white with a whisper of red */
+      background:radial-gradient(1200px 420px at 15% -10%, #fff 0, #FFE9EA 55%, #FFF7F7 100%);
       border-bottom:1px solid var(--line);
     }
     .hero{max-width:1120px;margin:0 auto;padding:48px 20px 28px}
@@ -35,20 +49,46 @@
       margin:0 0 12px; color:#1a1d24;
     }
     .snark em{color:var(--snark); font-style:normal}
+
     .clockwrap{display:grid; grid-template-columns:1fr; gap:14px; margin:12px 0 8px;}
     .clock{
-      background:#fff; border:1px solid var(--line); border-radius:16px;
-      padding:14px; box-shadow:0 1px 2px rgba(16,24,40,.04);
+      /* New: bold red clocks */
+      background:var(--lib-red);
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:16px;
+      padding:16px 14px;
+      box-shadow:0 10px 22px rgba(215,25,32,.12), 0 2px 4px rgba(215,25,32,.18);
       display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center;
+      color:#fff;
     }
-    .clock h2{margin:0; font-size:16px}
-    .bigtime{font-variant-numeric:tabular-nums; font-weight:800; font-size:clamp(22px,4.5vw,40px); letter-spacing:.02em; color:#111;}
-    .subtime{font-size:12px;color:var(--sub)}
+    .clock h2{
+      margin:0; font-size:16px; font-weight:700; color:#fff;
+      text-shadow:0 1px 0 rgba(0,0,0,.15);
+    }
+    .bigtime{
+      font-variant-numeric:tabular-nums; font-weight:900;
+      font-size:clamp(24px,4.8vw,42px); letter-spacing:.02em; color:#fff;
+      /* Thin “outline” for legibility on red */
+      text-shadow:
+        0 1px 0 rgba(0,0,0,.25),
+        0 0 2px rgba(0,0,0,.18);
+    }
+    .subtime{
+      font-size:12px;color:#fff;opacity:.9;
+      text-shadow:0 1px 0 rgba(0,0,0,.18);
+    }
 
     .ctaRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
-    .btn{display:inline-block; text-decoration:none; cursor:pointer; padding:10px 14px; border-radius:999px; font-weight:700; font-size:14px; border:1px solid transparent;}
-    .btn.primary{background:var(--snark); color:#fff}
-    .btn.ghost{background:#fff; border-color:var(--line); color:#111}
+    .btn{
+      display:inline-block; text-decoration:none; cursor:pointer;
+      padding:10px 14px; border-radius:999px; font-weight:700; font-size:14px;
+      border:1px solid transparent; transition:background .15s ease, border-color .15s ease, color .15s ease, transform .02s ease;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn.primary{background:var(--lib-red); color:#fff; border-color:var(--lib-red)}
+    .btn.primary:hover{background:var(--lib-red-dark); border-color:var(--lib-red-dark)}
+    .btn.ghost{background:#fff; border-color:var(--lib-red); color:var(--lib-red)}
+    .btn.ghost:hover{background:#FFF1F1}
 
     /* ===== Layout / cards ===== */
     .wrap{max-width:1120px;margin:18px auto 28px;padding:0 20px;display:grid;grid-template-columns:1fr;gap:20px}
@@ -63,7 +103,7 @@
     .fact b{display:block; margin-bottom:4px}
 
     /* ===== Timeline items ===== */
-    .item{border:1px solid var(--line);border-radius:16px;padding:14px}
+    .item{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}
     .meta{display:flex;gap:10px;align-items:center;color:var(--sub);font-size:12px}
     .meta .dot{width:5px;height:5px;background:#c8ccd6;border-radius:50%}
     .links{margin-top:10px;display:flex;gap:14px;font-size:12px}
@@ -78,10 +118,10 @@
     .carousel{position:relative;margin-top:10px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
     .carousel img{width:100%;height:auto;display:block;cursor:zoom-in}
     .cnav{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
-    .cbtn{pointer-events:auto;background:rgba(255,255,255,.9);border:1px solid var(--line);width:34px;height:34px;border-radius:999px;margin:8px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+    .cbtn{pointer-events:auto;background:rgba(255,255,255,.95);border:1px solid var(--line);width:34px;height:34px;border-radius:999px;margin:8px;display:flex;align-items:center;justify-content:center;cursor:pointer}
     .cdots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:6px}
     .cdot{width:7px;height:7px;border-radius:50%;background:#cfd6e5}
-    .cdot.active{background:#2f66ff}
+    .cdot.active{background:var(--lib-red)}
 
     /* Lightbox */
     .lb{position:fixed;inset:0;background:rgba(10,14,22,.92);display:none;align-items:center;justify-content:center;z-index:1000}
@@ -150,23 +190,23 @@
         </div>
       </div>
 
-<div class="muted" style="margin-top:10px">
-  <p>
-    MP Vince Gasparro refuses to publicly acknowledge or condemn the genocide being committed by Israel against the Palestinians in Gaza. How many more dead families, children shot in the head, bombed hospitals and dead journalists will it take for him to publicly mention the genocide – and how many more for him to condemn it? <b>Only TIME will tell!</b>
-  </p>
+      <div class="muted" style="margin-top:10px">
+        <p>
+          MP Vince Gasparro refuses to publicly acknowledge or condemn the genocide being committed by Israel against the Palestinians in Gaza. How many more dead families, children shot in the head, bombed hospitals and dead journalists will it take for him to publicly mention the genocide – and how many more for him to condemn it? <b>Only TIME will tell!</b>
+        </p>
 
-  <p>
-    According to his office, MP Vince Gasparro is simply a humble MP, and is only concerned with domestic matters. This does not include the genocide in Gaza, we are told, even though Canada is still sending arms to Israel (according to his social media it does appear include October 7th, however – where in Canada was this again?)
-  </p>
+        <p>
+          According to his office, MP Vince Gasparro is simply a humble MP, and is only concerned with domestic matters. This does not include the genocide in Gaza, we are told, even though Canada is still sending arms to Israel (according to his social media it does appear include October 7th, however – where in Canada was this again?)
+        </p>
 
-  <p>
-    Even though Liberal MP Vince Gasparro is busy making (in)famous videos about protecting Canadians from Irish musical artists (and succeeding in getting their legal group’s attention as well – great job!) he does not have time to post about the genocide. And don’t worry, the returning IDF soldiers and their recent “work experience” should be zero risk to Canadians, so let’s not bother him about that.
-  </p>
+        <p>
+          Even though Liberal MP Vince Gasparro is busy making (in)famous videos about protecting Canadians from Irish musical artists (and succeeding in getting their legal group’s attention as well – great job!) he does not have time to post about the genocide. And don’t worry, the returning IDF soldiers and their recent “work experience” should be zero risk to Canadians, so let’s not bother him about that.
+        </p>
 
-  <p>
-    If you want to hear from the man himself when exactly he plans to acknowledge and condemn the genocide in Gaza that Canada is complicit in, send him a letter! It lets him know about MP Jenny Kwan’s private member’s bill, the <i>No More Loopholes Act</i>, which will stop the flow of arms through the US to Israel.
-  </p>
-</div>
+        <p>
+          If you want to hear from the man himself when exactly he plans to acknowledge and condemn the genocide in Gaza that Canada is complicit in, send him a letter! It lets him know about MP Jenny Kwan’s private member’s bill, the <i>No More Loopholes Act</i>, which will stop the flow of arms through the US to Israel.
+        </p>
+      </div>
 
       <div class="ctaRow">
         <a class="btn primary"
