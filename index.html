@@ -96,6 +96,17 @@
       .clockwrap{grid-template-columns:1fr 1fr}
       .facts{grid-template-columns:1fr 1fr}
     }
+
+    /* ===== UN Context pill cards ===== */
+    .pilllist{display:grid;gap:14px;margin-top:10px}
+    .pill{
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px 16px;
+      font-size:14px; line-height:1.45; color:var(--ink);
+    }
+    .pill .b{display:block;font-weight:600;margin-bottom:4px;color:#111}
   </style>
 </head>
 <body>
@@ -178,11 +189,26 @@
     <section class="section" id="un-context">
       <div class="h2">UN context (what the official record says)</div>
       <p class="muted">Primary documents are cited in the site footer.</p>
-      <ul class="muted">
-        <li><b>June 2024 findings.</b> UN HRC COI reported reasonable grounds of war crimes by Hamas and Israeli authorities; crimes against humanity by Israeli authorities.</li>
-        <li><b>2025 genocide analysis.</b> COI assessed multiple genocidal acts and evidence of genocidal intent in Gaza.</li>
-        <li><b>Obligations.</b> States have a duty to prevent/punish genocide and avoid complicity.</li>
-      </ul>
+
+      <!-- Polished pill cards -->
+      <div class="pilllist">
+        <div class="pill">
+          <span class="b">June 2024 findings.</span>
+          <span>The UN Human Rights Council’s Commission of Inquiry reported <b>reasonable grounds</b> to believe both Hamas and Israeli authorities committed <b>war crimes</b>. It further found Israeli authorities committed <b>crimes against humanity</b> (including persecution and other inhumane acts) in the occupied Palestinian territory.</span>
+        </div>
+        <div class="pill">
+          <span class="b">2025 genocide analysis.</span>
+          <span>The Commission later assessed that multiple <b>genocidal acts</b> were being committed in Gaza—killing, causing serious harm, and deliberately inflicting conditions of life calculated to destroy a population—and documented rhetoric by senior officials evidencing <b>genocidal intent</b>.</span>
+        </div>
+        <div class="pill">
+          <span class="b">Obligations.</span>
+          <span>Under the Genocide Convention, states have a <b>duty to prevent and punish</b> genocide and to avoid complicit support—political or material—regardless of any other party’s violations.</span>
+        </div>
+        <div class="pill">
+          <span class="b">Why this matters here.</span>
+          <span>When an MP repeatedly labels anti-Zionist advocacy as “antisemitic” while omitting Palestinian civilian harm and UN findings, it narrows the Overton window: <b>criticism of a state or ideology</b> is chilled as “hate,” while the <b>documented killing of civilians</b> goes unaddressed.</span>
+        </div>
+      </div>
     </section>
   </div>
 
