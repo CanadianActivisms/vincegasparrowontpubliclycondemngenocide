@@ -2,109 +2,53 @@
   {
     "date": "2025-09-19",
     "platform": "Instagram",
-    "headline": "Explainer on barring Kneecap (criticism of foreign governments is protected... Unless it's Israel)",
-    "quote": "Canada stands firmly against hate speach [...] and the glorification of terrorism",
-    "summary": "Announces Irish group Kneecap won’t be allowed in, citing 'antisemitic' statements presented as anti-Israel criticism.",
-    "commentary": "Frames criticism of Israel as antisemitism and advances a prohibition on expression. Treats anti-Zionist speech as hate while ignoring comparable dehumanizing speech about Palestinians. Raises serious free-expression and equal-treatment concerns.",
-    "tags": ["Conflation (anti-Zionism ≠ antisemitism)", "Censorship / Speech", "Pro-Israel advocacy"],
-    "url": "https://www.instagram.com/reel/DOyI_VrEeL2/",
-    "archived_url": "",
     "screenshot_file": "2025-09-19_kneecap-video_ig.png",
-    "media_type": "video"
+    "url": "https://www.instagram.com/reel/DOyI_VrEeL2/"
   },
   {
     "date": "2025-09-08",
     "platform": "X",
-    "headline": "Reposted PM statement on East Jerusalem attack",
-    "quote": "Canada condemns the terrorist attack in East Jerusalem today that has taken civilian lives and injured so many...",
-    "summary": "Amplifies the Prime Minister’s statement condemning violence against Israelis.",
-    "commentary": "Highlights Israeli victims while omitting parallel acknowledgment of Palestinian civilian deaths and international findings on unlawful conduct. Reinforces a one-sided moral frame.",
-    "tags": ["Selective empathy", "Pro-Israel advocacy"],
-    "url": "https://x.com/MarkJCarney/status/1832776085984635381",
-    "archived_url": "",
     "screenshot_file": "2025-09-08_east-jerusalem-repost_x.png",
-    "media_type": "post"
+    "url": "https://x.com/MarkJCarney/status/1832776085984635381"
   },
   {
     "date": "2025-09-05",
     "platform": "Facebook",
-    "headline": "Two-state solution video",
-    "quote": "Two-state solution is only possible when Israel can have peace and security beside a viable Palestinian state.",
-    "summary": "Presents two-state as contingent on Israeli security, without addressing proportionality or accountability for Palestinian civilian harm.",
-    "commentary": "Security-first framing centers the occupying power’s preferences and avoids any concrete accountability for ongoing mass civilian casualties.",
-    "tags": ["Policy framing", "Pro-Israel advocacy"],
-    "url": "https://www.facebook.com/gasparrovince/videos/1216948729987360/",
-    "archived_url": "",
     "screenshot_file": "2025-09-05_two-state_fb.png",
-    "media_type": "video"
+    "url": "https://www.facebook.com/gasparrovince/videos/1216948729987360/"
   },
   {
     "date": "2025-08-29",
     "platform": "Instagram",
-    "headline": "Shares PM statement on antisemitic assault in Ottawa",
-    "quote": "We stand with you against hate and threats to your safety, and we will act to confront antisemitism wherever it appears.",
-    "summary": "Publishes the PM’s statement about an assault on a Jewish woman in an Ottawa grocery store; expresses support for the Jewish community and law enforcement.",
-    "commentary": "Condemning antisemitism is necessary; however, his record shows no comparable urgency for Palestinians facing hate or grief in Canada, nor for Palestinian civilians abroad. The asymmetry functions politically.",
-    "tags": ["Selective empathy", "Domestic"],
-    "url": "https://www.instagram.com/p/DN8nCgDkSIv/",
-    "archived_url": "",
     "screenshot_file": "2025-08-29_assault-ottawa_ig.png",
-    "media_type": "post"
+    "url": "https://www.instagram.com/p/DN8nCgDkSIv/"
   },
   {
     "date": "2025-08-20",
     "platform": "Instagram",
-    "headline": "Letter to Mayor Valérie Plante",
-    "quote": "Please find my letter to Mayor @val_plante regarding the rise of Antisemitism in Montreal.",
-    "summary": "Publishes a letter to Montréal’s mayor about antisemitism.",
-    "commentary": "Focuses exclusively on antisemitism while omitting anti-Palestinian racism and the chilling of advocacy for Palestinian rights. Continues the pattern of selective concern.",
-    "tags": ["Selective empathy", "Pro-Israel advocacy", "Domestic"],
-    "url": "https://www.instagram.com/p/DNOyX2QyyOv/",
-    "archived_url": "",
     "screenshot_file": "2025-08-20_letter-plante_ig.png",
-    "media_type": "post"
+    "url": "https://www.instagram.com/p/DNOyX2QyyOv/"
   },
   {
-  "date": "2025-07-31",
-  "platform": "Instagram",
-  "headline": "Please see my full statement…",
-  "quote": "Please see my full statement on Prime Minister Mark Carney’s intention to recognize a Palestinian state above.",
-  "summary": "Posts a 'full statement' setting conditions around recognizing a Palestinian state.",
-  "commentary": "Treats Palestinian rights as conditional while leaving Israeli state accountability unaddressed. Normalizes unequal standards.",
-  "tags": ["Policy framing"],
-  "url": "https://www.instagram.com/p/DMyYh_oyBeU/?img_index=1",
-  "archived_url": "",
-  "screenshot_files": [
-    "2025-07-31_palestine-recognition_ig.png",
-    "2025-07-31_palestine-recognition_ig_2.png",
-    "2025-07-31_palestine-recognition_ig_3.png"
-  ],
-  "media_type": "post"
-},
+    "date": "2025-07-31",
+    "platform": "Instagram",
+    "screenshot_files": [
+      "2025-07-31_palestine-recognition_ig.png",
+      "2025-07-31_palestine-recognition_ig_2.png",
+      "2025-07-31_palestine-recognition_ig_3.png"
+    ],
+    "url": "https://www.instagram.com/p/DMyYh_oyBeU/?img_index=1"
+  },
   {
     "date": "2025-06-09",
     "platform": "Instagram",
-    "headline": "Visited the Nova Exhibit",
-    "quote": "Alongside Prime Minister @markjcarney and my colleague @leslie.church, I visited the Nova Exhibit again today... I encourage as many people as possible to attend the @novaexhibition...",
-    "summary": "Encourages attendance at the Nova Exhibit memorializing Oct 7.",
-    "commentary": "Reiterates Oct 7 atrocities while providing no acknowledgment of Palestinians killed since. Maintains a narrative that erases Palestinian suffering.",
-    "tags": ["October 7", "Selective empathy", "Pro-Israel advocacy"],
-    "url": "https://www.instagram.com/p/DKr1ScDRe_g/",
-    "archived_url": "",
     "screenshot_file": "2025-06-09_nova-exhibit_ig.png",
-    "media_type": "post"
+    "url": "https://www.instagram.com/p/DKr1ScDRe_g/"
   },
   {
     "date": "2025-05-25",
     "platform": "Instagram",
-    "headline": "Walk with Israel post",
-    "quote": "Once again I joined the @ujafederation Walk with Israel, the largest annual gathering of the Jewish community in Canada.",
-    "summary": "Participates in UJA’s Walk with Israel event.",
-    "commentary": "Public alignment with a pro-Israel mobilization during a period of mass Palestinian civilian deaths. No balancing recognition of Palestinian lives or rights.",
-    "tags": ["Pro-Israel advocacy", "Community"],
-    "url": "https://www.instagram.com/p/DKFcXj5RyTD/",
-    "archived_url": "",
     "screenshot_file": "2025-05-25_walk-with-israel_ig.png",
-    "media_type": "post"
+    "url": "https://www.instagram.com/p/DKFcXj5RyTD/"
   }
 ]
