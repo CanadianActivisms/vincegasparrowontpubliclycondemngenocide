@@ -63,6 +63,25 @@
     }
     .snark em{color:var(--snark); font-style:normal}
 
+    /* NEW: responsive hero heading that forces a break on desktop */
+    .herohed{
+      font-family:Newsreader,serif;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      font-weight:700;
+      line-height:1.1;
+      margin:0 0 12px;
+      color:#1a1d24;
+      font-size:clamp(24px,5vw,48px);
+    }
+    .herohed em{ color:var(--snark); font-style:normal; }
+    @media (min-width:720px){
+      .herohed{ max-width:32ch; } /* keeps it to two strong lines with the <br> */
+    }
+    @media (max-width:719px){
+      .herohed{ max-width:100%; font-size:clamp(20px,6vw,28px); }
+    }
+
     .clockwrap{display:grid; grid-template-columns:1fr; gap:14px; margin:12px 0 8px;}
     .clock{
       /* New: bold red clocks */
@@ -180,7 +199,11 @@
   <!-- Hero / Clocks -->
   <div class="heroField" id="clocks">
     <section class="hero">
-      <p class="snark">How many more days of <em>genocide</em> will it take, Vince?</p>
+      <!-- CHANGED: new h1 with forced desktop line break -->
+      <h1 class="herohed">
+        How many more days of <em>genocide</em><br>
+        will it take, Vince?
+      </h1>
 
       <div class="clockwrap">
         <div class="clock">
