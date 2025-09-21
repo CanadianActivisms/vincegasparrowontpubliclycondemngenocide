@@ -238,7 +238,7 @@
         </p>
       </div>
 
-      <!-- UPDATED: Single button + CountAPI counter -->
+      <!-- UPDATED: Single button + counter -->
       <div class="ctaRow">
         <a id="email-vince" class="btn primary" href="#">Email Vince Gasparro</a>
         <span id="email-count" class="muted" style="align-self:center"></span>
@@ -456,83 +456,67 @@
   }
   loadTimeline();
 
-/* ===== Email Vince + CountAPI counter (no Google) ===== */
-(function () {
-  const subject = "Is TODAY the day?!";
-  const body = `Despite the UNHCR and hundreds of humanitarian and human rights organizations, you have not acknowledged nor condemned the genocide Israel is committing against the Palestinians in Gaza. Will today be the day? We are waiting. Silence is complicity.
+  /* ===== Email Vince + Cloudflare Worker counter ===== */
+  (function () {
+    const subject = "Is TODAY the day?!";
+    const body = `Despite the UNHCR and hundreds of humanitarian and human rights organizations, you have not acknowledged nor condemned the genocide Israel is committing against the Palestinians in Gaza. Will today be the day? We are waiting. Silence is complicity.
 
 Your constituents demand sanctions, ceasefire, investigation of returning IDF soldiers, full arms embargo (no more of those pesky loopholes allowing for arms to be sent to Israel by passing unregulated and unreported through the US) and a public condemnation of Israel’s genocide against the Palestinians. 
 
 Immediately, we request you to support the No More Loopholes Bill tabled by MP Jenny Kwan. Looking forward to hearing your response.`;
 
-  const link = document.getElementById("email-vince");
-  const elCount = document.getElementById("email-count");
-  if (link) {
-    link.href = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  }
-
-  // CountAPI settings
-  const NS  = "vincegasparrowontpubliclycondemngenocide";
-  const KEY = "email_vince_clicks";
-  const URL_GET = `https://api.countapi.xyz/get/${NS}/${KEY}`;
-  const URL_HIT = `https://api.countapi.xyz/hit/${NS}/${KEY}`;
-
-  // Always show a status so it doesn't look broken
-  if (elCount) elCount.textContent = "loading…";
-
-  async function getCount() {
-    try {
-      const r = await fetch(URL_GET, { cache: "no-store" });
-      if (!r.ok) throw new Error("GET failed");
-      const j = await r.json();
-      return Number.isFinite(j.value) ? j.value : null;
-    } catch (e) {
-      console.warn("CountAPI GET blocked/failed:", e);
-      return null;
+    const link = document.getElementById("email-vince");
+    const elCount = document.getElementById("email-count");
+    if (link) {
+      link.href = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
-  }
 
-  function pingHitFallback() {
-    // If fetch is blocked by an extension, load via an <img> which often slips through.
-    const img = new Image();
-    img.referrerPolicy = "no-referrer";
-    img.src = URL_HIT + `?t=${Date.now()}`;
-    // No reliable way to read the new value from an <img>, this just increments.
-  }
+    // Cloudflare Worker endpoints
+    const API_BASE = "https://emailcounter.canadianactivism.workers.dev";
+    const URL_GET  = `${API_BASE}/count`;
+    const URL_HIT  = `${API_BASE}/hit`;
 
-  async function hitCount() {
-    try {
-      const r = await fetch(URL_HIT, { cache: "no-store" });
-      if (!r.ok) throw new Error("HIT failed");
-      return (await r.json()).value;
-    } catch (e) {
-      console.warn("CountAPI HIT blocked/failed:", e);
-      pingHitFallback();
-      return null;
+    if (elCount) elCount.textContent = "loading…";
+
+    async function getCount() {
+      try {
+        const r = await fetch(URL_GET, { cache: "no-store" });
+        if (!r.ok) throw new Error("GET failed");
+        const j = await r.json();
+        return Number.isFinite(j.value) ? j.value : null;
+      } catch (e) {
+        console.warn("Counter GET failed:", e);
+        return null;
+      }
     }
-  }
 
-  async function showCount() {
-    if (!elCount) return;
-    const v = await getCount();
-    if (Number.isFinite(v)) {
-      elCount.textContent = `${v.toLocaleString()} emails sent`;
-    } else {
-      elCount.textContent = "counter unavailable";
+    async function hitCount() {
+      try {
+        const r = await fetch(URL_HIT, { method: "POST", cache: "no-store" });
+        if (!r.ok) throw new Error("POST failed");
+        const j = await r.json();
+        return Number.isFinite(j.value) ? j.value : null;
+      } catch (e) {
+        console.warn("Counter HIT failed:", e);
+        return null;
+      }
     }
-  }
 
-  // Click handler: try to increment and then refresh UI
-  if (link) {
-    link.addEventListener("click", async () => {
-      await hitCount();
-      showCount();
-    });
-  }
+    async function showCount() {
+      if (!elCount) return;
+      const v = await getCount();
+      elCount.textContent = Number.isFinite(v) ? `${v.toLocaleString()} emails sent` : "counter unavailable";
+    }
 
-  // First render
-  showCount();
-})();
-</script>
+    if (link) {
+      link.addEventListener("click", async () => {
+        await hitCount();
+        showCount();
+      });
+    }
+
+    showCount();
+  })();
+  </script>
 </body>
 </html>
