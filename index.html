@@ -70,12 +70,10 @@
     .heroTitle .line{
       display:block;
       font-weight:700;
-      /* Scales well from mobile to desktop */
       font-size:clamp(22px, 5vw, 64px);
     }
     .heroTitle .callout{
       color:var(--snark);
-      /* Make the middle word pop a bit more */
       font-size:clamp(28px, 6.2vw, 72px);
       letter-spacing:.04em;
     }
@@ -235,15 +233,14 @@
         </p>
 
         <p>
-          If you want to hear from the man himself when exactly he plans to acknowledge and condemn the genocide in Gaza that Canada is complicit in, send him a letter! It lets him know about MP Jenny Kwan’s private member’s bill, the <i>No More Loopholes Act</i>, which will stop the flow of arms through the US to Israel.
+          If you are also on the edge of your seat wondering “Will it be today?! Is today the day he acknowledges the genocide?!” you can send him an email using the form below. It’s pre-written and lets him know about MP Jenny Kwan’s private member’s bill, the <i>No More Loopholes Act</i>, which will stop the flow of arms through the US to Israel. Feel free to customize it with your own special thoughts and predictions, such as “How many more dead parents?” “How many more toddlers shot in the head by snipers?” “How many more infants starved to death because Israel prevents them from receiving baby formula?” (a known and completely real threat to Israel’s security) We can only wait and see - and email him until we have an answer. 
         </p>
       </div>
 
+      <!-- UPDATED: Single button + CountAPI counter -->
       <div class="ctaRow">
-        <a class="btn primary"
-           href="mailto:vince.gasparro@parl.gc.ca?subject=Please%20acknowledge%20and%20condemn%20the%20genocide%20in%20Gaza&body=Dear%20Mr.%20Gasparro%2C%0D%0A%0D%0AThe%20UN%20has%20found%20genocidal%20acts%20in%20Gaza.%20Please%20publicly%20acknowledge%20and%20condemn%20this%20genocide%2C%20and%20support%20MP%20Jenny%20Kwan%E2%80%99s%20No%20More%20Loopholes%20Act%20to%20stop%20arms%20flows.%0D%0A%0D%0AThank%20you.">Email Vince Gasparro</a>
-        <a class="btn ghost"
-           href="mailto:?subject=Please%20acknowledge%20and%20condemn%20the%20genocide%20in%20Gaza&body=Dear%20MP%2C%0D%0A%0D%0AThe%20UN%20has%20found%20genocidal%20acts%20in%20Gaza.%20Please%20publicly%20acknowledge%20and%20condemn%20this%20genocide%2C%20and%20support%20measures%20to%20halt%20arms%20transfers.%0D%0A%0D%0AThank%20you.">Email your MP</a>
+        <a id="email-vince" class="btn primary" href="#">Email Vince Gasparro</a>
+        <span id="email-count" class="muted" style="align-self:center"></span>
       </div>
     </section>
   </div>
@@ -456,6 +453,55 @@
       }
     }
     loadTimeline();
+
+    /* ===== Email Vince + CountAPI counter (no Google) ===== */
+    (function () {
+      const subject = "Is TODAY the day?!";
+      const body = `Despite the UNHCR and hundreds of humanitarian and human rights organizations, you have not acknowledged nor condemned the genocide Israel is committing against the Palestinians in Gaza. Will today be the day? We are waiting. Silence is complicity.
+
+Your constituents demand sanctions, ceasefire, investigation of returning IDF soldiers, full arms embargo (no more of those pesky loopholes allowing for arms to be sent to Israel by passing unregulated and unreported through the US) and a public condemnation of Israel’s genocide against the Palestinians. 
+
+Immediately, we request you to support the No More Loopholes Bill tabled by MP Jenny Kwan. Looking forward to hearing your response.`;
+
+      // ---- mailto wiring
+      const link = document.getElementById("email-vince");
+      if (link) {
+        link.href = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      }
+
+      // ---- CountAPI setup (simple, public)
+      const NS  = "vincegasparrowontpubliclycondemngenocide"; // namespace
+      const KEY = "email_vince_clicks";                       // counter key
+      const COUNT_GET = `https://api.countapi.xyz/get/${NS}/${KEY}`;
+      const COUNT_INC = `https://api.countapi.xyz/hit/${NS}/${KEY}`;
+
+      const elCount = document.getElementById("email-count");
+
+      async function showCount() {
+        if (!elCount) return;
+        try {
+          const r = await fetch(COUNT_GET, { cache: "no-store" });
+          const j = await r.json();
+          if (Number.isFinite(j.value)) {
+            elCount.textContent = `${j.value.toLocaleString()} sent`;
+          } else {
+            elCount.style.display = "none";
+          }
+        } catch {
+          elCount.style.display = "none";
+        }
+      }
+
+      async function bumpCount() {
+        try { await fetch(COUNT_INC, { cache: "no-store" }); } catch {}
+        showCount(); // refresh the visible number
+      }
+
+      if (link) {
+        link.addEventListener("click", bumpCount);
+      }
+      showCount();
+    })();
   </script>
 </body>
 </html>
