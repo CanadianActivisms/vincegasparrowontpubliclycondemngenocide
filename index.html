@@ -124,7 +124,8 @@
     /* ===== Facts ===== */
     .facts{display:grid; grid-template-columns:1fr; gap:10px}
     .fact{background:var(--soft); border:1px solid var(--line); border-radius:12px; padding:12px}
-    .fact b{display:block; margin-bottom:4px}
+    .fact b{font-weight:700}
+    .fact > b:first-child{display:block; margin-bottom:4px}
 
     /* ===== Timeline items ===== */
     .item{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}
@@ -323,185 +324,192 @@
   <div id="lb" class="lb close" onclick="this.style.display='none'"><img id="lbimg" src="" alt="preview"></div>
 
   <script>
-    /* Sticky header shadow */
-    const bb=document.getElementById('brandbar');
-    addEventListener('scroll',()=>bb.classList.toggle('is-stuck', scrollY>6),{passive:true});
+  /* Sticky header shadow */
+  const bb=document.getElementById('brandbar');
+  addEventListener('scroll',()=>bb.classList.toggle('is-stuck', scrollY>6),{passive:true});
 
-    /* Active nav underline based on scroll */
-    const sections=['facts','un-context','timeline','contact'];
-    const links=[...document.querySelectorAll('.nav a')];
-    function setActive(){
-      let activeIndex=0;
-      sections.forEach((id,i)=>{
-        const el=document.getElementById(id);
-        if(!el) return;
-        const top=el.getBoundingClientRect().top;
-        if(top<=160) activeIndex=i;
-      });
-      links.forEach((a,i)=>a.classList.toggle('active',i===activeIndex));
+  /* Active nav underline based on scroll */
+  const sections=['facts','un-context','timeline','contact'];
+  const links=[...document.querySelectorAll('.nav a')];
+  function setActive(){
+    let activeIndex=0;
+    sections.forEach((id,i)=>{
+      const el=document.getElementById(id);
+      if(!el) return;
+      const top=el.getBoundingClientRect().top;
+      if(top<=160) activeIndex=i;
+    });
+    links.forEach((a,i)=>a.classList.toggle('active',i===activeIndex));
+  }
+  window.addEventListener('scroll',setActive,{passive:true});
+  window.addEventListener('load',setActive);
+
+  /* Live clocks */
+  const REF_GENOCIDE = new Date('2025-09-16T00:00:00Z').getTime();
+  const REF_ALBANESE = new Date('2024-03-25T00:00:00Z').getTime();
+  const pad=n=>String(n).padStart(2,'0');
+  const fmt=ms=>{
+    const s=Math.floor(ms/1000), d=Math.floor(s/86400),
+          h=Math.floor((s%86400)/3600), m=Math.floor((s%3600)/60), ss=s%60;
+    return `${d} : ${pad(h)} : ${pad(m)} : ${pad(ss)}`;
+  };
+  function tick(){
+    const now=Date.now();
+    const t1=now-REF_GENOCIDE, t2=now-REF_ALBANESE;
+    const e1=document.getElementById('t1'), e2=document.getElementById('t2');
+    if(e1) e1.textContent=fmt(t1);
+    if(e2) e2.textContent=fmt(t2);
+  }
+  tick(); setInterval(tick,1000);
+
+  /* ===== Timeline (minimal: date + platform + screenshots + links) ===== */
+  const $ = s => document.querySelector(s);
+  const listEl = $('#list'), emptyEl = $('#empty');
+  const lb = $('#lb'), lbimg = $('#lbimg');
+
+  const icon = (name) => {
+    const n = (name||'').toLowerCase();
+    if(n.includes('instagram')) return `<svg viewBox="0 0 24 24"><path fill="#e1306c" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5m0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3z"/><circle cx="12" cy="12" r="3.5" fill="#e1306c"/><circle cx="17.5" cy="6.5" r="1.2" fill="#e1306c"/></svg>`;
+    if(n==='x') return `<svg viewBox="0 0 24 24"><path fill="#111" d="M14.7 3H18l-6.9 8.1L19 21h-6.3l-5-5.9L2.8 21H0l7.6-8.9L0 3h6.4l4.6 5.4L14.7 3z"/></svg>`;
+    if(n.includes('facebook')) return `<svg viewBox="0 0 24 24"><path fill="#1877f2" d="M22 12.06C22 6.48 17.52 2 12 2S2 6.48 2 12.06C2 17.1 5.66 21.22 10.44 22v-7.04H7.9v-2.9h2.54v-2.2c0-2.5 1.5-3.88 3.78-3.88 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.86h2.78l-.44 2.9h-2.34V22C18.34 21.22 22 17.1 22 12.06z"/></svg>`;
+    return '';
+  };
+
+  function carouselHTML(imgs){
+    if(!imgs.length) return '';
+    if(imgs.length===1){
+      return `<div class="carousel"><img class="shot" src="./screenshots/${imgs[0]}" alt="Screenshot"></div>`;
     }
-    window.addEventListener('scroll',setActive,{passive:true});
-    window.addEventListener('load',setActive);
+    const dots = imgs.map((_,i)=>`<span class="cdot ${i===0?'active':''}"></span>`).join('');
+    return `
+      <div class="carousel" data-imgs='${JSON.stringify(imgs)}' data-idx="0">
+        <img class="shot" src="./screenshots/${imgs[0]}" alt="Screenshot">
+        <div class="cnav">
+          <button class="cbtn prev" aria-label="Previous">‹</button>
+          <button class="cbtn next" aria-label="Next">›</button>
+        </div>
+        <div class="cdots">${dots}</div>
+      </div>`;
+  }
 
-    /* Live clocks */
-    const REF_GENOCIDE = new Date('2025-09-16T00:00:00Z').getTime();
-    const REF_ALBANESE = new Date('2024-03-25T00:00:00Z').getTime();
-    const pad=n=>String(n).padStart(2,'0');
-    const fmt=ms=>{
-      const s=Math.floor(ms/1000), d=Math.floor(s/86400),
-            h=Math.floor((s%86400)/3600), m=Math.floor((s%3600)/60), ss=s%60;
-      return `${d} : ${pad(h)} : ${pad(m)} : ${pad(ss)}`;
-    };
-    function tick(){
-      const now=Date.now();
-      const t1=now-REF_GENOCIDE, t2=now-REF_ALBANESE;
-      const e1=document.getElementById('t1'), e2=document.getElementById('t2');
-      if(e1) e1.textContent=fmt(t1);
-      if(e2) e2.textContent=fmt(t2);
-    }
-    tick(); setInterval(tick,1000);
-
-    /* ===== Timeline (minimal: date + platform + screenshots + links) ===== */
-    const $ = s => document.querySelector(s);
-    const listEl = $('#list'), emptyEl = $('#empty');
-    const lb = $('#lb'), lbimg = $('#lbimg');
-
-    const icon = (name) => {
-      const n = (name||'').toLowerCase();
-      if(n.includes('instagram')) return `<svg viewBox="0 0 24 24"><path fill="#e1306c" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5m0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3z"/><circle cx="12" cy="12" r="3.5" fill="#e1306c"/><circle cx="17.5" cy="6.5" r="1.2" fill="#e1306c"/></svg>`;
-      if(n==='x') return `<svg viewBox="0 0 24 24"><path fill="#111" d="M14.7 3H18l-6.9 8.1L19 21h-6.3l-5-5.9L2.8 21H0l7.6-8.9L0 3h6.4l4.6 5.4L14.7 3z"/></svg>`;
-      if(n.includes('facebook')) return `<svg viewBox="0 0 24 24"><path fill="#1877f2" d="M22 12.06C22 6.48 17.52 2 12 2S2 6.48 2 12.06C2 17.1 5.66 21.22 10.44 22v-7.04H7.9v-2.9h2.54v-2.2c0-2.5 1.5-3.88 3.78-3.88 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.86h2.78l-.44 2.9h-2.34V22C18.34 21.22 22 17.1 22 12.06z"/></svg>`;
-      return '';
-    };
-
-    function carouselHTML(imgs){
-      if(!imgs.length) return '';
-      if(imgs.length===1){
-        return `<div class="carousel"><img class="shot" src="./screenshots/${imgs[0]}" alt="Screenshot"></div>`;
+  function bindCarousel(root){
+    root.querySelectorAll('.carousel').forEach(car=>{
+      const imgs = JSON.parse(car.dataset.imgs || '[]');
+      if(imgs.length<=1){
+        car.querySelector('img').addEventListener('click', ()=>{ lbimg.src = car.querySelector('img').src; lb.style.display='flex'; });
+        return;
       }
-      const dots = imgs.map((_,i)=>`<span class="cdot ${i===0?'active':''}"></span>`).join('');
-      return `
-        <div class="carousel" data-imgs='${JSON.stringify(imgs)}' data-idx="0">
-          <img class="shot" src="./screenshots/${imgs[0]}" alt="Screenshot">
-          <div class="cnav">
-            <button class="cbtn prev" aria-label="Previous">‹</button>
-            <button class="cbtn next" aria-label="Next">›</button>
+      const imgEl = car.querySelector('img');
+      const dots = [...car.querySelectorAll('.cdot')];
+      const setIdx = (i)=>{
+        car.dataset.idx = String(i);
+        imgEl.src = './screenshots/' + imgs[i];
+        dots.forEach((d,j)=> d.classList.toggle('active', j===i));
+      };
+      car.querySelector('.prev').onclick = (e)=>{ e.stopPropagation(); setIdx((+car.dataset.idx+imgs.length-1)%imgs.length); };
+      car.querySelector('.next').onclick = (e)=>{ e.stopPropagation(); setIdx((+car.dataset.idx+1)%imgs.length); };
+      imgEl.addEventListener('click', ()=>{ lbimg.src = imgEl.src; lb.style.display='flex'; });
+    });
+  }
+
+  async function loadTimeline(){
+    try{
+      const res = await fetch('./evidence.json', { cache:'no-store' });
+      if(!res.ok) throw new Error('Could not load evidence.json');
+      let items = await res.json();
+
+      // de-dupe & sort
+      const seen = new Set();
+      items = items.filter(it=>{
+        const u=(it.url||'').trim(); if(!u) return true;
+        if(seen.has(u)) return false; seen.add(u); return true;
+      }).sort((a,b)=> new Date(b.date) - new Date(a.date));
+
+      if(!items.length){ emptyEl.style.display='block'; return; }
+      emptyEl.style.display='none';
+
+      listEl.innerHTML = '';
+      items.forEach(it=>{
+        const imgs = Array.isArray(it.screenshot_files) ? it.screenshot_files :
+                     (it.screenshot_file ? [it.screenshot_file] : []);
+        const card = document.createElement('div');
+        card.className = 'item';
+        card.innerHTML = `
+          <div class="meta">
+            <span>${new Date(it.date).toLocaleDateString()}</span>
+            <span class="dot"></span>
+            <span class="platform">${icon(it.platform)} <span>${it.platform||''}</span></span>
           </div>
-          <div class="cdots">${dots}</div>
-        </div>`;
-    }
-
-    function bindCarousel(root){
-      root.querySelectorAll('.carousel').forEach(car=>{
-        const imgs = JSON.parse(car.dataset.imgs || '[]');
-        if(imgs.length<=1){
-          car.querySelector('img').addEventListener('click', ()=>{ lbimg.src = car.querySelector('img').src; lb.style.display='flex'; });
-          return;
-        }
-        const imgEl = car.querySelector('img');
-        const dots = [...car.querySelectorAll('.cdot')];
-        const setIdx = (i)=>{
-          car.dataset.idx = String(i);
-          imgEl.src = './screenshots/' + imgs[i];
-          dots.forEach((d,j)=> d.classList.toggle('active', j===i));
-        };
-        car.querySelector('.prev').onclick = (e)=>{ e.stopPropagation(); setIdx((+car.dataset.idx+imgs.length-1)%imgs.length); };
-        car.querySelector('.next').onclick = (e)=>{ e.stopPropagation(); setIdx((+car.dataset.idx+1)%imgs.length); };
-        imgEl.addEventListener('click', ()=>{ lbimg.src = imgEl.src; lb.style.display='flex'; });
+          ${carouselHTML(imgs)}
+          <div class="links" style="margin-top:10px">
+            ${it.url ? `<a href="${it.url}" target="_blank" rel="noreferrer">Source ↗</a>` : ``}
+            ${it.archived_url ? `<a href="${it.archived_url}" target="_blank" rel="noreferrer">Archive ↗</a>` : ``}
+            ${(!it.url && !it.archived_url) ? `<span class="muted">Links pending</span>` : ``}
+          </div>
+        `;
+        listEl.appendChild(card);
       });
+      bindCarousel(listEl);
+    }catch(e){
+      listEl.innerHTML = `<div class="muted">Failed to load evidence. ${e.message}</div>`;
     }
+  }
+  loadTimeline();
 
-    async function loadTimeline(){
-      try{
-        const res = await fetch('./evidence.json', { cache:'no-store' });
-        if(!res.ok) throw new Error('Could not load evidence.json');
-        let items = await res.json();
-
-        const seen = new Set();
-        items = items.filter(it=>{
-          const u=(it.url||'').trim(); if(!u) return true;
-          if(seen.has(u)) return false; seen.add(u); return true;
-        }).sort((a,b)=> new Date(b.date) - new Date(a.date));
-
-        if(!items.length){ emptyEl.style.display='block'; return; }
-        emptyEl.style.display='none';
-
-        listEl.innerHTML = '';
-        items.forEach(it=>{
-          const imgs = Array.isArray(it.screenshot_files) ? it.screenshot_files :
-                       (it.screenshot_file ? [it.screenshot_file] : []);
-          const card = document.createElement('div');
-          card.className = 'item';
-          card.innerHTML = `
-            <div class="meta">
-              <span>${new Date(it.date).toLocaleDateString()}</span>
-              <span class="dot"></span>
-              <span class="platform">${icon(it.platform)} <span>${it.platform||''}</span></span>
-            </div>
-            ${carouselHTML(imgs)}
-            <div class="links" style="margin-top:10px">
-              ${it.url ? `<a href="${it.url}" target="_blank" rel="noreferrer">Source ↗</a>` : ``}
-              ${it.archived_url ? `<a href="${it.archived_url}" target="_blank" rel="noreferrer">Archive ↗</a>` : ``}
-              ${(!it.url && !it.archived_url) ? `<span class="muted">Links pending</span>` : ``}
-            </div>
-          `;
-          listEl.appendChild(card);
-        });
-        bindCarousel(listEl);
-      }catch(e){
-        listEl.innerHTML = `<div class="muted">Failed to load evidence. ${e.message}</div>`;
-      }
-    }
-    loadTimeline();
-
-    /* ===== Email Vince + CountAPI counter (no Google) ===== */
-    (function () {
-      const subject = "Is TODAY the day?!";
-      const body = `Despite the UNHCR and hundreds of humanitarian and human rights organizations, you have not acknowledged nor condemned the genocide Israel is committing against the Palestinians in Gaza. Will today be the day? We are waiting. Silence is complicity.
+  /* ===== Email Vince + CountAPI counter (no Google) ===== */
+  (function () {
+    const subject = "Is TODAY the day?!";
+    const body = `Despite the UNHCR and hundreds of humanitarian and human rights organizations, you have not acknowledged nor condemned the genocide Israel is committing against the Palestinians in Gaza. Will today be the day? We are waiting. Silence is complicity.
 
 Your constituents demand sanctions, ceasefire, investigation of returning IDF soldiers, full arms embargo (no more of those pesky loopholes allowing for arms to be sent to Israel by passing unregulated and unreported through the US) and a public condemnation of Israel’s genocide against the Palestinians. 
 
 Immediately, we request you to support the No More Loopholes Bill tabled by MP Jenny Kwan. Looking forward to hearing your response.`;
 
-      // ---- mailto wiring
-      const link = document.getElementById("email-vince");
-      if (link) {
-        link.href = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // Wire the mailto
+    const link = document.getElementById("email-vince");
+    if (link) {
+      link.href = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    // CountAPI (public, no account)
+    const NS  = "vincegasparrowontpubliclycondemngenocide"; // namespace
+    const KEY = "email_vince_clicks";                       // counter key
+    const URL_GET = `https://api.countapi.xyz/get/${NS}/${KEY}`;
+    const URL_HIT = `https://api.countapi.xyz/hit/${NS}/${KEY}`;
+    const elCount = document.getElementById("email-count");
+
+    async function ensureAndGet() {
+      // Try GET; if it fails (first run), HIT creates the counter then returns value
+      try {
+        const r = await fetch(URL_GET, { cache: "no-store" });
+        if (r.ok) return (await r.json()).value;
+      } catch {}
+      try {
+        const r2 = await fetch(URL_HIT, { cache: "no-store" });
+        if (r2.ok) return (await r2.json()).value;
+      } catch {}
+      return null;
+    }
+
+    async function showCount() {
+      if (!elCount) return;
+      const v = await ensureAndGet();
+      if (Number.isFinite(v)) {
+        elCount.textContent = `${v.toLocaleString()} emails sent`;
+        elCount.style.display = "";
+      } else {
+        elCount.style.display = "none";
       }
+    }
 
-      // ---- CountAPI setup (simple, public)
-      const NS  = "vincegasparrowontpubliclycondemngenocide"; // namespace
-      const KEY = "email_vince_clicks";                       // counter key
-      const COUNT_GET = `https://api.countapi.xyz/get/${NS}/${KEY}`;
-      const COUNT_INC = `https://api.countapi.xyz/hit/${NS}/${KEY}`;
-
-      const elCount = document.getElementById("email-count");
-
-      async function showCount() {
-        if (!elCount) return;
-        try {
-          const r = await fetch(COUNT_GET, { cache: "no-store" });
-          const j = await r.json();
-          if (Number.isFinite(j.value)) {
-            elCount.textContent = `${j.value.toLocaleString()} sent`;
-          } else {
-            elCount.style.display = "none";
-          }
-        } catch {
-          elCount.style.display = "none";
-        }
-      }
-
-      async function bumpCount() {
-        try { await fetch(COUNT_INC, { cache: "no-store" }); } catch {}
-        showCount(); // refresh the visible number
-      }
-
-      if (link) {
-        link.addEventListener("click", bumpCount);
-      }
+    async function bumpCount() {
+      try { await fetch(URL_HIT, { cache: "no-store" }); } catch {}
       showCount();
-    })();
-  </script>
+    }
+
+    if (link) link.addEventListener("click", bumpCount);
+    showCount();
+  })();
+</script>
 </body>
 </html>
