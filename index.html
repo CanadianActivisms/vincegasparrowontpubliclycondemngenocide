@@ -10,14 +10,14 @@
       /* Core palette — Liberal red */
       --lib-red:#D71920;         /* Primary red */
       --lib-red-dark:#B51218;    /* Hover/press */
-      --ink:#0e1116; 
-      --sub:#5e6470; 
-      --line:#e6e8ee; 
-      --bg:#FFF7F7;             /* New page background (warm, airy) */
-      --card:#ffffff; 
-      --accent:var(--lib-red);  /* Links & accents now red */
-      --snark:var(--lib-red);   /* Emphasis color now red */
-      --soft:#FFFDFD;           /* Soft card fill */
+      --ink:#0e1116;
+      --sub:#5e6470;
+      --line:#e6e8ee;
+      --bg:#FFF7F7;              /* Page background (warm, airy) */
+      --card:#ffffff;
+      --accent:var(--lib-red);   /* Links & accents now red */
+      --snark:var(--lib-red);    /* Emphasis color now red */
+      --soft:#FFFDFD;            /* Soft card fill */
     }
 
     *{box-sizing:border-box}
@@ -43,48 +43,45 @@
     }
     .nav a:hover{color:var(--accent);text-decoration:none}
     .nav a.active{color:var(--accent)}
-    .nav a.active::after{                                  /* ACTIVE UNDERLINE */
+    .nav a.active::after{
       content:""; position:absolute; left:0; right:0; bottom:0;
       height:2px; background:var(--accent); border-radius:2px;
     }
 
     /* ===== Hero / counters ===== */
     .heroField{
-      /* Soften gradient, bias toward white with a whisper of red */
       background:radial-gradient(1200px 420px at 15% -10%, #fff 0, #FFE9EA 55%, #FFF7F7 100%);
       border-bottom:1px solid var(--line);
     }
     .hero{max-width:1120px;margin:0 auto;padding:48px 20px 28px}
-    .snark{
-      font-family:Newsreader,serif;
-      text-transform:uppercase; letter-spacing:.08em;
-      font-size:clamp(22px,3.8vw,34px); line-height:1.05;
-      margin:0 0 12px; color:#1a1d24;
-    }
-    .snark em{color:var(--snark); font-style:normal}
 
-    /* NEW: responsive hero heading that forces a break on desktop */
-    .herohed{
+    /* NEW: Three-line locked headline */
+    .heroTitle{
+      margin:0 0 16px;
+      text-align:center;
       font-family:Newsreader,serif;
       text-transform:uppercase;
       letter-spacing:.06em;
+      line-height:1.05;
+      display:grid;
+      justify-items:center;
+      gap:.2em;
+    }
+    .heroTitle .line{
+      display:block;
       font-weight:700;
-      line-height:1.1;
-      margin:0 0 12px;
-      color:#1a1d24;
-      font-size:clamp(24px,5vw,48px);
+      /* Scales well from mobile to desktop */
+      font-size:clamp(22px, 5vw, 64px);
     }
-    .herohed em{ color:var(--snark); font-style:normal; }
-    @media (min-width:720px){
-      .herohed{ max-width:32ch; } /* keeps it to two strong lines with the <br> */
-    }
-    @media (max-width:719px){
-      .herohed{ max-width:100%; font-size:clamp(20px,6vw,28px); }
+    .heroTitle .callout{
+      color:var(--snark);
+      /* Make the middle word pop a bit more */
+      font-size:clamp(28px, 6.2vw, 72px);
+      letter-spacing:.04em;
     }
 
     .clockwrap{display:grid; grid-template-columns:1fr; gap:14px; margin:12px 0 8px;}
     .clock{
-      /* New: bold red clocks */
       background:var(--lib-red);
       border:1px solid rgba(0,0,0,.06);
       border-radius:16px;
@@ -100,10 +97,7 @@
     .bigtime{
       font-variant-numeric:tabular-nums; font-weight:900;
       font-size:clamp(24px,4.8vw,42px); letter-spacing:.02em; color:#fff;
-      /* Thin “outline” for legibility on red */
-      text-shadow:
-        0 1px 0 rgba(0,0,0,.25),
-        0 0 2px rgba(0,0,0,.18);
+      text-shadow:0 1px 0 rgba(0,0,0,.25), 0 0 2px rgba(0,0,0,.18);
     }
     .subtime{
       font-size:12px;color:#fff;opacity:.9;
@@ -187,7 +181,6 @@
     <div class="brandwrap">
       <div class="wordmark">vincegasparrowontpubliclycondemngenocide.com</div>
       <nav class="nav">
-        <!-- Clocks omitted from menu; Methodology & Search removed -->
         <a href="#facts">Not-so-fun facts</a>
         <a href="#un-context">UN Context</a>
         <a href="#timeline">Timeline</a>
@@ -199,10 +192,12 @@
   <!-- Hero / Clocks -->
   <div class="heroField" id="clocks">
     <section class="hero">
-      <!-- CHANGED: new h1 with forced desktop line break -->
-      <h1 class="herohed">
-        How many more days of <em>genocide</em><br>
-        will it take, Vince?
+
+      <!-- NEW three-line, centered title -->
+      <h1 class="heroTitle" aria-label="How many more days of genocide will it take, Vince?">
+        <span class="line">How many more days of</span>
+        <span class="line callout">Genocide</span>
+        <span class="line">Will it take, Vince?</span>
       </h1>
 
       <div class="clockwrap">
@@ -277,23 +272,30 @@
       <div class="h2">UN context (what the official record says)</div>
       <p class="muted">Primary documents are cited in the site footer.</p>
 
-      <!-- Polished pill cards -->
       <div class="pilllist">
         <div class="pill">
           <span class="b">June 2024 findings.</span>
-          <span>The UN Human Rights Council’s Commission of Inquiry reported <b>reasonable grounds</b> to believe both Hamas and Israeli authorities committed <b>war crimes</b>. It further found Israeli authorities committed <b>crimes against humanity</b> (including persecution and other inhumane acts) in the occupied Palestinian territory.</span>
+          <span>The UN Human Rights Council’s Commission of Inquiry reported <b>reasonable grounds</b> to believe both Hamas and Israeli authorities committed <b>war crimes</b>. It further found Israeli authorities committed <b>crimes against humanity</b> (including persecution and other inhumane acts) in the occupied Palestinian territory.
+            <a href="https://www.ohchr.org/en/press-releases/2024/06/israel-and-palestine-coi-finds-war-crimes-and-crimes-against-humanity" target="_blank" rel="noreferrer">OHCHR press release</a> ·
+            <a href="https://www.ohchr.org/en/hr-bodies/hrc/regular-sessions/session56/list-reports" target="_blank" rel="noreferrer">Report A/HRC/56/26</a>
+          </span>
         </div>
         <div class="pill">
           <span class="b">2025 genocide analysis.</span>
-          <span>The Commission later assessed that multiple <b>genocidal acts</b> were being committed in Gaza—killing, causing serious harm, and deliberately inflicting conditions of life calculated to destroy a population—and documented rhetoric by senior officials evidencing <b>genocidal intent</b>.</span>
+          <span>The Commission later assessed that multiple <b>genocidal acts</b> were being committed in Gaza—killing, causing serious harm, and deliberately inflicting conditions of life calculated to destroy a population—and documented rhetoric by senior officials evidencing <b>genocidal intent</b>.
+            <a href="https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/regularsession/session60/advance-versions/A_HRC_60_CRP_3_AdvanceUneditedVersion.docx.pdf" target="_blank" rel="noreferrer">COI report A/HRC/60/CRP/3 (PDF)</a>
+          </span>
         </div>
         <div class="pill">
           <span class="b">Obligations.</span>
-          <span>Under the Genocide Convention, states have a <b>duty to prevent and punish</b> genocide and to avoid complicit support—political or material—regardless of any other party’s violations.</span>
+          <span>Under the <i>Convention on the Prevention and Punishment of the Crime of Genocide</i>, states have a <b>duty to prevent and punish</b> genocide (<a href="https://treaties.un.org/Pages/showDetails.aspx?objid=0800000280027a28" target="_blank" rel="noreferrer">Art. I</a>) and must avoid <b>complicity</b> in genocide (<a href="https://treaties.un.org/doc/Publication/UNTS/Volume%2078/volume-78-I-1021-English.pdf#page=4" target="_blank" rel="noreferrer">Art. III(e)</a>), including by enacting effective penalties in domestic law (<a href="https://treaties.un.org/doc/Publication/UNTS/Volume%2078/volume-78-I-1021-English.pdf#page=5" target="_blank" rel="noreferrer">Art. V</a>).
+          </span>
         </div>
         <div class="pill">
           <span class="b">Why this matters here.</span>
-          <span>When an MP repeatedly labels anti-Zionist advocacy as “antisemitic” while omitting Palestinian civilian harm and UN findings, it narrows the Overton window: <b>criticism of a state or ideology</b> is chilled as “hate,” while the <b>documented killing of civilians</b> goes unaddressed.</span>
+          <span>When an MP repeatedly labels anti-Zionist advocacy as “antisemitic” while omitting Palestinian civilian harm and UN findings, it narrows the Overton window: <b>criticism of a state or ideology</b> is chilled as “hate,” while the <b>documented killing of civilians</b> goes unaddressed.
+            <a href="https://www.ohchr.org/en/hr-bodies/hrc/regular-sessions/session55/list-reports" target="_blank" rel="noreferrer">SR report A/HRC/55/73</a>
+          </span>
         </div>
       </div>
     </section>
@@ -338,7 +340,7 @@
         const el=document.getElementById(id);
         if(!el) return;
         const top=el.getBoundingClientRect().top;
-        if(top<=160) activeIndex=i;   // header + breathing room
+        if(top<=160) activeIndex=i;
       });
       links.forEach((a,i)=>a.classList.toggle('active',i===activeIndex));
     }
@@ -419,7 +421,6 @@
         if(!res.ok) throw new Error('Could not load evidence.json');
         let items = await res.json();
 
-        // de-dupe by URL + sort desc by date
         const seen = new Set();
         items = items.filter(it=>{
           const u=(it.url||'').trim(); if(!u) return true;
