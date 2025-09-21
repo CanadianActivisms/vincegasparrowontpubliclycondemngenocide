@@ -172,32 +172,32 @@
       font-size:14px; line-height:1.45; color:var(--ink);
     }
     .pill .b{display:block;font-weight:600;margin-bottom:4px;color:#111}
-    /* Mobile header fixes */
-@media (max-width:560px){
+ /* Mobile header refinements */
+@media (max-width:600px){
   .brandwrap{
-    flex-direction:column;         /* stack brand above nav */
+    flex-direction:column;
     align-items:flex-start;
-    gap:6px;
-    padding:10px 12px;             /* a bit tighter */
+    gap:2px;                  /* tighter vertical gap */
+    padding:6px 10px;         /* less padding */
   }
   .wordmark{
-    font-size:16px;                /* smaller on mobile */
-    letter-spacing:.02em;
+    font-size:14px;           /* smaller */
     line-height:1.2;
     max-width:100%;
-    overflow-wrap:anywhere;        /* let long domain wrap */
+    overflow-wrap:anywhere;
     word-break:break-word;
   }
   .nav{
+    display:flex;
+    flex-wrap:wrap;           /* allow nav items to break into two rows */
+    gap:6px 12px;             /* tighter gaps */
     width:100%;
     margin-top:2px;
-    overflow-x:auto;               /* if it still overflows, make it scrollable */
-    white-space:nowrap;
-    -webkit-overflow-scrolling:touch;
   }
   .nav a{
-    margin-left:0;
-    margin-right:14px;             /* spacing when nav is on one line */
+    font-size:12px;           /* shrink nav links */
+    margin:0;                 /* remove extra spacing */
+    padding-bottom:2px;
   }
 }
   </style>
