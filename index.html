@@ -23,6 +23,16 @@ Index v3
       --snark:var(--lib-red);
       --soft:#FFFDFD;
     }
+    :root{
+  --container:1120px;
+  --gutter:20px;
+}
+.container{
+  max-width:var(--container);
+  margin:0 auto;
+  padding-left:var(--gutter);
+  padding-right:var(--gutter);
+}
 
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -38,7 +48,7 @@ Index v3
       transition:box-shadow .18s ease
     }
     .brandbar.is-stuck{ box-shadow:0 8px 24px rgba(16,24,40,.07) }
-    .brandwrap{max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+    .brandwrap{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
     .wordmark{font-family:Newsreader,serif;font-size:22px;font-weight:700;letter-spacing:.06em}
     .nav a{
       position:relative;color:var(--ink);text-decoration:none;margin-left:18px;font-size:14px;font-weight:500;
@@ -56,11 +66,10 @@ Index v3
       border-bottom:1px solid var(--line);
     }
     /* Match the main content column */
-    .hero{
-      max-width:1120px;
-      margin:0 auto;
-      padding:48px 20px 28px;
-    }
+.hero{
+  padding-top:48px;
+  padding-bottom:28px;
+}
 
     /* Three-line locked headline */
     .heroTitle{
@@ -123,7 +132,7 @@ Index v3
     .btn.ghost:hover{background:#FFF1F1}
 
     /* ===== Layout / cards ===== */
-    .wrap{max-width:1120px;margin:18px auto 28px;padding:0 20px;display:grid;grid-template-columns:1fr;gap:20px}
+    .wrap{margin-top:18px;margin-bottom:28px;display:grid;grid-template-columns:1fr;gap:20px}
     .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
     .section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
     .h2{font-weight:700;margin:0 0 10px;font-size:18px}
@@ -163,7 +172,7 @@ Index v3
 
     /* Footer */
     footer{border-top:1px solid var(--line);padding:18px 20px;color:var(--sub);font-size:12px}
-    .footwrap{max-width:1120px;margin:0 auto}
+    .footwrap{}
 
     /* No desktop split for counters — keep stacked */
     @media (min-width:820px){
@@ -195,7 +204,7 @@ Index v3
 <body>
   <!-- Brand -->
   <div class="brandbar" id="brandbar">
-    <div class="brandwrap">
+    <div class="brandwrap container">
       <div class="wordmark">vincegasparrowontpubliclycondemngenocide.com</div>
       <nav class="nav">
         <a href="#facts">Not-so-fun facts</a>
@@ -208,7 +217,7 @@ Index v3
 
   <!-- Hero / Clocks -->
   <div class="heroField" id="clocks">
-    <section class="hero">
+    <section class="hero container">
 
       <!-- Three-line, centered title -->
       <h1 class="heroTitle" aria-label="How many more days of genocide will it take, Vince?">
@@ -277,7 +286,7 @@ Index v3
   </div> <!-- closes .heroField -->
 
   <!-- Not-so-fun facts -->
-  <div class="wrap" id="facts">
+  <div class="wrap container" id="facts">
     <section class="section">
       <div class="h2">Not-so-fun facts about the genocide in Gaza</div>
       <p class="muted">Feel free to forward any of these to Vince in case he’s been busy protecting Canada from Irish musicians.</p>
@@ -295,7 +304,7 @@ Index v3
   </div>
 
   <!-- UN Context -->
-  <div class="wrap">
+  <div class="wrap container">
     <section class="section" id="un-context">
       <div class="h2">UN context (what the official record says)</div>
       <p class="muted">Primary documents are cited in the site footer.</p>
@@ -329,7 +338,7 @@ Index v3
   </div>
 
   <!-- Timeline -->
-  <div class="wrap">
+  <div class="wrap container">
     <section class="card" id="timeline">
       <div class="h2">&quot;Domestic Matters&quot;</div>
       <div id="list"></div>
@@ -345,7 +354,7 @@ Index v3
   </div>
 
   <footer>
-    <div class="footwrap">
+    <div class="footwrap container">
       Key sources: UN HRC COI press release (12 Jun 2024) and report A/HRC/56/26; UN HRC report A/HRC/60/CRP/3 (advance version). This site presents <i>verifiable facts</i> and <i>analysis</i> on matters of public interest.
     </div>
   </footer>
