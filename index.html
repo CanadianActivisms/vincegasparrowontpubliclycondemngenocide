@@ -490,9 +490,10 @@
   loadTimeline();
 
   /* ===== Email Vince + Cloudflare Worker counter ===== */
-  (function () {
-    const subject = "Is TODAY the day?!";
-    const bodyRaw = `Despite the UNHCR and hundreds of humanitarian and human rights organizations confirming Israel is committing genocide against the Palestinians in Gaza, you still have not acknowledged nor condemned the genocide.
+  <script>
+(function () {
+  const subject = "Is TODAY the day?!";
+  const bodyRaw = `Despite the UNHCR and hundreds of humanitarian and human rights organizations confirming Israel is committing genocide against the Palestinians in Gaza, you still have not acknowledged nor condemned the genocide.
 
 Will today be the day?
 
@@ -506,64 +507,57 @@ It’s been horrifying to witness Canada continuing to allow the export of milit
 
 Looking forward to hearing your response.`;
 
-    // Encode body and force CRLF newlines for Proton/iOS
-    const encodeBody = (s) =>
-      encodeURIComponent(s).replace(/%0A/g, '%0D%0A');
+  // Encode each line; join with CRLF tokens so Proton/iOS/Gmail all keep blank lines.
+  function buildMailto(to, subject, body) {
+    const lines = body.replace(/\r?\n/g, '\n').split('\n');     // normalize
+    const encodedBody = lines.map(encodeURIComponent).join('%0D%0A');
+    return `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodedBody}`;
+  }
 
-    const link = document.getElementById("email-vince");
-    const elCount = document.getElementById("email-count");
+  const link   = document.getElementById("email-vince");
+  const elCount= document.getElementById("email-count");
 
-    if (link) {
-      const mailto =
-        `mailto:vince.gasparro@parl.gc.ca` +
-        `?subject=${encodeURIComponent(subject)}` +
-        `&body=${encodeBody(bodyRaw)}`;
-      link.setAttribute("href", mailto);
+  if (link) {
+    link.href = buildMailto("vince.gasparro@parl.gc.ca", subject, bodyRaw);
+
+    // Stealth-copy the body to clipboard on click so users can paste if any client still flattens.
+    link.addEventListener("click", () => {
+      navigator.clipboard?.writeText(bodyRaw).catch(()=>{});
+      hitCount();                  // see counter code below
+      setTimeout(showCount, 400);
+    });
+  }
+
+  /* Counter (sendBeacon so the mailto jump doesn't cancel it) */
+  const API_BASE = "https://emailcounter.canadianactivism.workers.dev";
+  const URL_GET  = `${API_BASE}/count`;
+  const URL_HIT  = `${API_BASE}/hit`;
+
+  if (elCount) elCount.textContent = "loading…";
+
+  async function showCount(){
+    if (!elCount) return;
+    try{
+      const r = await fetch(URL_GET, {cache:"no-store"});
+      const j = await r.json();
+      elCount.textContent = Number.isFinite(j.value) ? `${j.value.toLocaleString()} emails sent` : "counter unavailable";
+    }catch{
+      elCount.textContent = "counter unavailable";
     }
+  }
 
-    // Cloudflare Worker endpoints
-    const API_BASE = "https://emailcounter.canadianactivism.workers.dev";
-    const URL_GET  = `${API_BASE}/count`;
-    const URL_HIT  = `${API_BASE}/hit`;
-
-    if (elCount) elCount.textContent = "loading…";
-
-    async function getCount() {
-      try {
-        const r = await fetch(URL_GET, { cache: "no-store" });
-        if (!r.ok) throw 0;
-        const j = await r.json();
-        return Number.isFinite(j.value) ? j.value : null;
-      } catch { return null; }
+  function hitCount(){
+    try{
+      const blob = new Blob([], {type:"text/plain"});
+      if (!navigator.sendBeacon(URL_HIT, blob)) throw 0;
+    }catch{
+      fetch(URL_HIT, {method:"POST", keepalive:true}).catch(()=>{});
     }
+  }
 
-    async function showCount() {
-      if (!elCount) return;
-      const v = await getCount();
-      elCount.textContent = Number.isFinite(v) ? `${v.toLocaleString()} emails sent` : "counter unavailable";
-    }
-
-    // Increment just before navigation; sendBeacon survives the mailto jump
-    function hitCount() {
-      try {
-        const blob = new Blob([], { type: "text/plain;charset=utf-8" });
-        if (!navigator.sendBeacon(URL_HIT, blob)) {
-          throw 0;
-        }
-      } catch {
-        fetch(URL_HIT, { method: "POST", keepalive: true }).catch(()=>{});
-      }
-    }
-
-    if (link) {
-      link.addEventListener("click", () => {
-        hitCount();
-        setTimeout(showCount, 400);
-      });
-    }
-
-    showCount();
-  })();
+  showCount();
+})();
+</script>
   </script>
 </body>
 </html>
