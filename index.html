@@ -118,12 +118,17 @@
       text-align:center;
       color:#fff;
     }
-    @media (min-width: 1024px){
+   /* Desktop override: all clocks same width */
+@media (min-width: 1024px){
   .clock{
-    max-width: fit-content;   /* shrink to fit the content width */
-    margin: 0 auto;           /* center horizontally */
-    padding-left: 40px;       /* optional: extra breathing room */
+    max-width: 720px;   /* pick a width that looks good */
+    margin: 0 auto;
+    padding-left: 40px;
     padding-right: 40px;
+  }
+  .clock h2{
+    white-space: normal;   /* allow wrapping */
+    max-width: 100%;       /* don’t force overflow */
   }
 }
     .clock h2{
