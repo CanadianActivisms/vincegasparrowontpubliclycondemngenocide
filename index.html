@@ -1,3 +1,7 @@
+Maybe index?
+
+Index v3
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:wght@700&display=swap" rel="stylesheet">
   <style>
     :root{
+      /* Core palette — Liberal red */
       --lib-red:#D71920;
       --lib-red-dark:#B51218;
       --ink:#0e1116;
@@ -36,7 +41,8 @@
     .brandwrap{max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
     .wordmark{font-family:Newsreader,serif;font-size:22px;font-weight:700;letter-spacing:.06em}
     .nav a{
-      position:relative;color:var(--ink);text-decoration:none;margin-left:18px;font-size:14px;font-weight:500;padding-bottom:4px;
+      position:relative;color:var(--ink);text-decoration:none;margin-left:18px;font-size:14px;font-weight:500;
+      padding-bottom:4px;
     }
     .nav a:hover{color:var(--accent)}
     .nav a.active{color:var(--accent)}
@@ -50,52 +56,71 @@
       border-bottom:1px solid var(--line);
     }
     /* Match the main content column */
-    .hero{ max-width:1120px; margin:0 auto; padding:48px 20px 28px; }
+    .hero{
+      max-width:1120px;
+      margin:0 auto;
+      padding:48px 20px 28px;
+    }
 
     /* Three-line locked headline */
     .heroTitle{
-      margin:0 0 16px; text-align:center; font-family:Newsreader,serif;
-      text-transform:uppercase; letter-spacing:.06em; line-height:1.05;
-      display:grid; justify-items:center; gap:.2em;
+      margin:0 0 16px;
+      text-align:center;
+      font-family:Newsreader,serif;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      line-height:1.05;
+      display:grid;
+      justify-items:center;
+      gap:.2em;
     }
-    .heroTitle .line{ display:block; font-weight:700; font-size:clamp(22px, 5vw, 64px); }
-    .heroTitle .callout{ color:var(--snark); font-size:clamp(28px, 6.2vw, 72px); letter-spacing:.04em; }
+    .heroTitle .line{
+      display:block;
+      font-weight:700;
+      font-size:clamp(22px, 5vw, 64px);
+    }
+    .heroTitle .callout{
+      color:var(--snark);
+      font-size:clamp(28px, 6.2vw, 72px);
+      letter-spacing:.04em;
+    }
 
-    /* Stacked counters */
+    /* Full-width, stacked counters */
     .clockwrap{display:grid; grid-template-columns:1fr; gap:14px; margin:12px 0 8px;}
     .clock{
-      background:var(--lib-red); color:#fff;
+      background:var(--lib-red);
       border:1px solid rgba(0,0,0,.06);
       border-radius:16px;
-      padding:18px 16px;
+      padding:16px 14px;
       box-shadow:0 10px 22px rgba(215,25,32,.12), 0 2px 4px rgba(215,25,32,.18);
-      display:grid; gap:8px;
-      text-align:center;
+      display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center;
+      color:#fff;
     }
-    .clockTitle{ margin:0; font-size:16px; font-weight:700; text-shadow:0 1px 0 rgba(0,0,0,.15); }
-
-    /* Tight, aligned 4-column meter */
-    .meter{
-      display:grid;
-      grid-template-columns:repeat(4, minmax(64px, 1fr));
-      justify-items:center;
-      align-items:end;
-      gap:10px;                 /* << much tighter spacing */
-      margin-top:2px;
+    .clock h2{
+      margin:0; font-size:16px; font-weight:700; color:#fff;
+      text-shadow:0 1px 0 rgba(0,0,0,.15);
     }
-    .metric .val{
-      font-variant-numeric:tabular-nums;
-      font-weight:900; line-height:1;
-      font-size:clamp(28px, 5vw, 56px);
+    .bigtime{
+      font-variant-numeric:tabular-nums; font-weight:900;
+      font-size:clamp(24px,4.8vw,42px); letter-spacing:.02em; color:#fff;
       text-shadow:0 1px 0 rgba(0,0,0,.25), 0 0 2px rgba(0,0,0,.18);
     }
-    .metric .lab{
-      margin-top:6px;
-      font-size:12px; font-weight:700; opacity:.95;
+    .subtime{
+      font-size:12px;color:#fff;opacity:.9;
       text-shadow:0 1px 0 rgba(0,0,0,.18);
     }
-    .since{ font-size:12px; opacity:.95; text-shadow:0 1px 0 rgba(0,0,0,.18); }
-    .note{ font-size:12px; opacity:.95; margin-top:4px; }
+
+    .ctaRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .btn{
+      display:inline-block; text-decoration:none; cursor:pointer;
+      padding:10px 14px; border-radius:999px; font-weight:700; font-size:14px;
+      border:1px solid transparent; transition:background .15s ease, border-color .15s ease, color .15s ease, transform .02s ease;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn.primary{background:var(--lib-red); color:#fff; border-color:var(--lib-red)}
+    .btn.primary:hover{background:var(--lib-red-dark); border-color:var(--lib-red-dark)}
+    .btn.ghost{background:#fff; border-color:var(--lib-red); color:var(--lib-red)}
+    .btn.ghost:hover{background:#FFF1F1}
 
     /* ===== Layout / cards ===== */
     .wrap{max-width:1120px;margin:18px auto 28px;padding:0 20px;display:grid;grid-template-columns:1fr;gap:20px}
@@ -104,19 +129,21 @@
     .h2{font-weight:700;margin:0 0 10px;font-size:18px}
     .muted{color:var(--sub);font-size:13px}
 
-    /* Facts grid */
+    /* ===== Facts ===== */
     .facts{display:grid; grid-template-columns:1fr; gap:10px}
     .fact{background:var(--soft); border:1px solid var(--line); border-radius:12px; padding:12px}
     .fact b{font-weight:700}
     .fact > b:first-child{display:block; margin-bottom:4px}
 
-    /* Timeline items */
+    /* ===== Timeline items ===== */
     .item{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}
     .meta{display:flex;gap:10px;align-items:center;color:var(--sub);font-size:12px}
     .meta .dot{width:5px;height:5px;background:#c8ccd6;border-radius:50%}
     .links{margin-top:10px;display:flex;gap:14px;font-size:12px}
     .links a{color:var(--accent);text-decoration:none}
     .links a:hover{text-decoration:underline}
+
+    /* Platform icons */
     .meta .platform{display:inline-flex;align-items:center;gap:6px}
     .meta .platform svg{width:16px;height:16px;display:inline-block;vertical-align:-2px}
 
@@ -138,13 +165,12 @@
     footer{border-top:1px solid var(--line);padding:18px 20px;color:var(--sub);font-size:12px}
     .footwrap{max-width:1120px;margin:0 auto}
 
-    /* Widen facts on desktop only; counters stay stacked */
+    /* No desktop split for counters — keep stacked */
     @media (min-width:820px){
       .facts{grid-template-columns:1fr 1fr}
-      .meter{ gap:14px } /* a touch more room on wide screens */
     }
 
-    /* UN Context pill cards */
+    /* ===== UN Context pill cards ===== */
     .pilllist{display:grid;gap:14px;margin-top:10px}
     .pill{
       background:var(--soft);
@@ -157,7 +183,9 @@
 
     /* Mobile header fixes */
     @media (max-width:560px){
-      .brandwrap{flex-direction:column; align-items:flex-start; gap:6px; padding:10px 12px;}
+      .brandwrap{
+        flex-direction:column; align-items:flex-start; gap:6px; padding:10px 12px;
+      }
       .wordmark{ font-size:16px; letter-spacing:.02em; line-height:1.2; max-width:100%; overflow-wrap:anywhere; word-break:break-word; }
       .nav{ width:100%; margin-top:2px; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; }
       .nav a{ margin-left:0; margin-right:14px; }
@@ -178,10 +206,11 @@
     </div>
   </div>
 
-  <!-- Hero / Counters -->
+  <!-- Hero / Clocks -->
   <div class="heroField" id="clocks">
     <section class="hero">
 
+      <!-- Three-line, centered title -->
       <h1 class="heroTitle" aria-label="How many more days of genocide will it take, Vince?">
         <span class="line">How many more days of</span>
         <span class="line callout">Genocide</span>
@@ -189,41 +218,31 @@
       </h1>
 
       <div class="clockwrap">
-        <!-- Counter 1 -->
         <div class="clock">
-          <div class="clockTitle">Days since the UN declared Israel’s actions a genocide</div>
-          <div class="meter">
-            <div class="metric"><div id="c1d" class="val">0</div><div class="lab">Days</div></div>
-            <div class="metric"><div id="c1h" class="val">00</div><div class="lab">Hours</div></div>
-            <div class="metric"><div id="c1m" class="val">00</div><div class="lab">Minutes</div></div>
-            <div class="metric"><div id="c1s" class="val">00</div><div class="lab">Seconds</div></div>
+          <h2>Days since the UN declared Israel’s actions a genocide</h2>
+          <div>
+            <div id="t1" class="bigtime">— : — : — : —</div>
+            <div class="subtime">Days : Hours : Minutes : Seconds (since <b>Sept 16, 2025</b>)</div>
           </div>
-          <div class="since">(since <b>Sept 16, 2025</b>)</div>
         </div>
 
-        <!-- Counter 2 -->
         <div class="clock">
-          <div class="clockTitle">Days since the Albanese report</div>
-          <div class="meter">
-            <div class="metric"><div id="c2d" class="val">0</div><div class="lab">Days</div></div>
-            <div class="metric"><div id="c2h" class="val">00</div><div class="lab">Hours</div></div>
-            <div class="metric"><div id="c2m" class="val">00</div><div class="lab">Minutes</div></div>
-            <div class="metric"><div id="c2s" class="val">00</div><div class="lab">Seconds</div></div>
+          <h2>Days since the Albanese report</h2>
+          <div>
+            <div id="t2" class="bigtime">— : — : — : —</div>
+            <div class="subtime">Days : Hours : Minutes : Seconds (since <b>Mar 25, 2024</b>)</div>
+            <div class="subtime" style="margin-top:6px">
+              * “…reasonable grounds to believe that the threshold indicating that Israel has committed genocide has been met.”
+            </div>
           </div>
-          <div class="since">(since <b>Mar 25, 2024</b>)</div>
-          <div class="note">* “…reasonable grounds to believe that the threshold indicating that Israel has committed genocide has been met.”</div>
         </div>
 
-        <!-- Counter 3 -->
         <div class="clock">
-          <div class="clockTitle">Days of genocide (at minimum)</div>
-          <div class="meter">
-            <div class="metric"><div id="c3d" class="val">0</div><div class="lab">Days</div></div>
-            <div class="metric"><div id="c3h" class="val">00</div><div class="lab">Hours</div></div>
-            <div class="metric"><div id="c3m" class="val">00</div><div class="lab">Minutes</div></div>
-            <div class="metric"><div id="c3s" class="val">00</div><div class="lab">Seconds</div></div>
+          <h2>Days of genocide (at minimum)</h2>
+          <div>
+            <div id="t3" class="bigtime">— : — : — : —</div>
+            <div class="subtime">Days : Hours : Minutes : Seconds (since <b>Oct 7, 2023</b>)</div>
           </div>
-          <div class="since">(since <b>Oct 7, 2023</b>)</div>
         </div>
       </div>
 
@@ -231,17 +250,21 @@
         <p>
           MP Vince Gasparro refuses to publicly acknowledge or condemn the genocide being committed by Israel against the Palestinians in Gaza. How many more dead families, children shot in the head, bombed hospitals and dead journalists will it take for him to publicly mention the genocide – and how many more for him to condemn it? <b>Only TIME will tell!</b>
         </p>
+
         <p>
           According to his office, MP Vince Gasparro is simply a humble MP, and is only concerned with domestic matters. This does not include the genocide in Gaza, we are told, even though Canada is still sending arms to Israel (according to his social media it does appear include October 7th, however – where in Canada was this again?)
         </p>
+
         <p>
           Even though Liberal MP Vince Gasparro is busy making (in)famous videos about protecting Canadians from Irish musical artists (and succeeding in getting their legal group’s attention as well – great job!) he does not have time to post about the genocide. And don’t worry, the returning IDF soldiers and their recent “work experience” should be zero risk to Canadians, so let’s not bother him about that.
         </p>
+
         <p>
-          If you are also on the edge of your seat wondering “Will it be today?! Is today the day he acknowledges the genocide?!” you can send him an email using the form below. It’s pre-written and lets him know about MP Jenny Kwan’s private member’s bill, the <i>No More Loopholes Act</i>, which will stop the flow of arms through the US to Israel. Feel free to customize it with your own special thoughts and predictions.
+          If you are also on the edge of your seat wondering “Will it be today?! Is today the day he acknowledges the genocide?!” you can send him an email using the form below. It’s pre-written and lets him know about MP Jenny Kwan’s private member’s bill, the <i>No More Loopholes Act</i>, which will stop the flow of arms through the US to Israel. Feel free to customize it with your own special thoughts and predictions, such as “How many more dead parents?” “How many more toddlers shot in the head by snipers?” “How many more infants starved to death because Israel prevents them from receiving baby formula?” (a known and completely real threat to Israel’s security) We can only wait and see - and email him until we have an answer. 
         </p>
       </div>
 
+      <!-- Button + counter -->
       <div class="ctaRow">
         <a id="email-vince" class="btn primary" href="#">Email Vince Gasparro</a>
         <span id="email-count" class="muted" style="align-self:center"></span>
@@ -251,7 +274,7 @@
       </div>
 
     </section>
-  </div>
+  </div> <!-- closes .heroField -->
 
   <!-- Not-so-fun facts -->
   <div class="wrap" id="facts">
@@ -351,36 +374,28 @@
   window.addEventListener('scroll',setActive,{passive:true});
   window.addEventListener('load',setActive);
 
-  /* Live clocks — aligned columns */
+  /* Live clocks */
   const REF_GENOCIDE = new Date('2025-09-16T00:00:00Z').getTime();
   const REF_ALBANESE = new Date('2024-03-25T00:00:00Z').getTime();
-  const REF_MIN      = new Date('2023-10-07T00:00:00Z').getTime();
+  const REF_MIN = new Date('2023-10-07T00:00:00Z').getTime(); // Days of genocide (at minimum)
 
-  const pad2 = n => String(n).padStart(2,'0');
-  function partsSince(t){
-    const s = Math.floor((Date.now()-t)/1000);
-    const d = Math.floor(s/86400);
-    const h = Math.floor((s%86400)/3600);
-    const m = Math.floor((s%3600)/60);
-    const ss = s%60;
-    return {d, h:pad2(h), m:pad2(m), s:pad2(ss)};
-  }
-  function setMeter(prefix, ref){
-    const p = partsSince(ref);
-    const set = (id, v) => { const el=document.getElementById(id); if(el) el.textContent=v; };
-    set(prefix+'d', p.d);
-    set(prefix+'h', p.h);
-    set(prefix+'m', p.m);
-    set(prefix+'s', p.s);
-  }
+  const pad=n=>String(n).padStart(2,'0');
+  const fmt=ms=>{
+    const s=Math.floor(ms/1000), d=Math.floor(s/86400),
+          h=Math.floor((s%86400)/3600), m=Math.floor((s%3600)/60), ss=s%60;
+    return `${d} : ${pad(h)} : ${pad(m)} : ${pad(ss)}`;
+  };
   function tick(){
-    setMeter('c1', REF_GENOCIDE);
-    setMeter('c2', REF_ALBANESE);
-    setMeter('c3', REF_MIN);
+    const now=Date.now();
+    const t1=now-REF_GENOCIDE, t2=now-REF_ALBANESE, t3=now-REF_MIN;
+    const e1=document.getElementById('t1'), e2=document.getElementById('t2'), e3=document.getElementById('t3');
+    if(e1) e1.textContent=fmt(t1);
+    if(e2) e2.textContent=fmt(t2);
+    if(e3) e3.textContent=fmt(t3);
   }
   tick(); setInterval(tick,1000);
 
-  /* ===== Timeline loader (unchanged) ===== */
+  /* ===== Timeline (minimal: date + platform + screenshots + links) ===== */
   const $ = s => document.querySelector(s);
   const listEl = $('#list'), emptyEl = $('#empty');
   const lb = $('#lb'), lbimg = $('#lbimg');
@@ -483,9 +498,17 @@ Will today be the day?
 
 We are all waiting.
 
-While you were busy banning Irish rappers from Canada (are we all safe now?) Canadians remain complicit in genocide. I demand sanctions on Israel, immediate ceasefire, investigation of returning IDF soldiers for war crimes, a full arms embargo ... Looking forward to hearing your response.`;
+While you were busy banning Irish rappers from Canada (are we all safe now?) Canadians remain complicit in genocide. I demand sanctions on Israel, immediate ceasefire, investigation of returning IDF soldiers for war crimes, a full arms embargo (no more of those pesky loopholes allowing for arms to be sent to Israel by passing unregulated and unreported through the US) and yes — a public condemnation of Israel’s genocide against the Palestinians.
 
+Immediately, we request you to support the No More Loopholes Bill tabled by MP Jenny Kwan. Formally called An Act to Amend the Export and Import Permits Act, this Private Member’s Bill aims to close dangerous gaps in Canada’s arms export laws — especially the U.S. loophole, which allows Canadian-made weapons parts to be shipped through the U.S. and on to Israel or other conflict zones without proper oversight. The bill would bring Canada’s laws in line with the global Arms Trade Treaty and ensures Canadian exports are not complicit in genocide or other war crimes.
+
+It’s been horrifying to witness Canada continuing to allow the export of military goods to a state that has slaughtered tens of thousands of civilians over the last two years. And I have been beyond shocked at the pattern of the misrepresentation, obfuscation, and outright lies from the Canadian officials in an effort to conceal all of this horrifying reality. Nothing can justify Canada continuing to supply weapons to a government that is deliberately starving children to death.
+
+Looking forward to hearing your response.`;
+
+    // Convert \n to \r\n so iOS Mail/Gmail preserve blank lines
     const toCRLF = s => s.replace(/\r?\n/g, "\r\n");
+
     const link = document.getElementById("email-vince");
     const elCount = document.getElementById("email-count");
 
@@ -494,6 +517,7 @@ While you were busy banning Irish rappers from Canada (are we all safe now?) Can
       link.setAttribute("href", mailto);
     }
 
+    // Cloudflare Worker endpoints
     const API_BASE = "https://emailcounter.canadianactivism.workers.dev";
     const URL_GET  = `${API_BASE}/count`;
     const URL_HIT  = `${API_BASE}/hit`;
@@ -508,6 +532,7 @@ While you were busy banning Irish rappers from Canada (are we all safe now?) Can
         return Number.isFinite(j.value) ? j.value : null;
       } catch { return null; }
     }
+
     async function hitCount() {
       try {
         const r = await fetch(URL_HIT, { method: "POST", cache: "no-store" });
@@ -516,17 +541,20 @@ While you were busy banning Irish rappers from Canada (are we all safe now?) Can
         return Number.isFinite(j.value) ? j.value : null;
       } catch { return null; }
     }
+
     async function showCount() {
       if (!elCount) return;
       const v = await getCount();
       elCount.textContent = Number.isFinite(v) ? `${v.toLocaleString()} emails sent` : "counter unavailable";
     }
+
     if (link) {
       link.addEventListener("click", async () => {
         await hitCount();
         showCount();
       });
     }
+
     showCount();
   })();
   </script>
