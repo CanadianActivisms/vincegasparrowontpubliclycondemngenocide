@@ -8,16 +8,16 @@
   <style>
     :root{
       /* Core palette — Liberal red */
-      --lib-red:#D71920;         /* Primary red */
-      --lib-red-dark:#B51218;    /* Hover/press */
+      --lib-red:#D71920;
+      --lib-red-dark:#B51218;
       --ink:#0e1116;
       --sub:#5e6470;
       --line:#e6e8ee;
-      --bg:#FFF7F7;              /* Page background (warm, airy) */
+      --bg:#FFF7F7;
       --card:#ffffff;
-      --accent:var(--lib-red);   /* Links & accents now red */
-      --snark:var(--lib-red);    /* Emphasis color now red */
-      --soft:#FFFDFD;            /* Soft card fill */
+      --accent:var(--lib-red);
+      --snark:var(--lib-red);
+      --soft:#FFFDFD;
     }
 
     *{box-sizing:border-box}
@@ -30,22 +30,20 @@
     /* ===== Brand / nav ===== */
     .brandbar{
       position:sticky; top:0; z-index:20; background:#fff;
-      border-bottom:3px solid var(--lib-red);               /* RED STRIP */
+      border-bottom:3px solid var(--lib-red);
       transition:box-shadow .18s ease
     }
     .brandbar.is-stuck{ box-shadow:0 8px 24px rgba(16,24,40,.07) }
     .brandwrap{max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
     .wordmark{font-family:Newsreader,serif;font-size:22px;font-weight:700;letter-spacing:.06em}
     .nav a{
-      position:relative;
-      color:var(--ink);text-decoration:none;margin-left:18px;font-size:14px;font-weight:500;
+      position:relative;color:var(--ink);text-decoration:none;margin-left:18px;font-size:14px;font-weight:500;
       padding-bottom:4px;
     }
-    .nav a:hover{color:var(--accent);text-decoration:none}
+    .nav a:hover{color:var(--accent)}
     .nav a.active{color:var(--accent)}
     .nav a.active::after{
-      content:""; position:absolute; left:0; right:0; bottom:0;
-      height:2px; background:var(--accent); border-radius:2px;
+      content:""; position:absolute; left:0; right:0; bottom:0; height:2px; background:var(--accent); border-radius:2px;
     }
 
     /* ===== Hero / counters ===== */
@@ -53,17 +51,14 @@
       background:radial-gradient(1200px 420px at 15% -10%, #fff 0, #FFE9EA 55%, #FFF7F7 100%);
       border-bottom:1px solid var(--line);
     }
-.hero{
-  max-width:1120px;
-  margin:0 auto;
-  padding:48px 38px 28px;  /* 20 + 18 to match section inner content */
-}
+    /* Match the main content column */
+    .hero{
+      max-width:1120px;
+      margin:0 auto;
+      padding:48px 20px 28px;
+    }
 
-@media (max-width:560px){
-  /* keep mobile comfy */
-  .hero{ padding-left:20px; padding-right:20px; }
-}
-    /* NEW: Three-line locked headline */
+    /* Three-line locked headline */
     .heroTitle{
       margin:0 0 16px;
       text-align:center;
@@ -86,6 +81,7 @@
       letter-spacing:.04em;
     }
 
+    /* Full-width, stacked counters */
     .clockwrap{display:grid; grid-template-columns:1fr; gap:14px; margin:12px 0 8px;}
     .clock{
       background:var(--lib-red);
@@ -165,8 +161,8 @@
     footer{border-top:1px solid var(--line);padding:18px 20px;color:var(--sub);font-size:12px}
     .footwrap{max-width:1120px;margin:0 auto}
 
+    /* No desktop split for counters — keep stacked */
     @media (min-width:820px){
-      .clockwrap{grid-template-columns:1fr 1fr}
       .facts{grid-template-columns:1fr 1fr}
     }
 
@@ -180,35 +176,17 @@
       font-size:14px; line-height:1.45; color:var(--ink);
     }
     .pill .b{display:block;font-weight:600;margin-bottom:4px;color:#111}
-/* Mobile header fixes */
-@media (max-width:560px){
-  .brandwrap{
-    flex-direction:column;         /* stack brand above nav */
-    align-items:flex-start;
-    gap:6px;
-    padding:10px 12px;             /* a bit tighter */
-  }
-  .wordmark{
-    font-size:16px;                /* smaller on mobile */
-    letter-spacing:.02em;
-    line-height:1.2;
-    max-width:100%;
-    overflow-wrap:anywhere;        /* let long domain wrap */
-    word-break:break-word;
-  }
-  .nav{
-    width:100%;
-    margin-top:2px;
-    overflow-x:auto;               /* if it still overflows, make it scrollable */
-    white-space:nowrap;
-    -webkit-overflow-scrolling:touch;
-  }
-  .nav a{
-    margin-left:0;
-    margin-right:14px;             /* spacing when nav is on one line */
-  }
-} 
- </style>
+
+    /* Mobile header fixes */
+    @media (max-width:560px){
+      .brandwrap{
+        flex-direction:column; align-items:flex-start; gap:6px; padding:10px 12px;
+      }
+      .wordmark{ font-size:16px; letter-spacing:.02em; line-height:1.2; max-width:100%; overflow-wrap:anywhere; word-break:break-word; }
+      .nav{ width:100%; margin-top:2px; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; }
+      .nav a{ margin-left:0; margin-right:14px; }
+    }
+  </style>
 </head>
 <body>
   <!-- Brand -->
@@ -228,7 +206,7 @@
   <div class="heroField" id="clocks">
     <section class="hero">
 
-      <!-- NEW three-line, centered title -->
+      <!-- Three-line, centered title -->
       <h1 class="heroTitle" aria-label="How many more days of genocide will it take, Vince?">
         <span class="line">How many more days of</span>
         <span class="line callout">Genocide</span>
@@ -254,6 +232,14 @@
             </div>
           </div>
         </div>
+
+        <div class="clock">
+          <h2>Days of genocide (at minimum)</h2>
+          <div>
+            <div id="t3" class="bigtime">— : — : — : —</div>
+            <div class="subtime">Days : Hours : Minutes : Seconds (since <b>Oct 7, 2023</b>)</div>
+          </div>
+        </div>
       </div>
 
       <div class="muted" style="margin-top:10px">
@@ -274,14 +260,17 @@
         </p>
       </div>
 
-<!-- UPDATED: Single button + counter + tip -->
-<div class="ctaRow">
-  <a id="email-vince" class="btn primary" href="#">Email Vince Gasparro</a>
-  <span id="email-count" class="muted" style="align-self:center"></span>
-</div>
-<div class="muted" style="font-size:12px;margin-top:4px">
-  Template provided — but customization is encouraged.
-</div>
+      <!-- Button + counter -->
+      <div class="ctaRow">
+        <a id="email-vince" class="btn primary" href="#">Email Vince Gasparro</a>
+        <span id="email-count" class="muted" style="align-self:center"></span>
+      </div>
+      <div class="muted" style="font-size:12px;margin-top:4px">
+        Template provided — but customization is encouraged.
+      </div>
+
+    </section>
+  </div> <!-- closes .heroField -->
 
   <!-- Not-so-fun facts -->
   <div class="wrap" id="facts">
@@ -384,6 +373,8 @@
   /* Live clocks */
   const REF_GENOCIDE = new Date('2025-09-16T00:00:00Z').getTime();
   const REF_ALBANESE = new Date('2024-03-25T00:00:00Z').getTime();
+  const REF_MIN = new Date('2023-10-07T00:00:00Z').getTime(); // Days of genocide (at minimum)
+
   const pad=n=>String(n).padStart(2,'0');
   const fmt=ms=>{
     const s=Math.floor(ms/1000), d=Math.floor(s/86400),
@@ -392,10 +383,11 @@
   };
   function tick(){
     const now=Date.now();
-    const t1=now-REF_GENOCIDE, t2=now-REF_ALBANESE;
-    const e1=document.getElementById('t1'), e2=document.getElementById('t2');
+    const t1=now-REF_GENOCIDE, t2=now-REF_ALBANESE, t3=now-REF_MIN;
+    const e1=document.getElementById('t1'), e2=document.getElementById('t2'), e3=document.getElementById('t3');
     if(e1) e1.textContent=fmt(t1);
     if(e2) e2.textContent=fmt(t2);
+    if(e3) e3.textContent=fmt(t3);
   }
   tick(); setInterval(tick,1000);
 
@@ -493,10 +485,10 @@
   }
   loadTimeline();
 
-/* ===== Email Vince + Cloudflare Worker counter ===== */
-(function () {
-  const subject = "Is TODAY the day?!";
-  const bodyRaw = `Despite the UNHCR and hundreds of humanitarian and human rights organizations confirming Israel is committing genocide against the Palestinians in Gaza, you still have not acknowledged nor condemned the genocide.
+  /* Email + Cloudflare Worker counter */
+  (function () {
+    const subject = "Is TODAY the day?!";
+    const bodyRaw = `Despite the UNHCR and hundreds of humanitarian and human rights organizations confirming Israel is committing genocide against the Palestinians in Gaza, you still have not acknowledged nor condemned the genocide.
 
 Will today be the day?
 
@@ -510,57 +502,57 @@ It’s been horrifying to witness Canada continuing to allow the export of milit
 
 Looking forward to hearing your response.`;
 
-  // Convert \n to \r\n so iOS Mail/Gmail preserve blank lines
-  const toCRLF = s => s.replace(/\r?\n/g, "\r\n");
+    // Convert \n to \r\n so iOS Mail/Gmail preserve blank lines
+    const toCRLF = s => s.replace(/\r?\n/g, "\r\n");
 
-  const link = document.getElementById("email-vince");
-  const elCount = document.getElementById("email-count");
+    const link = document.getElementById("email-vince");
+    const elCount = document.getElementById("email-count");
 
-  if (link) {
-    const mailto = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(toCRLF(bodyRaw))}`;
-    link.setAttribute("href", mailto);
-  }
+    if (link) {
+      const mailto = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(toCRLF(bodyRaw))}`;
+      link.setAttribute("href", mailto);
+    }
 
-  // Cloudflare Worker endpoints
-  const API_BASE = "https://emailcounter.canadianactivism.workers.dev";
-  const URL_GET  = `${API_BASE}/count`;
-  const URL_HIT  = `${API_BASE}/hit`;
+    // Cloudflare Worker endpoints
+    const API_BASE = "https://emailcounter.canadianactivism.workers.dev";
+    const URL_GET  = `${API_BASE}/count`;
+    const URL_HIT  = `${API_BASE}/hit`;
 
-  if (elCount) elCount.textContent = "loading…";
+    if (elCount) elCount.textContent = "loading…";
 
-  async function getCount() {
-    try {
-      const r = await fetch(URL_GET, { cache: "no-store" });
-      if (!r.ok) throw 0;
-      const j = await r.json();
-      return Number.isFinite(j.value) ? j.value : null;
-    } catch { return null; }
-  }
+    async function getCount() {
+      try {
+        const r = await fetch(URL_GET, { cache: "no-store" });
+        if (!r.ok) throw 0;
+        const j = await r.json();
+        return Number.isFinite(j.value) ? j.value : null;
+      } catch { return null; }
+    }
 
-  async function hitCount() {
-    try {
-      const r = await fetch(URL_HIT, { method: "POST", cache: "no-store" });
-      if (!r.ok) throw 0;
-      const j = await r.json();
-      return Number.isFinite(j.value) ? j.value : null;
-    } catch { return null; }
-  }
+    async function hitCount() {
+      try {
+        const r = await fetch(URL_HIT, { method: "POST", cache: "no-store" });
+        if (!r.ok) throw 0;
+        const j = await r.json();
+        return Number.isFinite(j.value) ? j.value : null;
+      } catch { return null; }
+    }
 
-  async function showCount() {
-    if (!elCount) return;
-    const v = await getCount();
-    elCount.textContent = Number.isFinite(v) ? `${v.toLocaleString()} emails sent` : "counter unavailable";
-  }
+    async function showCount() {
+      if (!elCount) return;
+      const v = await getCount();
+      elCount.textContent = Number.isFinite(v) ? `${v.toLocaleString()} emails sent` : "counter unavailable";
+    }
 
-  if (link) {
-    link.addEventListener("click", async () => {
-      await hitCount();
-      showCount();
-    });
-  }
+    if (link) {
+      link.addEventListener("click", async () => {
+        await hitCount();
+        showCount();
+      });
+    }
 
-  showCount();
-})();
+    showCount();
+  })();
   </script>
 </body>
 </html>
