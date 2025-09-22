@@ -487,8 +487,19 @@
  /* ===== Email Vince + Cloudflare Worker counter ===== */
 (function () {
   const subject = "Is TODAY the day?!";
-  const body = `Despite the UNHCR and hundreds of humanitarian and human rights organizations confirming Israel is committing genocide against the Palestinians in Gaza, you still have not acknowledged nor condemned the genocide.%0A%0AWill today be the day?%0A%0AWe are all waiting.%0A%0AWhile you were busy banning Irish rappers from Canada (are we all safe now?) Canadians remain complicit in genocide. I demand sanctions on Israel, immediate ceasefire, investigation of returning IDF soldiers for war crimes, a full arms embargo (no more of those pesky loopholes allowing for arms to be sent to Israel by passing unregulated and unreported through the US) and yes — a public condemnation of Israel’s genocide against the Palestinians.%0A%0AImmediately, we request you to support the No More Loopholes Bill tabled by MP Jenny Kwan. Formally called An Act to Amend the Export and Import Permits Act, this Private Member’s Bill aims to close dangerous gaps in Canada’s arms export laws — especially the U.S. loophole, which allows Canadian-made weapons parts to be shipped through the U.S. and on to Israel or other conflict zones without proper oversight. The bill would bring Canada’s laws in line with the global Arms Trade Treaty and ensures Canadian exports are not complicit in genocide or other war crimes.%0A%0AIt’s been horrifying to witness Canada continuing to allow the export of military goods to a state that has slaughtered tens of thousands of civilians over the last two years. And I have been beyond shocked at the pattern of the misrepresentation, obfuscation, and outright lies from the Canadian officials in an effort to conceal all of this horrifying reality. Nothing can justify Canada continuing to supply weapons to a government that is deliberately starving children to death.%0A%0ALooking forward to hearing your response.`;
+const body = encodeURIComponent(`Despite the UNHCR and hundreds of humanitarian and human rights organizations confirming Israel is committing genocide against the Palestinians in Gaza, you still have not acknowledged nor condemned the genocide.
 
+Will today be the day?
+
+We are all waiting.
+
+While you were busy banning Irish rappers from Canada (are we all safe now?) Canadians remain complicit in genocide. I demand sanctions on Israel, immediate ceasefire, investigation of returning IDF soldiers for war crimes, a full arms embargo (no more of those pesky loopholes allowing for arms to be sent to Israel by passing unregulated and unreported through the US) and yes — a public condemnation of Israel’s genocide against the Palestinians.
+
+Immediately, we request you to support the No More Loopholes Bill tabled by MP Jenny Kwan. Formally called An Act to Amend the Export and Import Permits Act, this Private Member’s Bill aims to close dangerous gaps in Canada’s arms export laws — especially the U.S. loophole, which allows Canadian-made weapons parts to be shipped through the U.S. and on to Israel or other conflict zones without proper oversight. The bill would bring Canada’s laws in line with the global Arms Trade Treaty and ensures Canadian exports are not complicit in genocide or other war crimes.
+
+It’s been horrifying to witness Canada continuing to allow the export of military goods to a state that has slaughtered tens of thousands of civilians over the last two years. And I have been beyond shocked at the pattern of the misrepresentation, obfuscation, and outright lies from the Canadian officials in an effort to conceal all of this horrifying reality. Nothing can justify Canada continuing to supply weapons to a government that is deliberately starving children to death.
+
+Looking forward to hearing your response.`);
   const link = document.getElementById("email-vince");
   const elCount = document.getElementById("email-count");
   if (link) {
