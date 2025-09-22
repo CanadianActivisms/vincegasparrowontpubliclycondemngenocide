@@ -172,7 +172,6 @@
       font-size:14px; line-height:1.45; color:var(--ink);
     }
     .pill .b{display:block;font-weight:600;margin-bottom:4px;color:#111}
-
 /* Mobile header fixes */
 @media (max-width:560px){
   .brandwrap{
@@ -200,8 +199,8 @@
     margin-left:0;
     margin-right:14px;             /* spacing when nav is on one line */
   }
-}
-  </style>
+} 
+ </style>
 </head>
 <body>
   <!-- Brand -->
@@ -267,17 +266,14 @@
         </p>
       </div>
 
-      <!-- UPDATED: Single button + counter + tip -->
-      <div class="ctaRow">
-        <a id="email-vince" class="btn primary" href="#">Email Vince Gasparro</a>
-        <span id="email-count" class="muted" style="align-self:center"></span>
-      </div>
-      <div class="muted" style="font-size:12px;margin-top:4px">
-        Template provided — but customization is encouraged.
-      </div>
-
-    </section>
-  </div> <!-- ✅ CLOSE hero + heroField before the next sections -->
+<!-- UPDATED: Single button + counter + tip -->
+<div class="ctaRow">
+  <a id="email-vince" class="btn primary" href="#">Email Vince Gasparro</a>
+  <span id="email-count" class="muted" style="align-self:center"></span>
+</div>
+<div class="muted" style="font-size:12px;margin-top:4px">
+  Template provided — but customization is encouraged.
+</div>
 
   <!-- Not-so-fun facts -->
   <div class="wrap" id="facts">
@@ -489,7 +485,6 @@
   }
   loadTimeline();
 
-<script>
 /* ===== Email Vince + Cloudflare Worker counter ===== */
 (function () {
   const subject = "Is TODAY the day?!";
@@ -507,63 +502,57 @@ It’s been horrifying to witness Canada continuing to allow the export of milit
 
 Looking forward to hearing your response.`;
 
-  // Robust Proton/iOS/Gmail line breaks: encode each line; join with CRLF tokens
-  function encodeBody(s){
-    return s.replace(/\r?\n/g, '\n').split('\n')
-            .map(encodeURIComponent)
-            .join('%0D%0A');
-  }
+  // Convert \n to \r\n so iOS Mail/Gmail preserve blank lines
+  const toCRLF = s => s.replace(/\r?\n/g, "\r\n");
 
-  const link    = document.getElementById('email-vince');
-  const elCount = document.getElementById('email-count');
+  const link = document.getElementById("email-vince");
+  const elCount = document.getElementById("email-count");
 
   if (link) {
-    const mailto = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${encodeBody(bodyRaw)}`;
-    link.setAttribute('href', mailto);
-
-    // Fire counter *before* the browser hands off to the mail app.
-    ['mousedown','touchstart','click','auxclick'].forEach(evt=>{
-      link.addEventListener(evt, ()=>{ hitCount(); }, {passive:true});
-    });
-
-    // Bonus: copy to clipboard so the user can paste if an email client still flattens.
-    link.addEventListener('click', ()=> {
-      navigator.clipboard?.writeText(bodyRaw).catch(()=>{});
-      // Refresh the count shortly after.
-      setTimeout(showCount, 600);
-    });
+    const mailto = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(toCRLF(bodyRaw))}`;
+    link.setAttribute("href", mailto);
   }
 
-  // === Counter ===
+  // Cloudflare Worker endpoints
   const API_BASE = "https://emailcounter.canadianactivism.workers.dev";
   const URL_GET  = `${API_BASE}/count`;
   const URL_HIT  = `${API_BASE}/hit`;
 
   if (elCount) elCount.textContent = "loading…";
 
-  async function showCount(){
-    if (!elCount) return;
-    try{
-      const r = await fetch(URL_GET, {cache:"no-store", mode:"cors"});
+  async function getCount() {
+    try {
+      const r = await fetch(URL_GET, { cache: "no-store" });
+      if (!r.ok) throw 0;
       const j = await r.json();
-      elCount.textContent = Number.isFinite(j.value) ? `${j.value.toLocaleString()} emails sent` : "counter unavailable";
-    }catch{
-      elCount.textContent = "counter unavailable";
-    }
+      return Number.isFinite(j.value) ? j.value : null;
+    } catch { return null; }
   }
 
-  function hitCount(){
-    try{
-      const data = new Blob(["1"], {type:"text/plain"});
-      if (!navigator.sendBeacon(URL_HIT, data)) throw 0;
-    }catch{
-      // Fallback if sendBeacon is blocked
-      fetch(URL_HIT, {method:"POST", keepalive:true, mode:"cors"}).catch(()=>{});
-    }
+  async function hitCount() {
+    try {
+      const r = await fetch(URL_HIT, { method: "POST", cache: "no-store" });
+      if (!r.ok) throw 0;
+      const j = await r.json();
+      return Number.isFinite(j.value) ? j.value : null;
+    } catch { return null; }
+  }
+
+  async function showCount() {
+    if (!elCount) return;
+    const v = await getCount();
+    elCount.textContent = Number.isFinite(v) ? `${v.toLocaleString()} emails sent` : "counter unavailable";
+  }
+
+  if (link) {
+    link.addEventListener("click", async () => {
+      await hitCount();
+      showCount();
+    });
   }
 
   showCount();
 })();
-</script>
+  </script>
 </body>
 </html>
