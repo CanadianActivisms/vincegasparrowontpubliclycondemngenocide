@@ -485,6 +485,7 @@
   }
   loadTimeline();
 
+<script>
 /* ===== Email Vince + Cloudflare Worker counter (Proton-safe line breaks) ===== */
 (function () {
   const subject = "Is TODAY the day?!";
@@ -502,20 +503,12 @@ It’s been horrifying to witness Canada continuing to allow the export of milit
 
 Looking forward to hearing your response.`;
 
-  // Proton workaround: manually encode newlines as %0D%0A (CRLF) instead of relying on encodeURIComponent
-  const encodeMailBody = (s) => {
-    // Encode reserved chars except we handle newlines as CRLF tokens explicitly
-    const basic = encodeURIComponent(s).replace(/%0A/g, ''); // strip any %0A first
-    const withCRLF = s.replace(/\r?\n/g, '%0D%0A');          // inject CRLF tokens
-    // Keep other characters encoded, but ensure our CRLF tokens are present
-    // Simpler approach: encode everything except newlines, then splice CRLFs
-    return withCRLF;
-  };
+  // Correct encoding: URL-encode first, then convert lone LF (%0A) to CRLF (%0D%0A)
+  const encodeMailBody = (s) =>
+    encodeURIComponent(s).replace(/%0A/g, '%0D%0A');
 
-  const link = document.getElementById("email-vince");
+  const link    = document.getElementById("email-vince");
   const elCount = document.getElementById("email-count");
-  const copyBtn = document.getElementById("copy-email");
-  const copied = document.getElementById("copy-done");
 
   if (link) {
     const to = "vince.gasparro@parl.gc.ca";
@@ -524,20 +517,6 @@ Looking forward to hearing your response.`;
       `?subject=${encodeURIComponent(subject)}` +
       `&body=${encodeMailBody(bodyRaw)}`;
     link.setAttribute("href", mailto);
-  }
-
-  // Copy helper (for clients that still flatten formatting)
-  if (copyBtn) {
-    copyBtn.addEventListener("click", async (e) => {
-      e.preventDefault();
-      try {
-        await navigator.clipboard.writeText(bodyRaw);
-        if (copied) {
-          copied.style.display = "";
-          setTimeout(()=> copied.style.display = "none", 1500);
-        }
-      } catch {}
-    });
   }
 
   // Cloudflare Worker endpoints
@@ -580,6 +559,7 @@ Looking forward to hearing your response.`;
 
   showCount();
 })();
+</script>
   </script>
 </body>
 </html>
