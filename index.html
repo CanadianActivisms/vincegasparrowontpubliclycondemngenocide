@@ -53,8 +53,16 @@
       background:radial-gradient(1200px 420px at 15% -10%, #fff 0, #FFE9EA 55%, #FFF7F7 100%);
       border-bottom:1px solid var(--line);
     }
-    .hero{max-width:1120px;margin:0 auto;padding:48px 20px 28px}
+.hero{
+  max-width:1120px;
+  margin:0 auto;
+  padding:48px 38px 28px;  /* 20 + 18 to match section inner content */
+}
 
+@media (max-width:560px){
+  /* keep mobile comfy */
+  .hero{ padding-left:20px; padding-right:20px; }
+}
     /* NEW: Three-line locked headline */
     .heroTitle{
       margin:0 0 16px;
