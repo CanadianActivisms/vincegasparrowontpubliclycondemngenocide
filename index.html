@@ -485,8 +485,7 @@
   }
   loadTimeline();
 
-<script>
-/* ===== Email Vince + Cloudflare Worker counter (Proton-safe line breaks) ===== */
+/* ===== Email Vince + Cloudflare Worker counter ===== */
 (function () {
   const subject = "Is TODAY the day?!";
   const bodyRaw = `Despite the UNHCR and hundreds of humanitarian and human rights organizations confirming Israel is committing genocide against the Palestinians in Gaza, you still have not acknowledged nor condemned the genocide.
@@ -503,19 +502,14 @@ It’s been horrifying to witness Canada continuing to allow the export of milit
 
 Looking forward to hearing your response.`;
 
-  // Correct encoding: URL-encode first, then convert lone LF (%0A) to CRLF (%0D%0A)
-  const encodeMailBody = (s) =>
-    encodeURIComponent(s).replace(/%0A/g, '%0D%0A');
+  // Convert \n to \r\n so iOS Mail/Gmail preserve blank lines
+  const toCRLF = s => s.replace(/\r?\n/g, "\r\n");
 
-  const link    = document.getElementById("email-vince");
+  const link = document.getElementById("email-vince");
   const elCount = document.getElementById("email-count");
 
   if (link) {
-    const to = "vince.gasparro@parl.gc.ca";
-    const mailto =
-      `mailto:${to}` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeMailBody(bodyRaw)}`;
+    const mailto = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(toCRLF(bodyRaw))}`;
     link.setAttribute("href", mailto);
   }
 
@@ -559,7 +553,6 @@ Looking forward to hearing your response.`;
 
   showCount();
 })();
-</script>
   </script>
 </body>
 </html>
