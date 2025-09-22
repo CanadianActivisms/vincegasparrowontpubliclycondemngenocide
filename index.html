@@ -485,7 +485,7 @@
   }
   loadTimeline();
 
-/* ===== Email Vince + Cloudflare Worker counter ===== */
+/* ===== Email Vince + Cloudflare Worker counter (Proton-safe line breaks) ===== */
 (function () {
   const subject = "Is TODAY the day?!";
   const bodyRaw = `Despite the UNHCR and hundreds of humanitarian and human rights organizations confirming Israel is committing genocide against the Palestinians in Gaza, you still have not acknowledged nor condemned the genocide.
@@ -502,15 +502,42 @@ It’s been horrifying to witness Canada continuing to allow the export of milit
 
 Looking forward to hearing your response.`;
 
-  // Convert \n to \r\n so iOS Mail/Gmail preserve blank lines
-  const toCRLF = s => s.replace(/\r?\n/g, "\r\n");
+  // Proton workaround: manually encode newlines as %0D%0A (CRLF) instead of relying on encodeURIComponent
+  const encodeMailBody = (s) => {
+    // Encode reserved chars except we handle newlines as CRLF tokens explicitly
+    const basic = encodeURIComponent(s).replace(/%0A/g, ''); // strip any %0A first
+    const withCRLF = s.replace(/\r?\n/g, '%0D%0A');          // inject CRLF tokens
+    // Keep other characters encoded, but ensure our CRLF tokens are present
+    // Simpler approach: encode everything except newlines, then splice CRLFs
+    return withCRLF;
+  };
 
   const link = document.getElementById("email-vince");
   const elCount = document.getElementById("email-count");
+  const copyBtn = document.getElementById("copy-email");
+  const copied = document.getElementById("copy-done");
 
   if (link) {
-    const mailto = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(toCRLF(bodyRaw))}`;
+    const to = "vince.gasparro@parl.gc.ca";
+    const mailto =
+      `mailto:${to}` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeMailBody(bodyRaw)}`;
     link.setAttribute("href", mailto);
+  }
+
+  // Copy helper (for clients that still flatten formatting)
+  if (copyBtn) {
+    copyBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      try {
+        await navigator.clipboard.writeText(bodyRaw);
+        if (copied) {
+          copied.style.display = "";
+          setTimeout(()=> copied.style.display = "none", 1500);
+        }
+      } catch {}
+    });
   }
 
   // Cloudflare Worker endpoints
