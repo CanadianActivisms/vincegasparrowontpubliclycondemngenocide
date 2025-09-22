@@ -7,16 +7,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:wght@700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --lib-red:#D71920;
-      --lib-red-dark:#B51218;
+      /* Core palette — Liberal red */
+      --lib-red:#D71920;         /* Primary red */
+      --lib-red-dark:#B51218;    /* Hover/press */
       --ink:#0e1116;
       --sub:#5e6470;
       --line:#e6e8ee;
-      --bg:#FFF7F7;
+      --bg:#FFF7F7;              /* Page background (warm, airy) */
       --card:#ffffff;
-      --accent:var(--lib-red);
-      --snark:var(--lib-red);
-      --soft:#FFFDFD;
+      --accent:var(--lib-red);   /* Links & accents now red */
+      --snark:var(--lib-red);    /* Emphasis color now red */
+      --soft:#FFFDFD;            /* Soft card fill */
     }
 
     *{box-sizing:border-box}
@@ -29,7 +30,7 @@
     /* ===== Brand / nav ===== */
     .brandbar{
       position:sticky; top:0; z-index:20; background:#fff;
-      border-bottom:3px solid var(--lib-red);
+      border-bottom:3px solid var(--lib-red);               /* RED STRIP */
       transition:box-shadow .18s ease
     }
     .brandbar.is-stuck{ box-shadow:0 8px 24px rgba(16,24,40,.07) }
@@ -54,10 +55,6 @@
     }
     .hero{max-width:1120px;margin:0 auto;padding:48px 20px 28px}
 
-    /* NEW: make hero content the same readable width as sections */
-    .narrow{max-width:900px;margin-left:auto;margin-right:auto}
-    @media (min-width:1200px){ .narrow{max-width:860px} }
-
     /* NEW: Three-line locked headline */
     .heroTitle{
       margin:0 0 16px;
@@ -70,13 +67,18 @@
       justify-items:center;
       gap:.2em;
     }
-    .heroTitle .line{display:block;font-weight:700;font-size:clamp(22px, 5vw, 64px)}
-    .heroTitle .callout{color:var(--snark);font-size:clamp(28px, 6.2vw, 72px);letter-spacing:.04em}
-
-    .clockwrap{
-      background:transparent;
-      display:grid; grid-template-columns:1fr; gap:14px; margin:12px auto 8px;
+    .heroTitle .line{
+      display:block;
+      font-weight:700;
+      font-size:clamp(22px, 5vw, 64px);
     }
+    .heroTitle .callout{
+      color:var(--snark);
+      font-size:clamp(28px, 6.2vw, 72px);
+      letter-spacing:.04em;
+    }
+
+    .clockwrap{display:grid; grid-template-columns:1fr; gap:14px; margin:12px 0 8px;}
     .clock{
       background:var(--lib-red);
       border:1px solid rgba(0,0,0,.06);
@@ -86,9 +88,19 @@
       display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center;
       color:#fff;
     }
-    .clock h2{margin:0; font-size:16px; font-weight:700; color:#fff; text-shadow:0 1px 0 rgba(0,0,0,.15)}
-    .bigtime{font-variant-numeric:tabular-nums; font-weight:900; font-size:clamp(24px,4.8vw,42px); letter-spacing:.02em; color:#fff; text-shadow:0 1px 0 rgba(0,0,0,.25), 0 0 2px rgba(0,0,0,.18)}
-    .subtime{font-size:12px;color:#fff;opacity:.9;text-shadow:0 1px 0 rgba(0,0,0,.18)}
+    .clock h2{
+      margin:0; font-size:16px; font-weight:700; color:#fff;
+      text-shadow:0 1px 0 rgba(0,0,0,.15);
+    }
+    .bigtime{
+      font-variant-numeric:tabular-nums; font-weight:900;
+      font-size:clamp(24px,4.8vw,42px); letter-spacing:.02em; color:#fff;
+      text-shadow:0 1px 0 rgba(0,0,0,.25), 0 0 2px rgba(0,0,0,.18);
+    }
+    .subtime{
+      font-size:12px;color:#fff;opacity:.9;
+      text-shadow:0 1px 0 rgba(0,0,0,.18);
+    }
 
     .ctaRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
     .btn{
@@ -123,7 +135,9 @@
     .links a{color:var(--accent);text-decoration:none}
     .links a:hover{text-decoration:underline}
 
+    /* Platform icons */
     .meta .platform{display:inline-flex;align-items:center;gap:6px}
+    .meta .platform svg{width:16px;height:16px;display:inline-block;vertical-align:-2px}
 
     /* Carousel */
     .carousel{position:relative;margin-top:10px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
@@ -139,6 +153,7 @@
     .lb img{max-width:92vw;max-height:92vh;border-radius:12px}
     .lb.close{cursor:zoom-out}
 
+    /* Footer */
     footer{border-top:1px solid var(--line);padding:18px 20px;color:var(--sub);font-size:12px}
     .footwrap{max-width:1120px;margin:0 auto}
 
@@ -147,13 +162,45 @@
       .facts{grid-template-columns:1fr 1fr}
     }
 
-    /* Mobile header fixes */
-    @media (max-width:560px){
-      .brandwrap{flex-direction:column;align-items:flex-start;gap:6px;padding:10px 12px}
-      .wordmark{font-size:16px;letter-spacing:.02em;line-height:1.2;max-width:100%;overflow-wrap:anywhere;word-break:break-word}
-      .nav{width:100%;margin-top:2px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
-      .nav a{margin-left:0;margin-right:14px}
+    /* ===== UN Context pill cards ===== */
+    .pilllist{display:grid;gap:14px;margin-top:10px}
+    .pill{
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px 16px;
+      font-size:14px; line-height:1.45; color:var(--ink);
     }
+    .pill .b{display:block;font-weight:600;margin-bottom:4px;color:#111}
+
+/* Mobile header fixes */
+@media (max-width:560px){
+  .brandwrap{
+    flex-direction:column;         /* stack brand above nav */
+    align-items:flex-start;
+    gap:6px;
+    padding:10px 12px;             /* a bit tighter */
+  }
+  .wordmark{
+    font-size:16px;                /* smaller on mobile */
+    letter-spacing:.02em;
+    line-height:1.2;
+    max-width:100%;
+    overflow-wrap:anywhere;        /* let long domain wrap */
+    word-break:break-word;
+  }
+  .nav{
+    width:100%;
+    margin-top:2px;
+    overflow-x:auto;               /* if it still overflows, make it scrollable */
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+  }
+  .nav a{
+    margin-left:0;
+    margin-right:14px;             /* spacing when nav is on one line */
+  }
+}
   </style>
 </head>
 <body>
@@ -173,13 +220,15 @@
   <!-- Hero / Clocks -->
   <div class="heroField" id="clocks">
     <section class="hero">
+
+      <!-- NEW three-line, centered title -->
       <h1 class="heroTitle" aria-label="How many more days of genocide will it take, Vince?">
         <span class="line">How many more days of</span>
         <span class="line callout">Genocide</span>
         <span class="line">Will it take, Vince?</span>
       </h1>
 
-      <div class="clockwrap narrow">
+      <div class="clockwrap">
         <div class="clock">
           <h2>Days since the UN declared Israel’s actions a genocide</h2>
           <div>
@@ -200,31 +249,35 @@
         </div>
       </div>
 
-      <div class="muted narrow" style="margin-top:10px">
+      <div class="muted" style="margin-top:10px">
         <p>
           MP Vince Gasparro refuses to publicly acknowledge or condemn the genocide being committed by Israel against the Palestinians in Gaza. How many more dead families, children shot in the head, bombed hospitals and dead journalists will it take for him to publicly mention the genocide – and how many more for him to condemn it? <b>Only TIME will tell!</b>
         </p>
+
         <p>
           According to his office, MP Vince Gasparro is simply a humble MP, and is only concerned with domestic matters. This does not include the genocide in Gaza, we are told, even though Canada is still sending arms to Israel (according to his social media it does appear include October 7th, however – where in Canada was this again?)
         </p>
+
         <p>
           Even though Liberal MP Vince Gasparro is busy making (in)famous videos about protecting Canadians from Irish musical artists (and succeeding in getting their legal group’s attention as well – great job!) he does not have time to post about the genocide. And don’t worry, the returning IDF soldiers and their recent “work experience” should be zero risk to Canadians, so let’s not bother him about that.
         </p>
+
         <p>
-          If you are also on the edge of your seat wondering “Will it be today?! Is today the day he acknowledges the genocide?!” you can send him an email using the form below. It’s pre-written and lets him know about MP Jenny Kwan’s private member’s bill, the <i>No More Loopholes Act</i>, which will stop the flow of arms through the US to Israel. Feel free to customize it with your own special thoughts and predictions… 
+          If you are also on the edge of your seat wondering “Will it be today?! Is today the day he acknowledges the genocide?!” you can send him an email using the form below. It’s pre-written and lets him know about MP Jenny Kwan’s private member’s bill, the <i>No More Loopholes Act</i>, which will stop the flow of arms through the US to Israel. Feel free to customize it with your own special thoughts and predictions, such as “How many more dead parents?” “How many more toddlers shot in the head by snipers?” “How many more infants starved to death because Israel prevents them from receiving baby formula?” (a known and completely real threat to Israel’s security) We can only wait and see - and email him until we have an answer. 
         </p>
       </div>
 
-      <!-- Button + counter + tip -->
-      <div class="ctaRow narrow">
+      <!-- UPDATED: Single button + counter + tip -->
+      <div class="ctaRow">
         <a id="email-vince" class="btn primary" href="#">Email Vince Gasparro</a>
         <span id="email-count" class="muted" style="align-self:center"></span>
       </div>
-      <div class="muted narrow" style="font-size:12px;margin-top:4px">
+      <div class="muted" style="font-size:12px;margin-top:4px">
         Template provided — but customization is encouraged.
       </div>
+
     </section>
-  </div>
+  </div> <!-- ✅ CLOSE hero + heroField before the next sections -->
 
   <!-- Not-so-fun facts -->
   <div class="wrap" id="facts">
@@ -245,22 +298,34 @@
   </div>
 
   <!-- UN Context -->
-  <div class="wrap" id="un-context">
-    <section class="section">
+  <div class="wrap">
+    <section class="section" id="un-context">
       <div class="h2">UN context (what the official record says)</div>
       <p class="muted">Primary documents are cited in the site footer.</p>
+
       <div class="pilllist">
         <div class="pill">
           <span class="b">June 2024 findings.</span>
-          <span>The UN Human Rights Council’s Commission of Inquiry reported <b>reasonable grounds</b> to believe both Hamas and Israeli authorities committed <b>war crimes</b>…</span>
+          <span>The UN Human Rights Council’s Commission of Inquiry reported <b>reasonable grounds</b> to believe both Hamas and Israeli authorities committed <b>war crimes</b>. It further found Israeli authorities committed <b>crimes against humanity</b> (including persecution and other inhumane acts) in the occupied Palestinian territory.
+            <a href="https://www.ohchr.org/en/press-releases/2024/10/un-commission-finds-war-crimes-and-crimes-against-humanity-israeli-attacks" target="_blank" rel="noreferrer">OHCHR press release</a> ·
+            <a href="https://docs.un.org/en/A/HRC/56/26" target="_blank" rel="noreferrer">Report A/HRC/56/26</a>
+          </span>
         </div>
         <div class="pill">
           <span class="b">2025 genocide analysis.</span>
-          <span>The Commission later assessed that multiple <b>genocidal acts</b> were being committed in Gaza…</span>
+          <span>The Commission later assessed that multiple <b>genocidal acts</b> were being committed in Gaza—killing, causing serious harm, and deliberately inflicting conditions of life calculated to destroy a population—and documented rhetoric by senior officials evidencing <b>genocidal intent</b>.
+            <a href="https://www.un.org/unispal/document/commission-of-inquiry-report-genocide-in-gaza-a-hrc-60-crp-3/" target="_blank" rel="noreferrer">COI report A/HRC/60/CRP/3 (PDF)</a>
+          </span>
         </div>
         <div class="pill">
           <span class="b">Obligations.</span>
-          <span>Under the <i>Genocide Convention</i>, states have a <b>duty to prevent and punish</b> genocide…</span>
+          <span>Under the <i>Convention on the Prevention and Punishment of the Crime of Genocide</i>, states have a <b>duty to prevent and punish</b> genocide (<a href="https://treaties.un.org/doc/Publication/UNTS/Volume%2078/volume-78-I-1021-English.pdf#page=3" target="_blank" rel="noreferrer">Art. I</a>) and must avoid <b>complicity</b> in genocide (<a href="https://treaties.un.org/doc/Publication/UNTS/Volume%2078/volume-78-I-1021-English.pdf#page=3" target="_blank" rel="noreferrer">Art. III(e)</a>), including by enacting effective penalties in domestic law (<a href="https://treaties.un.org/doc/Publication/UNTS/Volume%2078/volume-78-I-1021-English.pdf#page=3" target="_blank" rel="noreferrer">Art. V</a>).
+          </span>
+        </div>
+        <div class="pill">
+          <span class="b">Why this matters here.</span>
+          <span>When an MP repeatedly labels anti-Zionist advocacy as “antisemitic” while omitting Palestinian civilian harm and UN findings, it narrows the Overton window: <b>criticism of a state or ideology</b> is chilled as “hate,” while the <b>documented killing of civilians</b> goes unaddressed.
+          </span>
         </div>
       </div>
     </section>
@@ -296,7 +361,7 @@
   const bb=document.getElementById('brandbar');
   addEventListener('scroll',()=>bb.classList.toggle('is-stuck', scrollY>6),{passive:true});
 
-  /* Active nav underline */
+  /* Active nav underline based on scroll */
   const sections=['facts','un-context','timeline','contact'];
   const links=[...document.querySelectorAll('.nav a')];
   function setActive(){
@@ -330,10 +395,18 @@
   }
   tick(); setInterval(tick,1000);
 
-  /* ===== Timeline (minimal) ===== */
+  /* ===== Timeline (minimal: date + platform + screenshots + links) ===== */
   const $ = s => document.querySelector(s);
   const listEl = $('#list'), emptyEl = $('#empty');
   const lb = $('#lb'), lbimg = $('#lbimg');
+
+  const icon = (name) => {
+    const n = (name||'').toLowerCase();
+    if(n.includes('instagram')) return `<svg viewBox="0 0 24 24"><path fill="#e1306c" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5m0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3z"/><circle cx="12" cy="12" r="3.5" fill="#e1306c"/><circle cx="17.5" cy="6.5" r="1.2" fill="#e1306c"/></svg>`;
+    if(n==='x') return `<svg viewBox="0 0 24 24"><path fill="#111" d="M14.7 3H18l-6.9 8.1L19 21h-6.3l-5-5.9L2.8 21H0l7.6-8.9L0 3h6.4l4.6 5.4L14.7 3z"/></svg>`;
+    if(n.includes('facebook')) return `<svg viewBox="0 0 24 24"><path fill="#1877f2" d="M22 12.06C22 6.48 17.52 2 12 2S2 6.48 2 12.06C2 17.1 5.66 21.22 10.44 22v-7.04H7.9v-2.9h2.54v-2.2c0-2.5 1.5-3.88 3.78-3.88 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.86h2.78l-.44 2.9h-2.34V22C18.34 21.22 22 17.1 22 12.06z"/></svg>`;
+    return '';
+  };
 
   function carouselHTML(imgs){
     if(!imgs.length) return '';
@@ -378,6 +451,7 @@
       if(!res.ok) throw new Error('Could not load evidence.json');
       let items = await res.json();
 
+      // de-dupe & sort
       const seen = new Set();
       items = items.filter(it=>{
         const u=(it.url||'').trim(); if(!u) return true;
@@ -397,14 +471,15 @@
           <div class="meta">
             <span>${new Date(it.date).toLocaleDateString()}</span>
             <span class="dot"></span>
-            <span class="platform">${(it.platform||'')}</span>
+            <span class="platform">${icon(it.platform)} <span>${it.platform||''}</span></span>
           </div>
           ${carouselHTML(imgs)}
           <div class="links" style="margin-top:10px">
             ${it.url ? `<a href="${it.url}" target="_blank" rel="noreferrer">Source ↗</a>` : ``}
             ${it.archived_url ? `<a href="${it.archived_url}" target="_blank" rel="noreferrer">Archive ↗</a>` : ``}
             ${(!it.url && !it.archived_url) ? `<span class="muted">Links pending</span>` : ``}
-          </div>`;
+          </div>
+        `;
         listEl.appendChild(card);
       });
       bindCarousel(listEl);
@@ -415,20 +490,6 @@
   loadTimeline();
 
   /* ===== Email Vince + Cloudflare Worker counter ===== */
-
-  // Proton/iOS-safe mailto encoder:
-  // - Force CRLF line breaks (%0D%0A)
-  // - Keep spaces as %20 (not +)
-  // - Encode reserved chars but preserve our CRLF tokens
-  function encodeMailBody(text){
-    const withCRLF = text.replace(/\r?\n/g, '%0D%0A');
-    return withCRLF
-      .replace(/ /g,'%20')
-      .replace(/#/g,'%23')
-      .replace(/%/g, '%25')  // escape bare % that aren't part of our CRLF tokens
-      .replace(/%25(0D|0A)/g,'%$1'); // but restore %0D/%0A if we double-escaped them
-  }
-
   (function () {
     const subject = "Is TODAY the day?!";
     const bodyRaw = `Despite the UNHCR and hundreds of humanitarian and human rights organizations confirming Israel is committing genocide against the Palestinians in Gaza, you still have not acknowledged nor condemned the genocide.
@@ -445,6 +506,10 @@ It’s been horrifying to witness Canada continuing to allow the export of milit
 
 Looking forward to hearing your response.`;
 
+    // Encode body and force CRLF newlines for Proton/iOS
+    const encodeBody = (s) =>
+      encodeURIComponent(s).replace(/%0A/g, '%0D%0A');
+
     const link = document.getElementById("email-vince");
     const elCount = document.getElementById("email-count");
 
@@ -452,7 +517,7 @@ Looking forward to hearing your response.`;
       const mailto =
         `mailto:vince.gasparro@parl.gc.ca` +
         `?subject=${encodeURIComponent(subject)}` +
-        `&body=${encodeMailBody(bodyRaw)}`;
+        `&body=${encodeBody(bodyRaw)}`;
       link.setAttribute("href", mailto);
     }
 
@@ -472,28 +537,28 @@ Looking forward to hearing your response.`;
       } catch { return null; }
     }
 
-    function hitCountReliably() {
-      try {
-        // sendBeacon survives navigation; Worker accepts POST of any content-type
-        const data = new Blob([], { type: "text/plain;charset=utf-8" });
-        navigator.sendBeacon(URL_HIT, data);
-      } catch {
-        // fallback: fire-and-forget fetch (may be cancelled on some browsers)
-        fetch(URL_HIT, { method: "POST", keepalive: true }).catch(()=>{});
-      }
-    }
-
     async function showCount() {
       if (!elCount) return;
       const v = await getCount();
       elCount.textContent = Number.isFinite(v) ? `${v.toLocaleString()} emails sent` : "counter unavailable";
     }
 
+    // Increment just before navigation; sendBeacon survives the mailto jump
+    function hitCount() {
+      try {
+        const blob = new Blob([], { type: "text/plain;charset=utf-8" });
+        if (!navigator.sendBeacon(URL_HIT, blob)) {
+          throw 0;
+        }
+      } catch {
+        fetch(URL_HIT, { method: "POST", keepalive: true }).catch(()=>{});
+      }
+    }
+
     if (link) {
       link.addEventListener("click", () => {
-        hitCountReliably();
-        // let the UI refresh soon after
-        setTimeout(showCount, 600);
+        hitCount();
+        setTimeout(showCount, 400);
       });
     }
 
