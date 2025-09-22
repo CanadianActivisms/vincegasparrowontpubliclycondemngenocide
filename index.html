@@ -118,22 +118,30 @@
       text-align:center;
       color:#fff;
     }
-   /* Desktop override: all clocks same width */
-@media (min-width: 1024px){
-  .clock{
-    max-width: 720px;   /* pick a width that looks good */
-    margin: 0 auto;
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-  .clock h2{
-    white-space: normal;   /* allow wrapping */
-    max-width: 100%;       /* don’t force overflow */
-  }
-}
+
     .clock h2{
-      margin:0; font-size:16px; font-weight:700; color:#fff;
+      margin:0;
+      font-size:16px;
+      font-weight:700;
+      color:#fff;
       text-shadow:0 1px 0 rgba(0,0,0,.15);
+    }
+
+    /* Desktop override: all clocks same width */
+    @media (min-width: 1024px){
+      .clockwrap{
+        justify-items: center;   /* center clocks instead of full stretch */
+      }
+      .clock{
+        max-width: 720px;        /* fixed width for all cards */
+        width: 100%;             /* still responsive */
+        margin: 0 auto;
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+      .clock h2{
+        white-space: normal;     /* allow wrapping */
+      }
     }
 
     /* time row = 4 centered columns with centered colons */
