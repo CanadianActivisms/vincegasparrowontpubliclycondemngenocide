@@ -20,15 +20,15 @@
       --soft:#FFFDFD;
     }
     :root{
-  --container:1120px;
-  --gutter:20px;
-}
-.container{
-  max-width:var(--container);
-  margin:0 auto;
-  padding-left:var(--gutter);
-  padding-right:var(--gutter);
-}
+      --container:1120px;
+      --gutter:20px;
+    }
+    .container{
+      max-width:var(--container);
+      margin:0 auto;
+      padding-left:var(--gutter);
+      padding-right:var(--gutter);
+    }
 
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -61,11 +61,10 @@
       background:radial-gradient(1200px 420px at 15% -10%, #fff 0, #FFE9EA 55%, #FFF7F7 100%);
       border-bottom:1px solid var(--line);
     }
-    /* Match the main content column */
-.hero{
-  padding-top:48px;
-  padding-bottom:28px;
-}
+    .hero{
+      padding-top:48px;
+      padding-bottom:28px;
+    }
 
     /* Three-line locked headline */
     .heroTitle{
@@ -92,24 +91,54 @@
 
     /* Full-width, stacked counters */
     .clockwrap{display:grid; grid-template-columns:1fr; gap:14px; margin:12px 0 8px;}
+
+    /* CENTERED counter cards */
     .clock{
       background:var(--lib-red);
       border:1px solid rgba(0,0,0,.06);
       border-radius:16px;
       padding:16px 14px;
       box-shadow:0 10px 22px rgba(215,25,32,.12), 0 2px 4px rgba(215,25,32,.18);
-      display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center;
+      display:grid;
+      grid-template-columns:1fr;      /* single centered column */
+      gap:10px;
+      justify-items:center;
+      text-align:center;
       color:#fff;
     }
     .clock h2{
       margin:0; font-size:16px; font-weight:700; color:#fff;
       text-shadow:0 1px 0 rgba(0,0,0,.15);
     }
+
+    /* time row = 4 centered columns with tighter spacing */
     .bigtime{
-      font-variant-numeric:tabular-nums; font-weight:900;
-      font-size:clamp(24px,4.8vw,42px); letter-spacing:.02em; color:#fff;
-      text-shadow:0 1px 0 rgba(0,0,0,.25), 0 0 2px rgba(0,0,0,.18);
+      display:flex;
+      justify-content:center;
+      gap:12px;                       /* tighter spacing */
+      color:#fff;
     }
+    .bigtime .col{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      min-width:58px;                 /* keeps columns balanced */
+    }
+    .bigtime .num{
+      font-variant-numeric:tabular-nums;
+      font-weight:900;
+      font-size:clamp(24px,4.8vw,42px);
+      letter-spacing:.02em;
+      text-shadow:0 1px 0 rgba(0,0,0,.25), 0 0 2px rgba(0,0,0,.18);
+      line-height:1.05;
+    }
+    .bigtime .label{
+      font-size:12px;
+      opacity:.9;
+      line-height:1.2;
+      margin-top:2px;
+    }
+
     .subtime{
       font-size:12px;color:#fff;opacity:.9;
       text-shadow:0 1px 0 rgba(0,0,0,.18);
@@ -227,7 +256,7 @@
           <h2>Days since the UN declared Israel’s actions a genocide</h2>
           <div>
             <div id="t1" class="bigtime">— : — : — : —</div>
-            <div class="subtime">Days : Hours : Minutes : Seconds (since <b>Sept 16, 2025</b>)</div>
+            <div class="subtime">(since <b>Sept 16, 2025</b>)</div>
           </div>
         </div>
 
@@ -235,7 +264,7 @@
           <h2>Days since the Albanese report</h2>
           <div>
             <div id="t2" class="bigtime">— : — : — : —</div>
-            <div class="subtime">Days : Hours : Minutes : Seconds (since <b>Mar 25, 2024</b>)</div>
+            <div class="subtime">(since <b>Mar 25, 2024</b>)</div>
             <div class="subtime" style="margin-top:6px">
               * “…reasonable grounds to believe that the threshold indicating that Israel has committed genocide has been met.”
             </div>
@@ -246,14 +275,14 @@
           <h2>Days of genocide (at minimum)</h2>
           <div>
             <div id="t3" class="bigtime">— : — : — : —</div>
-            <div class="subtime">Days : Hours : Minutes : Seconds (since <b>Oct 7, 2023</b>)</div>
+            <div class="subtime">(since <b>Oct 7, 2023</b>)</div>
           </div>
         </div>
       </div>
 
       <div class="muted" style="margin-top:10px">
         <p>
-          TESTMP Vince Gasparro refuses to publicly acknowledge or condemn the genocide being committed by Israel against the Palestinians in Gaza. How many more dead families, children shot in the head, bombed hospitals and dead journalists will it take for him to publicly mention the genocide – and how many more for him to condemn it? <b>Only TIME will tell!</b>
+          MP Vince Gasparro refuses to publicly acknowledge or condemn the genocide being committed by Israel against the Palestinians in Gaza. How many more dead families, children shot in the head, bombed hospitals and dead journalists will it take for him to publicly mention the genocide – and how many more for him to condemn it? <b>Only TIME will tell!</b>
         </p>
 
         <p>
@@ -385,18 +414,30 @@
   const REF_MIN = new Date('2023-10-07T00:00:00Z').getTime(); // Days of genocide (at minimum)
 
   const pad=n=>String(n).padStart(2,'0');
-  const fmt=ms=>{
-    const s=Math.floor(ms/1000), d=Math.floor(s/86400),
-          h=Math.floor((s%86400)/3600), m=Math.floor((s%3600)/60), ss=s%60;
-    return `${d} : ${pad(h)} : ${pad(m)} : ${pad(ss)}`;
+
+  /* Return 4-column markup with number above label */
+  const fmt = (ms) => {
+    const s  = Math.floor(ms/1000),
+          d  = Math.floor(s/86400),
+          h  = Math.floor((s%86400)/3600),
+          m  = Math.floor((s%3600)/60),
+          ss = s%60;
+
+    return `
+      <div class="col"><div class="num">${d}</div><div class="label">Days</div></div>
+      <div class="col"><div class="num">${pad(h)}</div><div class="label">Hours</div></div>
+      <div class="col"><div class="num">${pad(m)}</div><div class="label">Minutes</div></div>
+      <div class="col"><div class="num">${pad(ss)}</div><div class="label">Seconds</div></div>
+    `;
   };
+
   function tick(){
     const now=Date.now();
     const t1=now-REF_GENOCIDE, t2=now-REF_ALBANESE, t3=now-REF_MIN;
     const e1=document.getElementById('t1'), e2=document.getElementById('t2'), e3=document.getElementById('t3');
-    if(e1) e1.textContent=fmt(t1);
-    if(e2) e2.textContent=fmt(t2);
-    if(e3) e3.textContent=fmt(t3);
+    if(e1) e1.innerHTML = fmt(t1);
+    if(e2) e2.innerHTML = fmt(t2);
+    if(e3) e3.innerHTML = fmt(t3);
   }
   tick(); setInterval(tick,1000);
 
