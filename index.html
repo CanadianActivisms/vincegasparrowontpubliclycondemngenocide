@@ -487,10 +487,11 @@
   }
   loadTimeline();
 
- /* ===== Email Vince + Cloudflare Worker counter ===== */
+<!-- ===== Email Vince + Cloudflare Worker counter ===== -->
+<script>
 (function () {
-const subject = "Is TODAY the day?!";
-const bodyText = `Despite the UNHCR and hundreds of humanitarian and human rights organizations confirming Israel is committing genocide against the Palestinians in Gaza, you still have not acknowledged nor condemned the genocide.
+  const subject = "Is TODAY the day?!";
+  const bodyRaw = `Despite the UNHCR and hundreds of humanitarian and human rights organizations confirming Israel is committing genocide against the Palestinians in Gaza, you still have not acknowledged nor condemned the genocide.
 
 Will today be the day?
 
@@ -504,59 +505,66 @@ It’s been horrifying to witness Canada continuing to allow the export of milit
 
 Looking forward to hearing your response.`;
 
-const body = encodeURIComponent(bodyText);
+  // Force CRLF so iOS Mail/Gmail respect line breaks
+  const toCRLF = s => s.replace(/\r?\n/g, "\r\n");
 
-const link = document.getElementById("email-vince");
-if (link) {
-  link.href = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${body}`;
-}
-
-  // Cloudflare Worker API endpoints
-  const URL_GET = "https://emailcounter.canadianactivism.workers.dev/count";
-  const URL_HIT = "https://emailcounter.canadianactivism.workers.dev/hit";
-
+  const link = document.getElementById("email-vince");
+  const elCount = document.getElementById("email-count");
   if (elCount) elCount.textContent = "loading…";
 
-  async function getCount() {
+  // Build the mailto with CRLF-encoded body
+  if (link) {
+    const mailto = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(toCRLF(bodyRaw))}`;
+    link.setAttribute("href", mailto);
+  }
+
+  // Cloudflare Worker endpoints
+  const BASE = "https://emailcounter.canadianactivism.workers.dev";
+
+  async function fetchCount() {
     try {
-      const r = await fetch(URL_GET, { cache: "no-store" });
-      if (!r.ok) throw new Error("GET failed");
+      const r = await fetch(`${BASE}/count`, { cache: "no-store" });
+      if (!r.ok) throw 0;
       const j = await r.json();
-      return Number.isFinite(j.value) ? j.value : null;
+      return Number(j.value);
     } catch {
       return null;
     }
   }
 
-  async function hitCount() {
-    try {
-      const r = await fetch(URL_HIT, { method: "POST", cache: "no-store" });
-      if (!r.ok) throw new Error("HIT failed");
-      return (await r.json()).value;
-    } catch {
-      return null;
-    }
-  }
-
-  async function showCount() {
+  function renderCount(v) {
     if (!elCount) return;
-    const v = await getCount();
     if (Number.isFinite(v)) {
       elCount.textContent = `${v.toLocaleString()} emails sent`;
+      elCount.style.display = "";
     } else {
       elCount.textContent = "counter unavailable";
     }
   }
 
+  function hitCounter() {
+    try {
+      if (navigator.sendBeacon) {
+        // Use sendBeacon so it fires even as the mail app opens
+        const blob = new Blob([], { type: "application/octet-stream" });
+        navigator.sendBeacon(`${BASE}/hit`, blob);
+      } else {
+        fetch(`${BASE}/hit`, { method: "POST", keepalive: true });
+      }
+    } catch {}
+  }
+
+  // Increment on click, then refresh count shortly after
   if (link) {
-    link.addEventListener("click", async () => {
-      await hitCount();
-      showCount();
+    link.addEventListener("click", () => {
+      hitCounter();
+      setTimeout(() => fetchCount().then(renderCount), 700);
     });
   }
 
-  showCount();
+  // Initial render of count
+  fetchCount().then(renderCount);
 })();
-  </script>
+</script>
 </body>
 </html>
