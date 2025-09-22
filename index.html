@@ -172,35 +172,35 @@
       font-size:14px; line-height:1.45; color:var(--ink);
     }
     .pill .b{display:block;font-weight:600;margin-bottom:4px;color:#111}
- /* Mobile header refinements */
-@media (max-width:600px){
+/* Mobile header fixes */
+@media (max-width:560px){
   .brandwrap{
-    flex-direction:column;
+    flex-direction:column;         /* stack brand above nav */
     align-items:flex-start;
-    gap:2px;                  /* tighter vertical gap */
-    padding:6px 10px;         /* less padding */
+    gap:6px;
+    padding:10px 12px;             /* a bit tighter */
   }
   .wordmark{
-    font-size:14px;           /* smaller */
+    font-size:16px;                /* smaller on mobile */
+    letter-spacing:.02em;
     line-height:1.2;
     max-width:100%;
-    overflow-wrap:anywhere;
+    overflow-wrap:anywhere;        /* let long domain wrap */
     word-break:break-word;
   }
   .nav{
-    display:flex;
-    flex-wrap:wrap;           /* allow nav items to break into two rows */
-    gap:6px 12px;             /* tighter gaps */
     width:100%;
     margin-top:2px;
+    overflow-x:auto;               /* if it still overflows, make it scrollable */
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
   }
   .nav a{
-    font-size:12px;           /* shrink nav links */
-    margin:0;                 /* remove extra spacing */
-    padding-bottom:2px;
+    margin-left:0;
+    margin-right:14px;             /* spacing when nav is on one line */
   }
-}
-  </style>
+} 
+ </style>
 </head>
 <body>
   <!-- Brand -->
@@ -262,20 +262,18 @@
         </p>
 
         <p>
-          If you are also on the edge of your seat wondering “Will it be today?! Is today the day he acknowledges the genocide?!” you can send him an email using the form below. It’s pre-written and lets him know about MP Jenny Kwan’s private member’s bill, the <i>No More Loopholes Act</i>, which will stop the flow of arms through the US to Israel. Feel free to customize it with your own thoughts and predictions, such as “How many more dead parents?” “How many more toddlers shot in the head by snipers?” “How many more infants starved to death because Israel prevents them from receiving baby formula?” (a known and completely real threat to Israel’s security). We can only wait and see - and email him until we have an answer. 
+          If you are also on the edge of your seat wondering “Will it be today?! Is today the day he acknowledges the genocide?!” you can send him an email using the form below. It’s pre-written and lets him know about MP Jenny Kwan’s private member’s bill, the <i>No More Loopholes Act</i>, which will stop the flow of arms through the US to Israel. Feel free to customize it with your own special thoughts and predictions, such as “How many more dead parents?” “How many more toddlers shot in the head by snipers?” “How many more infants starved to death because Israel prevents them from receiving baby formula?” (a known and completely real threat to Israel’s security) We can only wait and see - and email him until we have an answer. 
         </p>
       </div>
 
-      <!-- UPDATED: Single button + counter -->
+<!-- UPDATED: Single button + counter + tip -->
 <div class="ctaRow">
   <a id="email-vince" class="btn primary" href="#">Email Vince Gasparro</a>
   <span id="email-count" class="muted" style="align-self:center"></span>
 </div>
-<p class="muted" style="font-size:12px; margin-top:6px;">
+<div class="muted" style="font-size:12px;margin-top:4px">
   Template provided — but customization is encouraged.
-</p>
-    </section>
-  </div>
+</div>
 
   <!-- Not-so-fun facts -->
   <div class="wrap" id="facts">
@@ -283,14 +281,14 @@
       <div class="h2">Not-so-fun facts about the genocide in Gaza</div>
       <p class="muted">Feel free to forward any of these to Vince in case he’s been busy protecting Canada from Irish musicians.</p>
       <div class="facts" style="margin-top:10px">
-        <div class="fact"><b>Crimes against humanity & war crimes</b> The UN Commission of Inquiry found extermination, torture, rape, persecution, starvation as a method of warfare, and other inhumane acts.</div>
-        <div class="fact"><b>Genocidal acts identified</b> Destruction of reproductive capacity and deliberately inflicting conditions of life to destroy the group meet underlying acts in the Genocide Convention.</div>
-        <div class="fact"><b>60,199 Palestinians killed (direct deaths)</b> (Oct 2023–Jul 2025), including <b>18,430 children</b> and <b>9,735 women</b>. Life expectancy plunged by <b>34.9 years</b> in the first year.</div>
-        <div class="fact"><b>Women & children</b> By mid-July 2025, at least <b>46%</b> of the verified dead were women and children.</div>
-        <div class="fact"><b>Hospitals attacked</b> WHO logged <b>498 strikes</b> on healthcare (to 30 Jul 2024).</div>
-        <div class="fact"><b>Shot while seeking food</b> At least <b>1,373</b> Palestinians were killed while trying to get aid.</div>
-        <div class="fact"><b>Civilian majority</b> Israeli intelligence assessments indicate roughly <b style="display:inline;">83%</b> of those killed were civilians.</div>
-        <div class="fact"><b>Humanitarian & press casualties</b> ~<b>1,400</b> healthcare workers, <b>408</b> aid workers, and at least <b>170</b> journalists killed.</div>
+        <div class="fact"><b>Crimes against humanity & war crimes.</b> The UN Commission of Inquiry found extermination, torture, rape, persecution, starvation as a method of warfare, and other inhumane acts.</div>
+        <div class="fact"><b>Genocidal acts identified.</b> Destruction of reproductive capacity and deliberately inflicting conditions of life to destroy the group meet underlying acts in the Genocide Convention.</div>
+        <div class="fact"><b>60,199 Palestinians killed</b> (Oct 2023–Jul 2025), including <b>18,430 children</b> and <b>9,735 women</b>. Life expectancy plunged by <b>34.9 years</b> in the first year.</div>
+        <div class="fact"><b>Women & children.</b> By mid-July 2025, at least <b>46%</b> of the verified dead were women and children.</div>
+        <div class="fact"><b>Hospitals attacked.</b> WHO logged <b>498 strikes</b> on healthcare (to 30 Jul 2024).</div>
+        <div class="fact"><b>Shot while seeking food.</b> At least <b>1,373</b> Palestinians were killed while trying to get aid.</div>
+        <div class="fact"><b>Civilian majority.</b> Israeli intelligence assessments indicate roughly <b style="display:inline;">83%</b> of those killed were civilians.</div>
+        <div class="fact"><b>Humanitarian & press casualties.</b> ~<b>1,400</b> healthcare workers, <b>408</b> aid workers, and at least <b>170</b> journalists killed.</div>
       </div>
     </section>
   </div>
@@ -487,8 +485,7 @@
   }
   loadTimeline();
 
-<!-- ===== Email Vince + Cloudflare Worker counter ===== -->
-<script>
+/* ===== Email Vince + Cloudflare Worker counter ===== */
 (function () {
   const subject = "Is TODAY the day?!";
   const bodyRaw = `Despite the UNHCR and hundreds of humanitarian and human rights organizations confirming Israel is committing genocide against the Palestinians in Gaza, you still have not acknowledged nor condemned the genocide.
@@ -505,66 +502,57 @@ It’s been horrifying to witness Canada continuing to allow the export of milit
 
 Looking forward to hearing your response.`;
 
-  // Force CRLF so iOS Mail/Gmail respect line breaks
+  // Convert \n to \r\n so iOS Mail/Gmail preserve blank lines
   const toCRLF = s => s.replace(/\r?\n/g, "\r\n");
 
   const link = document.getElementById("email-vince");
   const elCount = document.getElementById("email-count");
-  if (elCount) elCount.textContent = "loading…";
 
-  // Build the mailto with CRLF-encoded body
   if (link) {
     const mailto = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(toCRLF(bodyRaw))}`;
     link.setAttribute("href", mailto);
   }
 
   // Cloudflare Worker endpoints
-  const BASE = "https://emailcounter.canadianactivism.workers.dev";
+  const API_BASE = "https://emailcounter.canadianactivism.workers.dev";
+  const URL_GET  = `${API_BASE}/count`;
+  const URL_HIT  = `${API_BASE}/hit`;
 
-  async function fetchCount() {
+  if (elCount) elCount.textContent = "loading…";
+
+  async function getCount() {
     try {
-      const r = await fetch(`${BASE}/count`, { cache: "no-store" });
+      const r = await fetch(URL_GET, { cache: "no-store" });
       if (!r.ok) throw 0;
       const j = await r.json();
-      return Number(j.value);
-    } catch {
-      return null;
-    }
+      return Number.isFinite(j.value) ? j.value : null;
+    } catch { return null; }
   }
 
-  function renderCount(v) {
-    if (!elCount) return;
-    if (Number.isFinite(v)) {
-      elCount.textContent = `${v.toLocaleString()} emails sent`;
-      elCount.style.display = "";
-    } else {
-      elCount.textContent = "counter unavailable";
-    }
-  }
-
-  function hitCounter() {
+  async function hitCount() {
     try {
-      if (navigator.sendBeacon) {
-        // Use sendBeacon so it fires even as the mail app opens
-        const blob = new Blob([], { type: "application/octet-stream" });
-        navigator.sendBeacon(`${BASE}/hit`, blob);
-      } else {
-        fetch(`${BASE}/hit`, { method: "POST", keepalive: true });
-      }
-    } catch {}
+      const r = await fetch(URL_HIT, { method: "POST", cache: "no-store" });
+      if (!r.ok) throw 0;
+      const j = await r.json();
+      return Number.isFinite(j.value) ? j.value : null;
+    } catch { return null; }
   }
 
-  // Increment on click, then refresh count shortly after
+  async function showCount() {
+    if (!elCount) return;
+    const v = await getCount();
+    elCount.textContent = Number.isFinite(v) ? `${v.toLocaleString()} emails sent` : "counter unavailable";
+  }
+
   if (link) {
-    link.addEventListener("click", () => {
-      hitCounter();
-      setTimeout(() => fetchCount().then(renderCount), 700);
+    link.addEventListener("click", async () => {
+      await hitCount();
+      showCount();
     });
   }
 
-  // Initial render of count
-  fetchCount().then(renderCount);
+  showCount();
 })();
-</script>
+  </script>
 </body>
 </html>
