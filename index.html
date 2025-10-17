@@ -635,14 +635,17 @@
 
   /* Email + Cloudflare Worker counter */
   (function () {
-    const subject = "Is TODAY the day?!";
-    const bodyRaw = `Despite the UNHCR and hundreds of humanitarian and human rights organizations confirming Israel is committing genocide against the Palestinians in Gaza, you still have not acknowledged nor condemned the genocide.
+const subject = "Is TODAY the day?!";
+
+const bodyRaw = `Despite the UNHCR and hundreds of humanitarian and human rights organizations confirming Israel is committing genocide against the Palestinians in Gaza, you still have not acknowledged nor condemned the genocide.
 
 Will today be the day?
 
 We are all waiting.
 
-While you were busy banning Irish rappers from Canada (are we all safe now?) Canadians remain complicit in genocide. I demand sanctions on Israel, immediate ceasefire, investigation of returning IDF soldiers for war crimes, a full arms embargo (no more of those pesky loopholes allowing for arms to be sent to Israel by passing unregulated and unreported through the US) and yes — a public condemnation of Israel’s genocide against the Palestinians.
+While there is a fragile “ceasefire” from the bombardment, Palestinians continue to be murdered and starved, their lands illegally occupied through force, thousands of remaining Palestinian hostages including women and children, medical aid is being withheld and international journalists are refused entry (why could that be?) Is this what you support?
+
+While you were busy banning Irish rappers from Canada, Canadians remain complicit in genocide. I demand sanctions on Israel, full accountability under International law for the genocide and the illegal occupation, investigation of returning IDF soldiers for war crimes, a full arms embargo (no more loopholes allowing for arms to be sent to Israel by passing unregulated and unreported through the US) and yes — a public condemnation of Israel’s genocide against the Palestinians.
 
 Immediately, we request you to support the No More Loopholes Bill tabled by MP Jenny Kwan. Formally called An Act to Amend the Export and Import Permits Act, this Private Member’s Bill aims to close dangerous gaps in Canada’s arms export laws — especially the U.S. loophole, which allows Canadian-made weapons parts to be shipped through the U.S. and on to Israel or other conflict zones without proper oversight. The bill would bring Canada’s laws in line with the global Arms Trade Treaty and ensures Canadian exports are not complicit in genocide or other war crimes.
 
@@ -650,16 +653,16 @@ It’s been horrifying to witness Canada continuing to allow the export of milit
 
 Looking forward to hearing your response.`;
 
-    // Convert \n to \r\n so iOS Mail/Gmail preserve blank lines
-    const toCRLF = s => s.replace(/\r?\n/g, "\r\n");
+// Preserve blank lines across mail clients
+const body = encodeURIComponent(bodyRaw.replace(/\n/g, "\r\n"));
 
-    const link = document.getElementById("email-vince");
-    const elCount = document.getElementById("email-count");
+const link = document.getElementById("email-vince");
+const elCount = document.getElementById("email-count");
 
-    if (link) {
-      const mailto = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(toCRLF(bodyRaw))}`;
-      link.setAttribute("href", mailto);
-    }
+if (link) {
+  const mailto = `mailto:vince.gasparro@parl.gc.ca?subject=${encodeURIComponent(subject)}&body=${body}`;
+  link.setAttribute("href", mailto);
+}
 
     // Cloudflare Worker endpoints
     const API_BASE = "https://emailcounter.canadianactivism.workers.dev";
